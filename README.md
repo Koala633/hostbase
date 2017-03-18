@@ -7,7 +7,7 @@ Create encrypted fake WPA AP,
 Create heavy interference and replace the target AP by your fake (work only again windows system),
 Ask to push te WPS button instead of ask the key which is very suspicious... 
 Once you entered the data of target network, the script is autonomous and can work alone, just go take a cup of tea :)
-French most popular router page is included
+French most popular router pages are included
 
 Tool used is airbase-ng and hostapd
 
