@@ -30,7 +30,7 @@ French project but also open as other to make this more fun.
 
 --> NOTE: You are french, download the file "hostbase", you are from another country download the file "hostbaseEnglishVersion"
 
-----> PLEASE, LOOK THE MANUAL BEFORE USE <----
+----> PLEASE, LOOK THE MANUAL AND PDF BEFORE USE <----
 
 Coming in future:
 
