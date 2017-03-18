@@ -28,3 +28,10 @@ Tool used are hostapd and airbase-ng for a final result of hostbase.
 French project but also open as other to make this more fun.
 
 ----> PLEASE, LOOK THE MANUAL BEFORE USE <----
+
+Coming in future:
+
+Freeradius rogue AP attack based on the login only (NOT TESTED YET).
+
+Maybe i will include a WPS attacks too.
+
