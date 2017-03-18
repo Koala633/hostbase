@@ -2,10 +2,17 @@
 A bash script for advanced rogue AP attack  
 
 The script is able to:
+
 Disconnect quickly the target station from the target network,
 Create encrypted fake WPA AP,
 Create heavy interference and replace the target AP by your fake (work only again windows system),
-Ask to push te WPS button instead of ask the key which is very suspicious... 
+Ask to push te WPS button instead of ask the key which is very suspicious...
+
+
+Included airbase-ng cafe-latte fake AP attack again router with hexadecimal password,
+Included hostapd multi AP option, that allow you to create multi fake AP (WARNING: to use this attack, CONFIGURE_DYNAMIC_WLAN must be compiled with hostapd install), if you only use the reposity version and not the latest version of hostapd you will have to change your MAC adress before use the multi AP option, please take note of that and see the manual.
+
+
 Once you entered the data of target network, the script is autonomous and can work alone, just go take a cup of tea :)
 French most popular router pages are included
 
