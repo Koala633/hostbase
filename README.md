@@ -34,7 +34,7 @@ French project but also open as other to make this more fun.
 
 Coming in future:
 
-Freeradius rogue AP attack based on the login only to directlty grab the key without webserver or redirection (NOT TESTED YET).
+Freeradius rogue AP attack based on the login only to directly grab the key without webserver or redirection (NOT TESTED YET).
 
 Maybe i will include a WPS attacks too.
 
