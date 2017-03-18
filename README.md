@@ -9,7 +9,7 @@ Create heavy interference and replace the target AP by your fake (work only agai
 Ask to push te WPS button instead of ask the key which is very suspicious...
 
 
-Included airbase-ng cafe-latte fake AP attack again router with hexadecimal password,
+Included airbase-ng cafe-latte fake AP attack again routers with hexadecimal passwords,
 Included hostapd multi AP option, that allow you to create multi fake AP (WARNING: to use this attack, CONFIGURE_DYNAMIC_WLAN must be compiled with hostapd install), if you only use the reposity version and not the latest version of hostapd you will have to change your MAC adress before use the multi AP option, please take note of that and see the manual.
 
 
