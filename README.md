@@ -28,7 +28,7 @@ Tool used are hostapd and airbase-ng for a final result of hostbase.
 
 French project but also open as other to make this more fun.
 
---> NOTE: You are french, download the file "hostbase", you are from another country download the file "hostbaseEnglishVersion" <--
+--> NOTE: You are french, download the file "hostbase", you are from another country download the file "hostbaseEnglishVersion"
 
 ----> PLEASE, LOOK THE MANUAL BEFORE USE <----
 
