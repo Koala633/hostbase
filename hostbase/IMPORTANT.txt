@@ -1,0 +1,38 @@
+
+Une fois network-manager d'éteint, lancer un:
+ifconfig eth0 up
+dhclient eth0     
+pour récupérer une ip en filaire
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

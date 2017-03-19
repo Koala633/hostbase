@@ -1,0 +1,163 @@
+html, body{margin:0;padding:0;font-family: Helvetica, Arial, "Nimbus Sans L", sans-serif;font-size:14px;-webkit-text-size-adjust:none;}
+img{border:none;}
+a{color:black;}
+input[type="button"], input[type="submit"] {-webkit-appearance: none;}
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+.headerSFR{height:69px;margin-top:20px;margin-right:20px;margin-left:20px;}
+.ligne-rouge{width:946px;height:6px;background-color:#e2001a;margin-left: auto;margin-right: auto;}
+.headerSFR .gauche{height:66px;width:148px;top: 35px;position: absolute;}
+.headerSFR .droite{height:66px;width:650px;top: 50px; position: absolute;font-size:30px;padding-left: 180px;}
+.headerSFR .fon{height:106px;width:60px;top: 35px; position: absolute;font-size:18px;padding-left: 840px;}
+.headerSFR .fleche{top: 215px; position: absolute;padding-left: 530px;}
+.rouge{color:#e2001a;}
+.orange{color:#f2a300;}
+.authentBloc {width:340px;height:464px/*440px*/; border: 2px #d1d1d1 solid;margin:25px;border-top:#e2001a 6px solid;}
+.authentBloc .titre{font-size:18px;text-align:center;padding-top: 10px}
+.authentBloc .identifiant{font-size:12px;margin-top:10px;padding: 10px;padding-left: 20px;background-color:#f2f2f2}
+.authentBloc .motdepasse{font-size:12px;padding: 10px; padding-left: 20px;}
+.authentBloc .cond{font-size:12px;padding: 10px;padding-left: 20px;}
+.authentBloc .connexion{padding-right:10px;text-align: right;font-size:12px;}
+.authentBloc .connexion a{color:black;text-decoration:none}
+.authentBloc .infos{height:90px;width:340px;margin: 13px; margin-top:33px;}
+.authentBloc .infos .image{position: relative;width:23px;height:33px;top: 15px;left:10px;}
+.authentBloc .infos .texte{position: relative;width:270px;height:70px;top: -20px;left:40px;font-size:12px;}
+.authentBloc .infos .texte strong{font-size:14px;}
+.authentBloc .infos .plusInfos{position: relative;width:270px;height:10px;top: -45px;left:40px;font-size:12px;text-align:right!important;}
+.authentBloc .infos .plusInfos a{color:black;text-decoration:none;}
+.infosBloc {width:540px;height:470px; margin:25px 25px 0px 25px;}
+.sfr_mea .titre{color:#e2001a;font-weight: bold;font-size: 24px;text-align: right; margin:10px 30px 10px 0;}
+.sfr_mea .liste{margin:5px 30px;font-size:14px;color:#e2001a;list-style-type:square;}
+.sfr_mea .liste li{padding:0;margin-bottom:5px;}
+.sfr_mea .promo{font-size: 13px;}
+.sfr_mea .promo .bloc{float:left;border: 2px #d1d1d1 solid;border-top:#e2001a 6px solid;width:235px;height:165px;margin:0 0 0 18px;}
+.sfr_mea .promo .bloc h1{margin:0;padding:5px 5px 0px 5px;font-weight: bold;font-size: 13px;}
+.sfr_mea .promo .bloc .texte{float:left;padding: 28px 5px 0px 5px;height:43px;width:150px;}
+.sfr_mea .promo .bloc .image{float:right;width:48px;text-align: center;margin: -8px 5px 6px 0px;}
+.sfr_mea .promo .bloc .lien{margin:0;padding:0;padding-bottom:7px;background-color: #f2f2f2; height: 30px;text-align: right;width:100%;display:inline-block;}
+.sfr_mea .promo .bloc .lien .texteL{float:left;width: 102px;padding-top:7px;}
+.sfr_mea .promo .bloc .lien .imageL{float:left;padding-top:8px;text-align:left;padding-left: 5px;}
+.sfr_mea .promo .bloc .lien a{color:black;text-decoration:none;font-weight:bold;}
+.sfr_mea .promo .redbloc{border:#e2001a 6px solid;height:161px;}
+.sfr_mea .promo .redbloc h1{background-color:#e2001a; color:#FFFFFF; text-align: center; padding: 0; height:48px;}
+.sfr_mea .promo .redbloc .lien{padding:0;}
+
+.grey_line {width:504px;height:1px; border-top: 1px #d1d1d1 solid; border-bottom: 1px #d1d1d1 solid; margin:16px 0 0 18px;}
+
+.redbloc .sprites {background: white; height:63px; padding: 9px 11px 9px 11px; text-align:center;}
+.redbloc .sprites .sprite-bloc {float: left; text-align:center; display: inline-block; margin: 0 10px ; _margin: 0 8px;}
+
+.footerBloc {text-align:right;padding-right:30px;color:#a1a1a1;padding-bottom:5px}
+.footerBloc a {text-decoration:none;color:#a1a1a1}
+.boutonC{height:23px;color:white;font-weight:bold;font-size: 15px;border:none;vertical-align:middle;
+margin-bottom:10px;
+-moz-box-shadow:0px 2px 2px rgba(000,000,000,0.5);
+-webkit-box-shadow: 0px 2px 2px rgba(000,000,000,0.5);
+box-shadow: 0px 2px 2px rgba(000,000,000,0.5);
+filter: progid:DXImageTransform.Microsoft.Shadow(strength = 2, direction = 180, color = '#000000');
+-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(strength = 2, Direction = 180, Color = '#000000')";
+background-color: #cc0000; /* Old browsers */}
+.voile{z-index:10000;top:0;position:absolute;width:100%;height:100%;background-color: #000;filter:alpha(opacity=50);opacity: 0.5;-moz-opacity:0.5;display:none;}
+.box{width:500px;height:200px;background-color:white;border: 5px #d1d1d1 solid;z-index:10001;position:absolute;display:none;margin: 0 auto;}
+.box .fermer{text-align:right;margin:0;padding:0;padding-bottom: 10px}
+.box .fermer a{font-size: 14px;cursor: pointer}
+#aideDiv {display: none}
+#aideContenu {width:600px;height:340px;background-color:#d1d1d1;font-size:14px;line-height:30px;text-align:left!important;overflow: auto;margin-top: 20px}
+#aideContenu p {padding:0;margin:0;padding-left:30px!important;}
+#p1 p {margin:0;padding:0;padding-left:45px!important}
+#p1 ul {margin-top:0; margin-bottom: 0;list-style-type:square;color:#e2001a}
+#p1 ul li{margin:0;padding:0;margin-left:45px!important;}
+#p1 ul li span{color:black}
+#p2 {line-height:normal}
+#p2 p {margin:0;padding:0;padding-left:45px!important}
+#p2 ul {margin-top:0; margin-bottom: 0;list-style-type:square;color:#e2001a}
+#p2 ul li{margin:0;padding:0;margin-left:45px!important;}
+#p2 ul li span{color:black}
+#p3 {line-height:normal}
+#p3 p {margin:0;padding:0;padding-left:45px!important}
+#p3 ul {margin-top:0; margin-bottom: 0;list-style-type:square;color:#e2001a}
+#p3 ul li{margin:0;padding:0;margin-left:45px!important;}
+#p3 ul li span{color:black}
+
+/* refonte Popin Success */
+#successPopin{width:530px;/* height:215px; */background-color:#efefef;text-align:left!important;padding:35px 20px 20px 30px;}
+.logoPopin{background:transparent url(/i/sfr.png)no-repeat top left;width:74px;height:71px;position:absolute;top:10px;left:3px;}
+.titlePopin{font-weight:bold;font-size:20px;color:#252525;border-bottom:1px #c1bdbd solid;margin-bottom:20px;padding-bottom:10px;text-align:center;}
+.texteCompteur{font-weight:bold;font-size:12px;margin:0 0 30px;}
+.texteCompteur #theTimer{font-size:16px;}
+#colHotspot  div{float:left;}
+#colHotspot .colLeft{width:235px;overflow:hidden;margin-right:20px;}
+#colHotspot .colMiddle{width:170px;}
+#colHotspot .colRight{width:225px;}
+#colHotspot .colMiddle p{margin:-10px 0 0;}
+#colHotspot .colMiddle a{text-decoration:none;}
+#colHotspot .colMiddle a .sfrPopin{font-weight:900;font-size:38px;color:#e2001a;}
+#colHotspot .colMiddle a .wifiPopin{font-size:38px;color:#e2001a;}
+#colHotspot .colMiddle a .iluvhotspot{font-size:23px; margin-top:0;color:#2b2a2e;}
+#colHotspot .colMiddle .iluvhotspot img{vertical-align:bottom;}
+#colHotspot .texteL a{font:normal 12px Arial, Helvetica, Sans serif;color:#151515;text-decoration:none;}
+#colHotspot .texteL a:hover{text-decoration:underline;}
+
+.sprite-ligne-grise{ background-color: #d1d1d1; width: 314px; height: 1px; } 
+.sprite-ampoule{ background: url(/i/sprites.png) no-repeat top left;background-position: 0 0; width: 23px; height: 33px; } 
+.sprite-en{ background: url(/i/sprites.png) no-repeat top left;background-position: -23px 0; width: 16px; height: 11px;float:left;margin-top:4px;margin-left:740px; } 
+.sprite-fr{ background: url(/i/sprites.png) no-repeat top left;background-position: -39px 0; width: 16px; height: 11px;float:left;margin-top:4px;margin-left:750px; } 
+.sprite-fleche-rouge{ background: url(/i/sprites.png) no-repeat top left;background-position: -23px -11px; width: 10px; height: 16px; } 
+.sprite-fleche-orange{ background: url(/i/sprites.png) no-repeat top left;background-position: -33px -11px; width: 10px; height: 16px; } 
+.sprite-fermer{ background: url(/i/sprites.png) no-repeat top right; background-position: -43px -11px; height: 11px; width: 11px; position:absolute;right:7px;top:7px; } 
+.sprite-puce{ background: url(/i/sprites.png) no-repeat top left;background-position: -43px -22px; width: 3px; height: 5px;float:left;margin-top:5px;}
+.sprite-flecheG{ background: url(/i/sprites.png) no-repeat top left;background-position: -57px 0; width: 35px; height: 69px; } 
+
+.sprite-box{ background: url(/i/sprites.png) no-repeat top left;background-position: -94px 0; width: 50px; height: 58px; }
+
+.sprite-mobiles{ background: url(/i/sprites.png) no-repeat top left;background-position: -86px -129px; width: 46px; height: 58px; }
+.sprite-tablette{ background: url(/i/sprites.png) no-repeat top left;background-position: -100px -58px; width: 40px; height: 52px; } 
+.sprite-red{ background: url(/i/sprites.png) no-repeat top left;background-position: 0 -129px; width: 57px; height: 58px; }
+.sprite-multi{ background: url(/i/sprites.png) no-repeat top left;background-position: -57px -129px; width: 29px; height: 58px; }
+.sprite-sfr-wifi{ background: url(/i/sprites.png) no-repeat top left;background-position: 0 -187px; width: 149px; height: 66px; }
+.sprite-sfr{ background: url(/i/sprites.png) no-repeat top left;background-position: 0 -253px; width: 74px; height: 71px; }
+
+/* FON */
+.sprite-fon-little{background: url(/i/sprites.png) no-repeat top left;background-position: 0 -33px; width: 57px; height: 34px; margin:5px;float: left;}
+.sprite-fon{background: url(/i/sprites.png) no-repeat top left;background-position: 0 -69px; width: 100px; height: 60px;} 
+.sprite-separation-grise{ background-color: #d1d1d1; width: 2px; height: 25px; float: left; margin: 15px 7px 0 5px;}
+
+.orange_working { background-color: rgb(255, 147, 49); }
+
+.infosBloc .sfr_mea { border: 1px #d1d1d1 solid; padding-bottom:10px; height: 280px;}
+
+.infosBloc .fonBloc{border: 1px #d1d1d1 solid; height:171px;margin:6px 0px 0 0px; background-color: #f2f2f2;font-family: Arial, "Nimbus Sans L", sans-serif;font-size:14px; color: #4a4a48; position:relative;}
+.infosBloc .fonBloc a{color:#4a4a48;font-weight: bold; font-size:11px;}
+.infosBloc .fonBloc .header { height: 44px; }
+.infosBloc .fonBloc .header .title { float:left; font-weight:bold; font-size:18px; margin-top:23px;}
+.infosBloc .fonBloc ul { float:right;}
+.infosBloc .fonBloc p.share_fon{font-size:20px;font-weight:lighter;color:orange;float: right; margin-top: 25px; text-align: right; line-height:15px;}
+.infosBloc .fonBloc p.share_fon a {font-size:12px;color:orange;}
+
+.infosBloc .fonBloc .offers { margin: 25px 1px 0 2px; height:120px; z-index:10; top:35px; position:absolute;}
+.infosBloc .fonBloc .offers > div.offer { float: left; height:115px; width: 132px; position:relative; }
+.infosBloc .fonBloc .offers > div.offer span { display: block; text-align:center;}
+.infosBloc .fonBloc .offers > div.offer .title { font-size:18px; }
+.infosBloc .fonBloc .offers > div.offer .detail {font-size:12px;margin-bottom:3px; }
+.infosBloc .fonBloc .offers > div.offer .price { font-weight:bold; font-size:18px; }
+.infosBloc .fonBloc .offers > div.offer a { text-transform:  uppercase; display: block; text-align:center; margin: auto; background-color: #4a4a48; color: #f2f2f2; text-decoration: none; font-size:15px; padding: 4px;}
+.infosBloc.fr .fonBloc .offers > div.offer a {width: 90px;}
+.infosBloc.uk .fonBloc .offers > div.offer a {width: 70px;}
+.infosBloc .fonBloc .offers > div.offer div {position:absolute; bottom: 15px; width:100%;}
+/*.infosBloc .fonBloc .offers > div.offer a { text-transform:  uppercase; display: block; text-align:center; width: 84px; margin: 15px auto; background-color: black; color: #f2f2f2; text-decoration: none; height: 24px; font-size:18px; padding-top: 4px;}*/
+.infosBloc .fonBloc .offers > div.separator { float: left; height:98px; width: 2px; margin-top:2px; background-color:#d1d1d1; }
+
+.infosBloc .fonBloc .right_links {float:right;width: 180px;margin: 5px 15px 0 0;}
+.infosBloc .fonBloc .lien{margin:4px 0 0 0;padding:0;text-align: right;display:inline-block;}
+.infosBloc .fonBloc .lien .texteL{float:right;width: 165px;padding-top:3px;}
+.infosBloc .fonBloc .lien .imageL{float:right;padding-top:2px;text-align:left;padding-left: 5px;}
+.infosBloc .fonBloc .lien a{text-decoration:none;}
+
+.boutonFon{width:114px;height:28px;border:none;vertical-align:middle;font-size:12px;border-radius:5px;background-color: #ffcc00; /* Old browsers */}
+.boutonFon:hover{color:#E2001A;}
+.fon_access .text { font-size:14px; float: right;text-align:right; margin: 0; }
+.fon_access .link { float: right;margin:1px 35px 0px 10px; }
+.fon_access .text .little {font-size: 9px;}
+a.utiliser{ text-decoration: none; }

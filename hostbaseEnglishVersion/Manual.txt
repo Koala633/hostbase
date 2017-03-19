@@ -1,0 +1,84 @@
+# Under licence GPLv3 http://www.gnu.org/licenses/gpl.txt
+# Hostbase By Koala alias Flow
+
+
+Topo des script:
+
+~~~~~~~~Before all, this script use 2 network interface (i always use 2 for better performance attack).~~~~~~~~~
+~~~~~~~~ Hostapd work only with atheros chipset ath5k ath9k et ath10k, the alfa NHA external usb adapter work with hostapd go to: wifi-highpower for more infomation ~~~~~~~
+~~~~~~~~ You have 2 scripts, one is on the main repertory and the other on hostbase0.9.The 0.9 version is for beginer user or user which not have a compatible wifi card with hostapd, --> NOTE: if you have a atheros chipset you can delete the folder hostbase 0.9 <-- ~~~~~~~~
+
+
+~~~~~~~~ The main version is more fun, ddos the target router until a client connect to your fake, when the client is connected he is redirect to a fake page asking to push the wps button, at same time, ddos is stopping and WPS/PBC request are send on the target network.You don't have to do lot of things, if the attack has been succefull go to the option "8.  See the wifi key grabed during attack" and you will see the registered key ~~~~~~
+
+
+Steps before start:
+Etape 1
+
+Copy the folders Livebox,SFR,Bouygues into /etc  --> (Don't forget to open the fake page and put the target ssid inside)
+Before every test, check if the wpa_supplicant.conf located on /etc is empty, if not let him empty and save it.
+
+
+Step 2
+
+Create a txt file into the root folder and put this inside: 10.0.0.1*.*
+
+Don't care about the dhcp.conf, the script will do that alone
+Don't care about the hostapd.conf, the script will do that alone
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+Step 3
+
+Check your /etc/apache2/sites-available/000-default.conf (mine is like that):
+
+
+ServerAdmin webmaster@localhost
+	DocumentRoot /var/www/
+
+puis /etc/apache2/apache2.conf et vérifier ces lignes:
+<Directory /var/www/>
+	Options Indexes FollowSymLinks
+	AllowOverride None
+	Require all granted
+</Directory>
+
+
+The script give the rules to the page on the right folder, you don't have to get a problem here.If you have one just apply the following rules and see what happen:
+
+
+sudo chown -R root:www-data /var/www/*
+find /var/www -type d -exec sudo chmod 701 {} \;
+find /var/www -type d -exec sudo chmod 755 {} \;
+sudo chown -R root:www-data /var/www/cle.txt  <-- (for hostbase0.9 only)
+sudo chmod 764 /var/www/cle.txt <-- (for hostbase0.9 only)
+sudo service apache2 restart
+
+
+REMEMBER: this is only if the fake page doesn't appear properly, you don't have to do that in other case.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Launch the first script like:
+bash installation.sh 
+and finaly
+bash hostbase.sh   
+
+--> IMPORTANT: begin with a passive scan to see the data of target networks, put it in full sreen, the script need to be started with that option because at the same time we stop network-manager to avoid conflict with hostapd, wait a little and you will see the networks around.
+
+--> IMPORTANT: if your using 2 wifi cards and reboot your computer, sometimes system.d rename the internal card wlan1 and the external wlan0 so whatch out of the interface name you will enter when the script will ask it.
+
+If the attack don't work cause of the client doesn't push the WPS button, open a new terminal and execute: bash exit.sh  that will clean all files for another try
+
+Airbase cafe-latte attack is launched on the main windows script not with xterm because xterm sometimes fail with airbase.After the airbase attack started, you can continue to choose other options on this windows.
+
+
+--> IMPORTANT: the multi AP will not work if you use the hostapd reposity version because CONFIGURE_DYNAMIC_WLAN is not compiled, so you have to change the last letter of your MAC adress like that 00:11:22:33:44:5c or 00:11:22:33:44:58 work too, hostapd need to create 3 interfaces so we need to tell him the good one.Other options is to download the latest version of hostapd and leave all "#" regarding WPS settings and CONFIGURE_DYNAMIC_WLAN.
+
+
+
+For ny information about the project or to get into the project leave a comment.
+
+Enjoy
+
+
+
