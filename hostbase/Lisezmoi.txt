@@ -107,6 +107,13 @@ Dans /etc/apache2/sites-available mettre ça:   # Meme configuration pour l'http
 
 Puis relancer apache tel que service apache2 restart 
 
+Après l'attaque relancez network-manager ou wicd avec:
+        systemctl enable NetworkManager.service
+        systemctl start NetworkManager.service
+	wicd:
+	service start wicd
+
+
 Améliorez le script, et amusez vous
 Enjoy
 
