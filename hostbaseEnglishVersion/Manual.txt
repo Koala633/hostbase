@@ -74,7 +74,12 @@ Airbase cafe-latte attack is launched on the main windows script not with xterm 
 
 --> IMPORTANT: the multi AP will not work if you use the hostapd reposity version because CONFIGURE_DYNAMIC_WLAN is not compiled, so you have to change the last letter of your MAC adress like that 00:11:22:33:44:5c or 00:11:22:33:44:58 work too, hostapd need to create 3 interfaces so we need to tell him the good one.Other options is to download the latest version of hostapd and leave all "#" regarding WPS settings and CONFIGURE_DYNAMIC_WLAN.
 
+After the attack restart network-manager or wicd with:
 
+        systemctl enable NetworkManager.service
+        systemctl start NetworkManager.service
+	wicd:
+	service start wicd
 
 For ny information about the project or to get into the project leave a comment.
 
