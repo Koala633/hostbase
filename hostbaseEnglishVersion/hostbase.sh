@@ -80,6 +80,7 @@ if echo ${monmode} | egrep '^wlan*|wlp*'  ; then
 f_wlan
 fi
 
+ifconfig -a
 unset moniteurmode
 while [ -z "${moniteurmode}" ]; do read -p "Name of the card in monitor mode, (ex: wlan0mon, mon0 etc...): " moniteurmode; done
 }
