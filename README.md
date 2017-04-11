@@ -32,6 +32,9 @@ French project but also open as other to make this more fun.
 
 ----> PLEASE, LOOK THE MANUAL AND PDF BEFORE USE <----
 
+Sample video of how it work here:
+https://www.youtube.com/watch?v=tAQPKtZZ4jE
+
 Coming in future:
 
 Freeradius rogue AP attack based on the login only to directly grab the key without webserver or redirection (NOT TESTED YET).
