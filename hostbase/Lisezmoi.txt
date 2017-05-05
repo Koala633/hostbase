@@ -1,0 +1,49 @@
+# Under licence GPLv3 http://www.gnu.org/licenses/gpl.txt
+# Hostbase By Koala alias Flow
+
+
+Topo des script:
+
+~~~~~~~~Avant tout: a la base ces script sont conçu pour fonctionner avec 2 interfaces (j'en utilise toujours 2 pour une meilleur souplesse).~~~~~~~~~
+~~~~~~~~ Hostapd n'est compatible qu'avec les cartes atheros chipset ath5k ath9k et ath10k, la carte alfa NHA est compatible aussi avec hostapd, voir sur le site wifi-highpower ~~~~~~~
+~~~~~~~~ Vous avez 2 scripts a disposition, le premier se situe dans le meme répertoire que ce fichier lisezmoi, le second dans le dossier hostaseV0.9.La version 0.9 est plus pour les utilisateurs débutants n'ayant pas de carte wifi compatible avec hostapd, dans ce cas la utilisez airbase pour une attaque par phishing classique avec les fakes pages qui vont avec ~~~~~~
+~~~~~~~~ L'autre version est plus "fun" (carte wifi doit etre compatible avec hostapd) est deauth la box en faisant passer le fake AP en 1er dans les réseaux sans fils, tant qu'un client ne se connecte pas son réseau est plombé, dès que le client se connecte il est redirigé sur une page demandant d'appuyer sur son bouton WPS, au meme moment la deauth se stope et la seconde interface prend le relais pour balancer des requètes WPS/PBC sur le réseau cible, c'est automatique, une fois que le rogue AP est lancé et que ensuite vous lancez la deauth vous n'avez plus rien a faire, si ça a marché faite l'option "8.  See the wifi key grabed during attack" et vous verrez la clé du réseau enregistré ~~~~~~
+
+~~~ Pour free, utilisez la version hostbase0.9 car je rapelle que free n'a pas de wps et que la version 1.0 ne se base que sur le wps.Donc pour récup les identifiants free, la version 0.9 est la plus adapté ~~~
+
+
+
+
+
+
+----> Pour ceux qui ont déja utilisé hostbase, supprimez les page de /etc, l'installation vous remettra tout en place par la suite <----
+Lancer le script dans son répertoire tel que:
+bash newinstallation.sh                 
+
+Une fois l'installation faite vous serez invité a choisir la version a utiliser donc entrez soit: hostbase1.0 ou hostbase0.9 (pas hostbase1.0.sh ou juste hostbase...)
+
+Pour les utilisations suivantes de hostbase, copiez tout le dossier que vous avez téléchargé dans /tmp et lancez le script comme ceci:
+cd /tmp/hostbase/
+bash hostbase1.0.sh --> cette étape est importante pour que tout fonctionne bien <--
+
+
+--> IMPORTANT: commencer par un scan passif en plein écran pour récupérer les infos intéréssantes (bssid, canal, essid etc...) en meme temps ça permet de stopper wicd ou network-manager selon les cas (kali/unbutu).
+
+--> IMPORTANT: pour hostapd, si on a une carte externe il se peut qu'elle soit renommée en wlan0 au lieu de wlan1 lorsque vous démarrez avec, donc au moment de choisir sa carte, pour monter le fake AP faire attention A LA BONNE adresse MAC.Si vous branchez la carte externe une fois le system démarré et avant de lancer le script, elle sera renommée normalement en wlan1 ou wlp**** quelque chose...
+
+
+En cas d'utilisation de hostapd simple ou multi AP on attends qu'un client se connecte a l'AP tant qu'un client n'est pas connecté, le script continu
+la deauth.Une fois connecté on balance des requetes sur le BSSID de l'AP cible et on a plus qu'attendre que la victime appuie sur son bouton.En cas
+de non connexion du client, faite un ctrl+c dans la fenetre principal.
+
+Pour airbase et l'attaque caffe-latte sur les routeurs en héxa, on le lance directement dans le meme terminal que le script, pourquoi ? car avec un xterm airbase et littéralement bugé, ça n'a aucune incidence pour la suite car on peut quand meme utiliser les options du script ensuite.Une fois le client connecté ça se verra automatiquement dans la fenetre du script, checker airodump pour voir les IVS
+
+
+--> IMPORTANT: Le mode multi AP de hostapd ne fonctionnera pas avec la version des dépots car CONFIGURE_DYNAMIC_WLAN n'est pas une option compilé par défaut, il faut donc changer le dernier chiffre/lettre de son adresse mac en 00:11:22:33:44:5c ou 00:11:22:33:44:58 marche aussi.Hostapd doit avoir accès a 3 interfaces a partir d'une seul en mode multi AP c'est pour sa qu'il a besoin qu'on le lui le renseigne si il s'agit de la version des dépots.Autrement télécharger la version 2.3 et décommentez tout ce qui WPS et CONFIGURE_DYNAMIC_WLAN quelque chose comme sa de mémoire).
+
+
+Améliorez le script, et amusez vous
+Enjoy
+
+
+

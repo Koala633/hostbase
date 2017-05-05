@@ -1,0 +1,35 @@
+
+
+
+
+EN:
+Trap function with ctrl+c to exit quickly the script and clean up files
+Working directory is now /tmp instead of /root
+Only one install script for kali/linux instead of 2 separate before
+Apache2 is automatically configured for http
+Network-manager is now automatically started by ending the script with ctrl+c or with the "Quit" option
+Added compatibility with wireless card rename wlx* by system.d
+Active DoS attack on the master channel's to continue kick users if target AP change his channel.
+Read me updated: --> please read it <--
+
+
+FR:
+Fonction trap pour quitter le script avec ctrl+c sans avoir a forcément utiliser l'option "Quiiter"
+Le répertoire de travail se trouve maintenant dans /tmp au lieu de /root
+Un seul script pour l'installation au lieu de 2 avant (kali/ubuntu)
+Configuration automatique de apache2
+Network-manager est démarré automatiquement a la sortie su script
+Ajout des interfaces renommé wlx* par system.d
+Active DoS sur les canaux principaux pour continuer a kicker le client si le canal de sa box change après un reset ou autre.
+Lisezmoi.txt mis a jour: --> merci d'y jeter un oeil <--
+
+
+ES:
+Trap anaidio para salir del script con ctrl+c si tener que usar todo el tiempo la opcion "Salir"
+La carpeta de trabajo esta ahora /tmp en ve de /root antes
+Un script solo para la instalacion en ve de 2 antes (kali/ubuntu)
+Configuracion automatica de apache2
+Network-manager se inicia a la salida del script
+Anadido interfaz que system.d  llama wlx* 
+Ataque DoS el los canal lo mas usado para desconectar el usario si el punto de acceso cambia de canal
+Manual de utilizacion revisado: --> por favor mira lo <--
