@@ -70,7 +70,7 @@ done
 echo -e "\t\e[1;32m[+] Configuring apache2... wait....\e[0m"
 touch /etc/wpa_supplicant.conf
 cp -R $(pwd) /tmp/
-sleep 5;
+sleep 8;
 cp -R /tmp/hostbase/hostbaseV0.9/pagecle/* /etc/
 sleep 3;
 cp -R /tmp/hostbase/pagewps/* /etc/
