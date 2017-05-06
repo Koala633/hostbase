@@ -481,6 +481,7 @@ f_mainmenu
 ##################################################
 
 f_wait(){
+cd /tmp/hostbase/hostbaseV0.9/
 x-terminal-emulator -e bash activedos.sh
 sleep 1;
 echo -e "\e[1;34m[*]\e[0m Waiting for the target victim..... Be cool and take a drink..."
@@ -504,6 +505,7 @@ f_mainmenu
 f_active(){
 echo -e "\e[1;34m[*]\e[0m DoS for airbase selected"
 sleep 6;
+cd /tmp/hostbase/hostbaseV0.9/
 x-terminal-emulator -e bash activedos.sh
 sleep 1;
 f_mainmenu
