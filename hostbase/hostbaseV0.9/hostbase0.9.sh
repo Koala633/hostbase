@@ -63,6 +63,7 @@ f_checkexit(){
         else
         echo -e "\n\e[1;34m[*]\e[0m Clean up terminated see you later...\n"
         sleep 2;
+	kill $(< /tmp/terminal.pid)
         for PID in $( ps -e | grep xterm | awk '{print $1;}' ); do kill ${PID} 2>&-; done
 fi
 	exit 2> /dev/null
