@@ -13,7 +13,7 @@ blue='\e[1;34m'
 
 # requierement
 
-deplist="build-essential upgrade-system subversion wget g++ iptables iptables-dev pavucontrol ffmpeg sqlite3 libsqlite3-dev libssl-dev libnl-3-dev libnl-genl-3-dev dsniff isc-dhcp-server pkg-config xterm apache2 php libapache2-mod-php php-mcrypt php-cli tcpdump scapy vokoscreen wireshark python-twisted bridge-utils devscripts gengetopt autoconf libtool make"
+deplist="build-essential upgrade-system subversion wget g++ iptables iptables-dev pavucontrol ffmpeg sqlite3 libsqlite3-dev libssl-dev libnl-3-dev libnl-genl-3-dev dsniff hostapd isc-dhcp-server pkg-config xterm apache2 php libapache2-mod-php php-mcrypt php-cli tcpdump scapy vokoscreen wireshark python-twisted bridge-utils devscripts gengetopt autoconf libtool make"
 
 # run as root
 if [ "$(id -u)" != "0" ]
