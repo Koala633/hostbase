@@ -251,6 +251,7 @@ f_mainmenu
 f_active(){
 echo -e "\e[1;34m[*]\e[0m DoS for airbase selected, if necessary to quit the DoS this use option 6: Stop alive attack"
 sleep 6;
+cd /tmp/hostbase/
 x-terminal-emulator -e bash activedos.sh
 sleep 1;
 f_mainmenu
