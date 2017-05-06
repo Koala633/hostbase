@@ -63,6 +63,7 @@ f_checkexit(){
         killall xterm
         else
         echo -e "\n\e[1;34m[*]\e[0m Clean up terminated see you later...\n"
+	kill $(< /tmp/terminal.pid)
         killall xterm
         sleep 2;
 fi
