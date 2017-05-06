@@ -329,6 +329,7 @@ read -ep "                BSSID to send WPS request : " BSSID
 echo "  "            
 done
 
+cd /tmp/hostbase/
 x-terminal-emulator -e bash activedos.sh
 sleep 1;
 echo -e "\e[1;34m[*]\e[0m Waiting for the target victim..... Be cool and take a drink..."
