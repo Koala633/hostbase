@@ -13,6 +13,8 @@ Ask to push te WPS button instead of ask the key which is very suspicious...
 
 Switch between local and internet rogue AP
 
+DoS attack tracking target AP on the master channel's
+
 
 Included airbase-ng cafe-latte fake AP attack again routers with hexadecimal passwords
 
