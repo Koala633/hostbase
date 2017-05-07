@@ -1,5 +1,5 @@
 # Hostbase
-A bash script for advanced rogue AP attack  
+A bash script for advanced rogue AP attack (Update of 4 May 2017, download the hostbase folder and NOT the old version hostbase english folder)
 
 The script is able to:
 
