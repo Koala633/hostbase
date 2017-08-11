@@ -38,8 +38,8 @@ fi
 
 
 unset seconde
-while [ -z "$seconde" ]; do read -p "Time before check AP channel (MUST BE MORE LONGER THAN 60): " seconde; done
-if (($seconde >= 60 && $seconde <= 259200)); then
+while [ -z "$seconde" ]; do read -p "Time before check AP channel (MUST BE MORE LONGER THAN 90): " seconde; done
+if (($seconde >= 90 && $seconde <= 259200)); then
 echo -e "\e[1;34m[*]\e[0m OK."
         else
 	echo -e "\n\e[1;31m[-]\e[0m ERROR: invalid time !\n"
