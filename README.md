@@ -1,7 +1,7 @@
 # Hostbase
 A bash script for advanced rogue AP attack (Update of 11 august 2017: Added tracked channel.
 
-(download the hostbase folder and launch the newinstall.sh script into hostbase folder)(don't use the hostbase english version cause it's an old version)
+(download the hostbase folder and launch the newinstall.sh script into hostbase folder)(don't use the hostbase english folder because it's an old version)
 
 The script is able to:
 
