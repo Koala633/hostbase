@@ -1,5 +1,5 @@
 # Hostbase
-A bash script for advanced rogue AP attack (Update of 11 august 2017: Added tracked channel.
+A bash script for advanced rogue AP attack (Update of 11 august 2017: Added 3 tracked channel more 3 9 and 13 instead of the 1 6 and 11 before)
 
 (download the hostbase folder and launch the newinstall.sh script into hostbase folder)(don't use the hostbase english folder because it's an old version)
 
