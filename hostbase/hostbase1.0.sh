@@ -33,6 +33,8 @@ f_checkexit(){
         echo -e "\n\e[1;34m[*]\e[0m Restarting your wireless card as default mode...\n"
         sudo sysctl net.ipv4.ip_forward=0
         sleep 2;
+	kill $(< /tmp/terminal.pid)
+        sleep 1;
         airmon-ng stop ${moniteurmode} &> /dev/null
         sleep 4;
         airmon-ng stop ${intmoniteur} &> /dev/null
