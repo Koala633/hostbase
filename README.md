@@ -12,6 +12,8 @@ apt-get install libgtk2.0-dev
 
 gem install gtk2
 
+--> you need to have the fake page of version hostbase-1.0 in /etc to test it then in the phishing page windows, type for example: free
+
 
 
 Main script below.
