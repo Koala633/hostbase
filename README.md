@@ -9,7 +9,10 @@ apt-get install libgtk2.0-dev
 gem install gtk2
 
 
-Main script here:
+
+Main script below.
+
+
 # Hostbase
 A bash script for advanced rogue AP attack (Update of 11 august 2017: Added 3 tracked channel more 3 9 and 13 instead of the 1 6 and 11 before)
 
