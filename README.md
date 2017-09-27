@@ -3,9 +3,13 @@
 Seem to work on kali but need to install ruby and the following gems:
 
 apt-get install ruby
+
 apt-get install ruby-dev
+
 gem install highline
+
 apt-get install libgtk2.0-dev
+
 gem install gtk2
 
 
