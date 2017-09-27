@@ -1,3 +1,15 @@
+
+--> Currently in beta test: a sample ruby GUI using GTk for hostapd-1.1, this is a test version only <--
+Seem to work on kali but need to install ruby and the following gems:
+
+apt-get install ruby
+apt-get install ruby-dev
+gem install highline
+apt-get install libgtk2.0-dev
+gem install gtk2
+
+
+Main script here:
 # Hostbase
 A bash script for advanced rogue AP attack (Update of 11 august 2017: Added 3 tracked channel more 3 9 and 13 instead of the 1 6 and 11 before)
 
