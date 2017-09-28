@@ -1,5 +1,5 @@
 
---> Currently in beta test: a sample ruby GUI using GTk for hostapd-1.1, this is a test version only <--
+--> Currently in beta test: a sample ruby GUI using GTk for hostbase-1.1, this is a test version only <--
 Seem to work on kali but need to install ruby and the following gems:
 
 apt-get install ruby
