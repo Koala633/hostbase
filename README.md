@@ -1,6 +1,14 @@
 
---> Currently in beta test: a sample ruby GUI using GTk for hostbase-1.1, this is a test version only <--
-Seem to work on kali but need to install ruby and the following gems:
+~~~~~~~~~~~~~~~~~~ Hostbase project By Koala @ crack-wifi.com @ wifi-libre.com @ kali-linux.fr ~~~~~~~~~~~~~~~~~~~~
+
+Welcome to the hostbase project// Bienvenido en hostbase// Bienvenu sur le projet hostbase.
+
+Update of 5/10/2017: ruby GUI minors bugs fixed, full read me below:
+
+
+EN/ES/FR install:
+
+If you already have the fake pages in /etc you just need to install the following ruby gems:
 
 apt-get install ruby
 
@@ -12,11 +20,104 @@ apt-get install libgtk2.0-dev
 
 gem install gtk2
 
---> you need to have the fake page of version hostbase-1.0 in /etc to test it then in the phishing page windows, type for example: free
+
+Si tienes ya la version 1.0 tienes que installar los gems de ruby:
+
+apt-get install ruby
+
+apt-get install ruby-dev
+
+gem install highline
+
+apt-get install libgtk2.0-dev
+
+gem install gtk2
 
 
 
-Main script below.
+Si vous avez déja la version 1.0 il vous faut installer les gems de ruby:
+
+apt-get install ruby
+
+apt-get install ruby-dev
+
+gem install highline
+
+apt-get install libgtk2.0-dev
+
+gem install gtk2
+
+
+In case of troubleshooting during install//Si tienes problemo de installacion//En cas de problème d'installation:
+
+gem install rake
+
+gem install bundler
+
+Then try to install again the ruby gems above//Despues reinicia las installacion de los gem de ruby a riba//Ensuite recommencez l'installation des ruby gems ci-dessus.
+
+
+____________________________________________________
+
+EN/ES/FR start:
+
+The script need to be started in /tmp folder //El script se tiene que ejecutar en la carpeta /tmp //Le script doit etre lancé dans /tmp
+
+Just copy/paste the entire folder of hostbase-1.1 to /tmp // Copia y pega la carpeta entera de hostbase-1.1 a dentro la carpeta /tmp // Copiez/coller le dossier hostbase-1.1 dans /tmp
+
+
+In /tmp/hostbase-1.1 folder, right click and open a shell here// A dentro /tmp/hostbase-1.1 click derecho, abrir un terminal aqui // Dans /tmp/hostbase-1.1, clique droit ouvrir un terminal ici.
+
+
+Start it // Inicia lo asi // lancer le tel que:
+
+ruby hostbase.rb
+
+
+____________________________________________________
+
+EN/ES/FR the bascis knowledge:
+
+
+EN: For better performance this script works ONLY with 2 wifi-cards cause it automatise a lot of thing like the encrypted AP with WPS the active DoS tracking the AP channel etc...
+
+ES: Para mas potentia este script ANDA con 2 tarjeta wifi porqué automatisa un monton de cosas: el AP encryptado con el WPS, la DoS que sigue el Ap etc...
+
+FR: Pour une meilleur performance ce script fonctionne SEULEMENT avec 2 cartes wifi, automatisation de la rogue AP et du WPS, de la DoS qui suit l'ap sur son canal etc... c'est mieux ainsi.2 cartes wifi c'est pas de trop et ça coute aps très cher, il faut savoir ce qu'on veut comme compromis, soit avoir une chance de réussir l'attaque soit la foirer.
+
+
+You need to start with the scan option to stop network-manager and grab network info // Se tiene que empezar por el scan para parar network-manager y tener informacion sobre la red que quieres // On doit toujours commencer par l'option scan pour stopper network-manager et récupérer les infos du réseau voulu.
+
+____________________________________________________
+
+EN/ES/FR good to know:
+
+EN: The multi AP mode is configured on wlan0, if you have other card just rename your card wlan0 before launch the script to use it.
+
+ES: El modo multi AP esta configurado con wlan0, si tienes otra tarjeta wifi da le el nombre de wlan0 para usar este modo antes de iniciar el script.
+
+FR: Le mode multi AP est configuré avec wlan0, si votre carte compatible hostapd n'est pas en wlan0, renommez la en wlan0 avant d'utiliser le script.
+
+EN only: if you want to use this script with the fake page of your country you will need to change the filter in check.rb line 54
+
+
+
+Date source //  Informaciones completo // Informations complètes:
+EN: https://github.com/Koala633/hostbase/blob/master/hostbaseEnglishVersion/RogueAPparty.pdf
+
+FR: http://www.crack-wifi.com/forum/topic-12236-hostbase-11-beta-test.html
+
+FR: https://github.com/Koala633/hostbase/blob/master/hostbase/UnehistoirederogueAP.pdf
+
+ES: # Hilo en wifi-libre llegara en pco tempo
+
+ES: https://www.wifi-libre.com/topic-756-una-historia-de-rogue-ap-el-pdf-de-koala-traducido-al-espanol.html
+
+
+
+
+
+Old bash script below.
 # Hostbase
 A bash script for advanced rogue AP attack (Update of 11 august 2017: Added 3 tracked channel more 3 9 and 13 instead of the 1 6 and 11 before)
 
