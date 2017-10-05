@@ -8,7 +8,7 @@ Update of 5/10/2017: ruby GUI minors bugs fixed, full read me below:
 
 EN/ES/FR install:
 
-If you already have the fake pages in /etc you just need to install the following ruby gems:
+you need to install the following ruby gems:
 
 apt-get install ruby
 
