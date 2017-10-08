@@ -110,7 +110,7 @@ FR: http://www.crack-wifi.com/forum/topic-12236-hostbase-11-beta-test.html
 
 FR: https://github.com/Koala633/hostbase/blob/master/hostbase/UnehistoirederogueAP.pdf
 
-ES: # Hilo en wifi-libre llegara en poco tempo
+ES: https://www.wifi-libre.com/topic-745-hostbase-10-released-page-6.html
 
 ES: https://www.wifi-libre.com/topic-756-una-historia-de-rogue-ap-el-pdf-de-koala-traducido-al-espanol.html
 
