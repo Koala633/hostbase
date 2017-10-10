@@ -8,7 +8,7 @@ Update of 5/10/2017: ruby GUI minors bugs fixed, full read me below:
 
 EN/ES/FR full guide install:
 
-First:
+First/En primero/En premier:
 
 apt-get install -y build-essential upgrade-system subversion wget g++ iptables iptables-dev pavucontrol ffmpeg sqlite3 libsqlite3-dev libssl-dev libnl-3-dev libnl-genl-3-dev dsniff hostapd isc-dhcp-server pkg-config xterm freeradius apache2 php libapache2-mod-php php-mcrypt php-cli tcpdump scapy vokoscreen wireshark python-twisted bridge-utils devscripts gengetopt autoconf libtool make
 
