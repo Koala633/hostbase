@@ -59,6 +59,41 @@ Then try to install again the ruby gems above//Despues reinicia las installacion
 
 ____________________________________________________
 
+EN/ES/FR apache2 configuration:
+
+EN: make sure your working direcory is /var/www instead of /var/www/html, if not you have to change your apache2.conf and 000-default.conf in site-available, see the example below.
+
+ES: Verifica que la carpeta de trabajo de apache2 esta en /var/www y no /war/www/html, si no tienes que cambiar una parte del apache2.conf y del 000-default.conf dentro site-available, mira a bajo el ejemplo.
+
+FR: Vérifiez le répertoire de travail soit bien en /var/www au lieu de /var/www/html, sinon changez la partie correspondante de apache2.conf et le 000-default.conf dans site-available, exemple de configuration ci-dessous:
+
+ServerAdmin webmaster@localhost
+
+	DocumentRoot /var/www/
+  
+        <Directory />
+        
+                Options FollowSymLinks
+                
+                AllowOverride None
+                
+        </Directory>
+        
+        <Directory /var/www/>
+        
+                Options Indexes FollowSymLinks MultiViews
+                
+                AllowOverride None
+                
+                Order allow,deny
+                
+                allow from all
+                
+        </Directory>
+
+
+____________________________________________________
+
 EN/ES/FR start:
 
 The script need to be started in /tmp folder //El script se tiene que ejecutar en la carpeta /tmp //Le script doit etre lancé dans /tmp
