@@ -6,7 +6,7 @@ Welcome to the hostbase project// Bienvenido en hostbase// Bienvenu sur le proje
 Update of 5/10/2017: ruby GUI minors bugs fixed, full read me below:
 
 
-EN/ES/FR install:
+EN/ES/FR full guide install:
 
 you need to install the following ruby gems:
 
