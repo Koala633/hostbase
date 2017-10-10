@@ -26,8 +26,7 @@ apt-get install libgtk2.0-dev
 
 gem install gtk2
 
-
-Si tienes ya la version 1.0 tienes que installar los gems de ruby:
+Installar los gems de ruby:
 
 apt-get install ruby
 
@@ -41,7 +40,7 @@ gem install gtk2
 
 
 
-Si vous avez déja la version 1.0 il vous faut installer les gems de ruby:
+Il vous faut ensuite installer les gems de ruby:
 
 apt-get install ruby
 
