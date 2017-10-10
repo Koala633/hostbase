@@ -96,6 +96,11 @@ ServerAdmin webmaster@localhost
                 
         </Directory>
 
+EN: the fake page folder need to be in /etc
+
+ES: copia/pega todo lo que hay en paginasAQUI en la carpeta /etc
+
+FR: Téléchargez le fichier frenchpages.zip, et une fois le tout dézipé, copiez les différents dossier des fake page dans le répertoire /etc.
 
 ____________________________________________________
 
