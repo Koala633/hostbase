@@ -14,7 +14,7 @@ apt-get install -y build-essential upgrade-system subversion wget g++ iptables i
 
 
 
-Then you need to install the following ruby gems:
+EN: Then you need to install the following ruby gems:
 
 apt-get install ruby
 
@@ -26,7 +26,7 @@ apt-get install libgtk2.0-dev
 
 gem install gtk2
 
-Installar los gems de ruby:
+ES: Installar los gems de ruby:
 
 apt-get install ruby
 
@@ -40,7 +40,7 @@ gem install gtk2
 
 
 
-Il vous faut ensuite installer les gems de ruby:
+FR: Il vous faut ensuite installer les gems de ruby:
 
 apt-get install ruby
 
