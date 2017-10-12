@@ -3,6 +3,8 @@
 
 Welcome to the hostbase project// Bienvenido en hostbase// Bienvenu sur le projet hostbase.
 
+Hostbase automate encrypted wps rogue AP and DoS tracking AP if channel change.
+
 Update of 5/10/2017: ruby GUI minors bugs fixed, full read me below:
 
 
