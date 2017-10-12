@@ -96,7 +96,7 @@ ServerAdmin webmaster@localhost
                 
         </Directory>
 
-EN: the fake page folder need to be in /etc
+EN: All the fake page folder need to be in /etc, curently no english page are made
 
 ES: copia/pega todo lo que hay en paginasAQUI en la carpeta /etc
 
