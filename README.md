@@ -1,6 +1,8 @@
 
 ~~~~~~~~~~~~~~~~~~ Hostbase project By Koala @ crack-wifi.com @ wifi-libre.com @ kali-linux.fr ~~~~~~~~~~~~~~~~~~~~
 
+--> Hostbase 1.2 coming soon...
+
 Welcome to the hostbase project// Bienvenido en hostbase// Bienvenu sur le projet hostbase.
 
 Hostbase automate encrypted wps rogue AP and DoS tracking AP if channel change.
