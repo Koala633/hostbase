@@ -6,7 +6,10 @@ Welcome to the hostbase project// Bienvenido en hostbase// Bienvenu sur le proje
 Hostbase automate encrypted wps rogue AP and DoS tracking AP if channel change.
 
 
---> To enjoy hostbase-1.2 download the new folder hostbaseEN-1.1 and re-download the frenchpages...
+
+
+--> To enjoy hostbase-1.2 download the new folder hostbaseEN-1.1 and re-download the frenchpages
+
 
 CHANGELOG (28/01/2018):
 Added combo pish to pish and attack 2 networks at same time (full experimental)
