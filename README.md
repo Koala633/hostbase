@@ -8,7 +8,7 @@ Hostbase automate encrypted wps rogue AP and DoS tracking AP if channel change.
 
 
 
---> To enjoy hostbase-1.2 download the new folder hostbaseEN-1.1 and re-download the frenchpages (/etc folder)
+--> To enjoy hostbase-1.2 download the new folder hostbaseEN-1.1 and re-download the frenchpages place them to (/etc) folder
 
 
 CHANGELOG (28/01/2018):
