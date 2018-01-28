@@ -10,9 +10,13 @@ Hostbase automate encrypted wps rogue AP and DoS tracking AP if channel change.
 
 CHANGELOG (28/01/2018):
 Added combo pish to pish and attack 2 networks at same time (full experimental)
+
 Added combo WEP and attacking 2 network at same time making 2 WEP network again hexadecimal wpa key (full experimental)
+
 Lot of work has been make to perform a very quick redirection to the fake page (HSTS no matter here) the fake page can open in a new tab if the browser is launched, or open directly without browser launched (work on chrome and IE on 2 windows 10 testing) (full experimental)
+
 Added a helper.rb to launch user have a problem
+
 Added Atheros card detection in the range of wlan0, wlan1 and wlan2.(For all hostapd option you need to enter wlan0 as a card)
 
 Special thanks to my good testers: Disquette , _John_doe
