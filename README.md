@@ -12,6 +12,7 @@ Hostbase automate encrypted wps rogue AP and DoS tracking AP if channel change.
 
 
 CHANGELOG (28/01/2018):
+
 Added combo pish to pish and attack 2 networks at same time (full experimental)
 
 Added combo WEP and attacking 2 network at same time making 2 WEP network again hexadecimal wpa key (full experimental)
