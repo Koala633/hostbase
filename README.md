@@ -19,7 +19,7 @@ Added combo WEP and attacking 2 network at same time making 2 WEP network again 
 
 Lot of work has been make to perform a very quick redirection to the fake page (HSTS no matter here) the fake page can open in a new tab if the browser is launched, or open directly without browser launched (work on chrome and IE on 2 windows 10 testing) (full experimental)
 
-Added a helper.rb to launch user have a problem
+Added a helper.rb to launch if user have a problem
 
 Added Atheros card detection in the range of wlan0, wlan1 and wlan2.(For all hostapd option you need to enter wlan0 as a card)
 
