@@ -25,7 +25,7 @@ Added Atheros card detection in the range of wlan0, wlan1 and wlan2.(For all hos
 
 Special thanks to my good testers: Disquette , _John_doe
 
-Please see the install guide below/Regardez comment faire l'installation ci-desous/Por favor mira los pasos de instalacion a bajo
+Please see the install guide below/Regardez comment faire l'installation ci-dessous/Por favor mira los pasos de instalacion a bajo
 
 ______________________________________________________________________________________________________
 
