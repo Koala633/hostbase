@@ -21,7 +21,7 @@ Lot of work has been make to perform a very quick redirection to the fake page (
 
 Added a helper.rb to launch if user have a problem
 
-Added Atheros card detection in the range of wlan0, wlan1 and wlan2.(For all hostapd option you need to enter wlan0 as a card)
+(For all hostapd option you need to enter in the card field: the atheros card)
 
 Special thanks to my good testers: Disquette , _John_doe
 
