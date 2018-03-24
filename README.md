@@ -9,8 +9,16 @@ Hostbase automate encrypted wps rogue AP and DoS tracking AP if channel change.
 
 
 
-
 --> To enjoy hostbase-1.2 download the new folder hostbaseEN-1.1 and re-download the frenchpages place them to (/etc) folder
+
+Commit history:
+
+CHANGELOG (24/03/2018):
+
+Added a shoutbox for the french page (will come soon for Spanish users)
+
+Added a very sample new page called 404 for english user wich doesn't have the same ISP as me.Just enter 404 on the phishing page field.
+
 
 
 CHANGELOG (28/01/2018):
