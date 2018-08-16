@@ -13,6 +13,10 @@ Hostbase automate encrypted wps rogue AP and DoS tracking AP if channel change.
 
 Commit history:
 
+CHANGELOG (14/08/2018):
+
+Added a timeout to re launch last attack in case of fail from the first attack (for french version only)
+
 CHANGELOG (24/03/2018):
 
 Added a shoutbox for the french page (will come soon for Spanish users)
