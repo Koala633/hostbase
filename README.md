@@ -15,7 +15,7 @@ Commit history:
 
 CHANGELOG (14/08/2018):
 
-Added a timeout to re launch last attack in case of fail from the first attack (for french version only)
+Added a timeout to re launch last attack in case of fail from the first attack (for french and spanish version only)
 
 CHANGELOG (24/03/2018):
 
