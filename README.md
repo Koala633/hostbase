@@ -165,15 +165,22 @@ Step 5________________________________________________________
 The begining:
 
 Copy/paste the folder of hostbase-1.1 into /tmp.
-Go to /tmp/hostbase-1.1 and launch it: ruby hostbase.rb
+Go to /tmp/hostbase-1.1 and launch it: 
+
+ruby hostbase.rb
+
 WARNING: you have to start with the network scan --> discover the network
+
 Network-manager CAN CAUSE TROUBLE with hostapd so in the same time we are doing the network scan we stop it.
+
 Don't forget to leave the programe by ctrl+c on the main hostbase terminal.
 
 Leaving the program by ctrl+c, files are cleaned and network manager is restarted so if you want to do some other test without make a network scan each time, just stop network-manager before relaunch hostbase:
 
 systemctl stop NetworkManager.service
+
 systemctl disable NetworkManager.service
+
 
 REMEMBER: if network-manager is running when you are using hostbase you will have some problems
 
