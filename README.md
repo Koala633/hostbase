@@ -72,11 +72,17 @@ For user which have a compatible wifi card with hostapd.First remover older vers
 apt-get remove hostapd
 
 Then download the latest version and compile it:
+
 wget http://hostap.epitest.fi/releases/hostapd-2.6.tar.gz
+
 tar -zxf hostapd-2.6.tar.gz
+
 cd /root/hostapd-2.6/hostapd
+
 cp defconfig .config
+
 nano .config
+
 
 CONFIG_DRIVER_NL80211=y
 
