@@ -43,6 +43,7 @@ apt-get install -y build-essential upgrade-system subversion wget g++ iptables i
 Step 2____________________________________________________________
 
 Hostbase use hostapd wich is a deamon to create access point.To show if your wifi card is compatible with hostapd:
+
 iw list | grep "Supported interface modes" -A 8
 
 If there is compatibility you will show that:
