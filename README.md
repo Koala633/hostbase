@@ -116,6 +116,7 @@ sudo make install
 
 
 Step 3_______________________________________________________
+
 Then you need to install the following ruby gems:
 
 apt-get install ruby
@@ -136,6 +137,7 @@ gem install gtk2
 
 
 Step 4________________________________________________________
+
 Apache2 settings
 
 Copy/paste the file 000-default.conf into /etc/apache2/site-available.
@@ -153,6 +155,7 @@ REMEMBER you will have to adapt the file check.rb line 54 if you want to put you
 
 
 Step 5________________________________________________________
+
 The begining:
 
 Copy/paste the folder of hostbase-1.1 into /tmp.
