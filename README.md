@@ -28,6 +28,8 @@ https://foro.seguridadwireless.net/wifislax/hostbase-atacando-2-redes-al-mismo-t
 
 
 
+
+
 full guide install:
 
 Step 1__________________________________________________________
