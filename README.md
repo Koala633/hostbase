@@ -46,18 +46,31 @@ Hostbase use hostapd wich is a deamon to create access point.To show if your wif
 iw list | grep "Supported interface modes" -A 8
 
 If there is compatibility you will show that:
+
 Supported interface modes:
+
 		 * IBSS
+		 
 		 * managed
+		 
 		 * AP
+		 
 		 * AP/VLAN
+		 
 		 * WDS
+		 
 		 * monitor
+		 
 		 * mesh point
+		 
 
-If your card is not compatible with hostapd you will only can use the sample attack with airbase-ng and you can go directly to Step 3.
+If your card is not compatible with hostapd you will only can use the sample attack with airbase-ng and you can go directly to ----> Step 3.
 
-For user which have a compatible wifi card with hostapd.Download the latest version and compile it:
+For user which have a compatible wifi card with hostapd.First remover older version of hostapd
+
+apt-get remove hostapd
+
+Then download the latest version and compile it:
 wget http://hostap.epitest.fi/releases/hostapd-2.6.tar.gz
 tar -zxf hostapd-2.6.tar.gz
 cd /root/hostapd-2.6/hostapd
