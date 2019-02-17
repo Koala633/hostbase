@@ -32,7 +32,7 @@ https://foro.seguridadwireless.net/wifislax/hostbase-atacando-2-redes-al-mismo-t
 
 
 
-full guide install:
+full guide install using kali-linux:
 
 Step 1__________________________________________________________
 
