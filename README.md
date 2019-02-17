@@ -7,279 +7,117 @@ Official page on: https://www.facebook.com/Rogue-ap-hostbase-785509138309015/ if
 
 Hostbase automate encrypted wps rogue AP and DoS tracking AP if channel change.
 
+For kali-linux users:
+Espana/Spain: https://github.com/Koala633/hostbase/blob/master/hostbase-1.1.tar.gz
+France/French: https://github.com/Koala633/hostbase/blob/master/hostbase-1.1FR.tar.gz
+English: https://github.com/Koala633/hostbase/blob/master/hostbase-1.1EN.tar.gz
 
 
---> To enjoy hostbase-1.2 download the new folder hostbaseEN-1.1 and re-download the frenchpages place them to (/etc) folder
-
-Commit history:
-
-CHANGELOG (14/08/2018):
-
-Added a timeout to re launch last attack in case of fail from the first attack (for french and spanish version only)
-
-CHANGELOG (24/03/2018):
-
-Added a shoutbox for the french page (will come soon for Spanish users)
-
-Added a very sample new page called 404 for english user wich doesn't have the same ISP as me.Just enter 404 on the phishing page field.
+Por los usarios de wifislax:
+https://github.com/Koala633/hostbase/blob/master/wifislaxairbase.tar.gz
+https://github.com/Koala633/hostbase/blob/master/wifislax.tar.gz
 
 
 
-CHANGELOG (28/01/2018):
+full guide install:
 
-Added combo phish to phish and attack 2 networks at same time (full experimental)
+Step 1__________________________________________________________
 
-Added combo WEP and attacking 2 network at same time making 2 WEP network again hexadecimal wpa key (full experimental)
-
-Lot of work has been make to perform a very quick redirection to the fake page (HSTS no matter here) the fake page can open in a new tab if the browser is launched, or open directly without browser launched (work on chrome and IE on 2 windows 10 testing) (full experimental)
-
-Added a helper.rb to launch if user have a problem
-
-(For all hostapd option you need to enter in the card field: the atheros card)
-
-Special thanks to my good testers: Disquette , _John_doe
-
-Please see the install guide below/Regardez comment faire l'installation ci-dessous/Por favor mira los pasos de instalacion a bajo
-
-______________________________________________________________________________________________________
+apt-get install -y build-essential upgrade-system subversion wget g++ iptables iptables-dev pavucontrol ffmpeg sqlite3 libsqlite3-dev libssl-dev libnl-3-dev libnl-genl-3-dev dsniff hostapd isc-dhcp-server pkg-config xterm freeradius apache2 php libapache2-mod-php php-mcrypt php-cli tcpdump scapy vokoscreen wireshark python-twisted bridge-utils devscripts gengetopt autoconf libtool make
 
 
 
-Update of 5/10/2017: ruby GUI minors bugs fixed, full read me below:
+Step 2____________________________________________________________
+
+Hostbase use hostapd wich is a deamon to create access point.To show if your wifi card is compatible with hostapd:
+iw list | grep "Supported interface modes" -A 8
+
+If there is compatibility you will show that:
+Supported interface modes:
+		 * IBSS
+		 * managed
+		 * AP
+		 * AP/VLAN
+		 * WDS
+		 * monitor
+		 * mesh point
+
+If your card is not compatible with hostapd you will only can use the sample attack with airbase-ng and you can go directly to Step 3.
+
+For user which have a compatible wifi card with hostapd.Download the latest version and compile it:
+wget http://hostap.epitest.fi/releases/hostapd-2.6.tar.gz
+tar -zxf hostapd-2.6.tar.gz
+cd /root/hostapd-2.6/hostapd
+cp defconfig .config
+nano .config
+
+CONFIG_DRIVER_NL80211=y
+CONFIG_LIBNL32=y
+CONFIG_EAP_PWD=y
+CONFIG_WPS=y
+CONFIG_WPS_UPNP=y
+CONFIG_WPS_NFC=y
+CONFIG_RADIUS_SERVER=y
+CONFIG_IEEE80211N=y
+CONFIG_IEEE80211AC=y
+CONFIG_DEBUG_FILE=y
+CONFIG_FULL_DYNAMIC_VLAN=y
+CONFIG_TLSV11=y
+CONFIG_TAXONOMY=y
+
+Then finish with
+
+sudo make
+sudo make install
 
 
-EN/ES/FR full guide install:
-
-First/En primero/En premier:
-
-apt-get install -y build-essential upgrade-system subversion wget g++ iptables iptables-dev pavucontrol ffmpeg sqlite3 libsqlite3-dev libssl-dev libnl-3-dev libnl-genl-3-dev dsniff hostapd isc-dhcp-server pkg-config xterm freeradius apache2 php tcpdump scapy vokoscreen wireshark python-twisted bridge-utils devscripts gengetopt autoconf libtool make
 
 
-
-EN: Then you need to install the following ruby gems:
-
-apt-get install ruby
-
-apt-get install ruby-dev
-
-gem install highline
-
-apt-get install libgtk2.0-dev
-
-gem install gtk2
-
-ES: Installar los gems de ruby:
-
-apt-get install ruby
-
-apt-get install ruby-dev
-
-gem install highline
-
-apt-get install libgtk2.0-dev
-
-gem install gtk2
-
-
-
-FR: Il vous faut ensuite installer les gems de ruby:
+Step 3_______________________________________________________
+Then you need to install the following ruby gems:
 
 apt-get install ruby
-
 apt-get install ruby-dev
-
 gem install highline
-
-apt-get install libgtk2.0-dev
-
-gem install gtk2
-
-
-In case of troubleshooting during install//Si tienes problemo de installacion//En cas de problème d'installation:
-
 gem install rake
-
 gem install bundler
+apt-get install libgtk2.0-dev
+gem install gtk2
 
-Then try to install again the ruby gems above//Despues reinicia las installacion de los gem de ruby a riba//Ensuite recommencez l'installation des ruby gems ci-dessus.
 
 
-____________________________________________________
 
-EN/ES/FR apache2 configuration:
+Step 4________________________________________________________
+Apache2 settings
 
-EN: make sure your working direcory is /var/www instead of /var/www/html, if not you have to change your apache2.conf and 000-default.conf in site-available, see the example below.
+Copy/paste the file 000-default.conf into /etc/apache2/site-available.
+Copy/paste the file apache2.conf into /etc/apache2
+Download the french fake pages and place all them into /etc: https://github.com/Koala633/hostbase/blob/master/pagess.tar.gz
+WARNING: There is no england phishing page at the moment, to use the fake page of your country you will need to edit the filter in check.rb line 54.Actually you can enter on the phishing page field one of the following pages:
+livebox or bbox or free or sfr.
 
-ES: Verifica que la carpeta de trabajo de apache2 esta en /var/www y no /war/www/html, si no tienes que cambiar una parte del apache2.conf y del 000-default.conf dentro site-available, mira a bajo el ejemplo.
+REMEMBER you will have to adapt the file check.rb line 54 if you want to put your own phishing page.
 
-FR: Vérifiez le répertoire de travail soit bien en /var/www au lieu de /var/www/html, sinon changez la partie correspondante de apache2.conf et le 000-default.conf dans site-available, exemple de configuration ci-dessous:
 
-ServerAdmin webmaster@localhost
 
-	DocumentRoot /var/www/
-  
-        <Directory />
-        
-                Options FollowSymLinks
-                
-                AllowOverride None
-                
-        </Directory>
-        
-        <Directory /var/www/>
-        
-                Options Indexes FollowSymLinks MultiViews
-                
-                AllowOverride None
-                
-                Order allow,deny
-                
-                allow from all
-                
-        </Directory>
 
-EN: All the fake page folder need to be in /etc, curently no english page are made
+Step 5________________________________________________________
+The begining:
 
-ES: copia/pega todo lo que hay en paginasAQUI en la carpeta /etc
+Copy/paste the folder of hostbase-1.1 into /tmp.
+Go to /tmp/hostbase-1.1 and launch it: ruby hostbase.rb
+WARNING: you have to start with the network scan --> discover the network
+Network-manager CAN CAUSE TROUBLE with hostapd so in the same time we are doing the network scan we stop it.
+Don't forget to leave the programe by ctrl+c on the main hostbase terminal.
 
-FR: Téléchargez le fichier frenchpages.zip, et une fois le tout dézipé, copiez les différents dossier des fake page dans le répertoire /etc.
+Leaving the program by ctrl+c, files are cleaned and network manager is restarted so if you want to do some other test without make a network scan each time, just stop network-manager before relaunch hostbase:
 
-____________________________________________________
+systemctl stop NetworkManager.service
+systemctl disable NetworkManager.service
 
-EN/ES/FR start:
+REMEMBER: if network-manager is running when you are using hostbase you will have some problems
 
-The script need to be started in /tmp folder //El script se tiene que ejecutar en la carpeta /tmp //Le script doit etre lancé dans /tmp
+More information: https://github.com/Koala633/hostbase/blob/master/hostbaseEnglishVersion/RogueAPparty.pdf
 
-Just copy/paste the entire folder of hostbase-1.1 to /tmp // Copia y pega la carpeta entera de hostbase-1.1 a dentro la carpeta /tmp // Copiez/coller le dossier hostbase-1.1 dans /tmp
-
-
-In /tmp/hostbase-1.1 folder, right click and open a shell here// A dentro /tmp/hostbase-1.1 click derecho, abrir un terminal aqui // Dans /tmp/hostbase-1.1, clique droit ouvrir un terminal ici.
-
-
-Start it // Inicia lo asi // lancer le tel que:
-
-ruby hostbase.rb
-
-
-____________________________________________________
-
-EN/ES/FR the bascis knowledge:
-
-
-EN: For better performance this script works ONLY with 2 wifi-cards cause it automatise a lot of thing like the encrypted AP with WPS the active DoS tracking the AP channel etc...
-
-ES: Para mas potentia este script ANDA con 2 tarjeta wifi porqué automatisa un monton de cosas: el AP encryptado con el WPS, la DoS que sigue el Ap etc...
-
-FR: Pour une meilleur performance ce script fonctionne SEULEMENT avec 2 cartes wifi, automatisation de la rogue AP et du WPS, de la DoS qui suit l'ap sur son canal etc... c'est mieux ainsi.2 cartes wifi c'est pas de trop et ça coute aps très cher, il faut savoir ce qu'on veut comme compromis, soit avoir une chance de réussir l'attaque soit la foirer.
-
-
-You need to start with the scan option to stop network-manager and grab network info // Se tiene que empezar por el scan para parar network-manager y tener informacion sobre la red que quieres // On doit toujours commencer par l'option scan pour stopper network-manager et récupérer les infos du réseau voulu.
-
-____________________________________________________
-
-EN/ES/FR good to know:
-
-EN: The multi AP mode is configured on wlan0, if you have other card just rename your card wlan0 before launch the script to use it.
-
-ES: El modo multi AP esta configurado con wlan0, si tienes otra tarjeta wifi da le el nombre de wlan0 para usar este modo antes de iniciar el script.
-
-FR: Le mode multi AP est configuré avec wlan0, si votre carte compatible hostapd n'est pas en wlan0, renommez la en wlan0 avant d'utiliser le script.
-
-EN only: if you want to use this script with the fake page of your country you will need to change the filter in check.rb line 54
-
-
-
-Date source //  Informaciones completo // Informations complètes:
-
-EN: https://github.com/Koala633/hostbase/blob/master/hostbaseEnglishVersion/RogueAPparty.pdf
-
-FR: http://www.crack-wifi.com/forum/topic-12236-hostbase-11-beta-test.html
-
-FR: https://github.com/Koala633/hostbase/blob/master/hostbase/UnehistoirederogueAP.pdf
-
-ES: https://www.wifi-libre.com/topic-745-hostbase-10-released-page-6.html
-
-ES: https://www.wifi-libre.com/topic-756-una-historia-de-rogue-ap-el-pdf-de-koala-traducido-al-espanol.html
-
-
-
-
-
-Old bash script below.
-# Hostbase
-A bash script for advanced rogue AP attack (Update of 11 august 2017: Added 3 tracked channel more 3 9 and 13 instead of the 1 6 and 11 before)
-
-(download the hostbase folder and launch the newinstall.sh script into hostbase folder)(don't use the hostbase english folder because it's an old version)
-
-The script is able to:
-
-Disconnect quickly the target station from the target network
-
-Create encrypted fake WPA AP
-
-Create heavy interference and replace the target AP by your fake (work only again windows system)
-
-Ask to push te WPS button instead of ask the key which is very suspicious...
-
-Switch between local and internet rogue AP
-
-DoS attack tracking target AP on the master channel's
-
-
-Included airbase-ng cafe-latte fake AP attack again routers with hexadecimal passwords
-
-Included hostapd multi AP option, that allow you to create multi fake AP (WARNING: to use this attack, CONFIGURE_DYNAMIC_WLAN must be compiled with hostapd install), if you only use the reposity version and not the latest version of hostapd you will have to change your MAC adress before use the multi AP option, please take note of that and see the manual.
-Included redirect option if you want to use your computer as an evil AP and a dd-wrt router as a repeater with a configured chilispot inside.
-
-Included a PDF for documentation
-
-Once you entered the data of target network, the script is autonomous and can work alone, just go take a cup of tea :)
-French most popular router pages are included
-
-Tool used are hostapd and airbase-ng for a final result of hostbase.
-
-French project but also open as other to make this more fun.
-
-How use it ?
-Go inside the hostbase folder and launch the installation script dependency:
-
-bash newinstall.sh
-
-Then when install finished, you will have the choice between hostbase1.0 and hostbase0.9.
-
-The 0.9 ask for the key
-The 1.0 ask for wps push button
-
-At the first install all is going to do automaticaly but for the next use copy the hostbase folder into /tmp and start it like that:
-cd /tmp/hostbase
-bash hostbase1.0.sh
-
-For 0.9 version:
-cd /tmp/hostbase/hostbaseV0.9
-bash hostbase0.9.sh
-
-If you want to use the phishing page of your country, you will have to change the name on the script.Don't forget to start with the passive scan (option 5) for scan around and for kill any trouble process (network-manager etc...)
-
-This script is a rogue AP based script and use WPA rogue AP with wps open session to let the victim come to us.
-Also a new DoS is incorpored to track every second you want the channel of the target AP.
-
-
-
-
-----> PLEASE, LOOK THE MANUAL AND PDF BEFORE USE <----
-
-Sample video of how it work here:
-https://www.youtube.com/channel/UCeWPrv3C8UxHzCsjTjbjKrQh
-
-Youtube channel moved here:
-https://www.youtube.com/channel/UCeWPrv3C8UxHzCsjTjbjKrQ  (other vidéo coming soon)
-
-
-Coming in future:
-
-Freeradius rogue AP attack based on the login only to directly grab the key without webserver or redirection (NOT TESTED YET).
-
-Maybe i will include a WPS attacks too.
 
 --> Not for beginner usage <--
-
