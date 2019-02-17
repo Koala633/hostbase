@@ -15,10 +15,16 @@ France/French: https://github.com/Koala633/hostbase/blob/master/hostbase-1.1FR.t
 English: https://github.com/Koala633/hostbase/blob/master/hostbase-1.1EN.tar.gz
 
 
+
 Por los usarios de wifislax:
 https://github.com/Koala633/hostbase/blob/master/wifislaxairbase.tar.gz
 
 https://github.com/Koala633/hostbase/blob/master/wifislax.tar.gz
+
+Mas informaciones por wifislax aqui: 
+
+https://foro.seguridadwireless.net/wifislax/hostbase-atacando-2-redes-al-mismo-tiempo/msg365822/
+
 
 
 
