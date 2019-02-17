@@ -9,12 +9,15 @@ Hostbase automate encrypted wps rogue AP and DoS tracking AP if channel change.
 
 For kali-linux users:
 Espana/Spain: https://github.com/Koala633/hostbase/blob/master/hostbase-1.1.tar.gz
+
 France/French: https://github.com/Koala633/hostbase/blob/master/hostbase-1.1FR.tar.gz
+
 English: https://github.com/Koala633/hostbase/blob/master/hostbase-1.1EN.tar.gz
 
 
 Por los usarios de wifislax:
 https://github.com/Koala633/hostbase/blob/master/wifislaxairbase.tar.gz
+
 https://github.com/Koala633/hostbase/blob/master/wifislax.tar.gz
 
 
