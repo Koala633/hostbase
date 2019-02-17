@@ -108,7 +108,9 @@ CONFIG_TAXONOMY=y
 Then finish with
 
 sudo make
+
 sudo make install
+
 
 
 
@@ -117,11 +119,17 @@ Step 3_______________________________________________________
 Then you need to install the following ruby gems:
 
 apt-get install ruby
+
 apt-get install ruby-dev
+
 gem install highline
+
 gem install rake
+
 gem install bundler
+
 apt-get install libgtk2.0-dev
+
 gem install gtk2
 
 
@@ -131,8 +139,11 @@ Step 4________________________________________________________
 Apache2 settings
 
 Copy/paste the file 000-default.conf into /etc/apache2/site-available.
+
 Copy/paste the file apache2.conf into /etc/apache2
+
 Download the french fake pages and place all them into /etc: https://github.com/Koala633/hostbase/blob/master/pagess.tar.gz
+
 WARNING: There is no england phishing page at the moment, to use the fake page of your country you will need to edit the filter in check.rb line 54.Actually you can enter on the phishing page field one of the following pages:
 livebox or bbox or free or sfr.
 
