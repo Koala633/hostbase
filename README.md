@@ -73,7 +73,7 @@ apt-get remove hostapd
 
 Then download the latest version and compile it:
 
-wget http://hostap.epitest.fi/releases/hostapd-2.6.tar.gz
+https://w1.fi/cgit/hostap/  (version hostapd-2.6 or later is recommended to work with hostbase)
 
 tar -zxf hostapd-2.6.tar.gz
 
