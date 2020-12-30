@@ -73,11 +73,11 @@ apt-get remove hostapd
 
 Then download the latest version and compile it:
 
-https://w1.fi/cgit/hostap/  (version hostapd-2.6 or later is recommended to work with hostbase)
+wget https://w1.fi/cgit/hostap/snapshot/hostap_2_9.tar.gz
 
-tar -zxf hostapd-2.6.tar.gz
+tar -zxf hostap_2_9.tar.gz
 
-cd /root/hostapd-2.6/hostapd
+cd /root/hostap_2_9/hostapd
 
 cp defconfig .config
 
@@ -137,10 +137,14 @@ gem install bundler
 
 apt-get install libgtk2.0-dev
 
-gem install gtk2
+sudo apt install gobject-introspection
+
+sudo apt install ruby-gtk2
 
 
+mdk4
 
+apt-get install mdk4
 
 Step 4________________________________________________________
 
