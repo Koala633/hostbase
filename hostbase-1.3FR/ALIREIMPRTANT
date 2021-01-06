@@ -1,0 +1,199 @@
+
+~~~~~~~~~~~~~~~~~~ Hostbase project By Koala @ crack-wifi.com @ wifi-libre.com @ kali-linux.fr ~~~~~~~~~~~~~~~~~~~~
+
+Bienvenue dans le projet hostabse.
+
+Fichier lisez-moi fait pour les utilisateurs de kali-linux, le script fonctionne bien avec kali-linux xfce précisément 
+
+1- Ouvrez un terminal pour installer les dépendances du script
+
+apt-get install -y build-essential upgrade-system subversion wget g++ iptables iptables-dev pavucontrol ffmpeg sqlite3 libsqlite3-dev libssl-dev libnl-3-dev libnl-genl-3-dev dsniff hostapd isc-dhcp-server pkg-config xterm freeradius apache2 php libapache2-mod-php php-mcrypt php-cli tcpdump scapy vokoscreen wireshark python-twisted bridge-utils devscripts gengetopt autoconf libtool make
+
+____________________________________________
+
+2- hostapd, savoir si ma carte est compatible avec hostapd (hostapd est je le rappel, un créateur de point d'accès):
+
+iw list | grep "Supported interface modes" -A 8
+
+le retour de commande devrait vous donner ceci si la carte wifi est comaptible avec hostapd:
+Supported interface modes:
+		 * IBSS
+		 * managed
+		 * AP
+		 * AP/VLAN
+		 * WDS
+		 * monitor
+		 * mesh point
+
+(Si votre carte wifi n'est pas compatible il vous faudra utiliser le dosser airbase a copier dans /tmp).
+
+
+Pour utiliser le mode multi AP d'hostapd il faut bien faire la compilation de hostapd.Si vous avez déja une version de hostapd supprimez la:
+apt-get remove hostapd
+
+Télécharger la nouvelle version:
+
+wget http://hostap.epitest.fi/releases/hostapd-2.6.tar.gz # ATTENTION LIEN NON VALIDE DEPUIS PEU: chercher la version 2.6 d'hostapd sur: https://w1.fi/cgit/hostap/
+Hostapd est maintenant en version 2.9, je n'ai pas testé depuis mais je pense que ça doit marcher aussi.
+
+Installation et compilation:
+wget https://w1.fi/cgit/hostap/snapshot/hostap_2_9.tar.gz
+tar -zxf hostap_2_9.tar.gz
+cd /root/hostap_2_9/hostapd
+cp defconfig .config
+nano .config
+
+Pour bien faire la compilation, enlevez ce symbole # au début des options qui suivent:
+
+CONFIG_DRIVER_NL80211=y
+CONFIG_LIBNL32=y
+CONFIG_EAP_PWD=y
+CONFIG_WPS=y
+CONFIG_WPS_UPNP=y
+CONFIG_WPS_NFC=y
+CONFIG_RADIUS_SERVER=y
+CONFIG_IEEE80211N=y
+CONFIG_IEEE80211AC=y
+CONFIG_DEBUG_FILE=y
+CONFIG_FULL_DYNAMIC_VLAN=y
+CONFIG_TLSV11=y
+CONFIG_TAXONOMY=y
+
+
+Une fois le fichier de compilation enregistré, compilez le tout:
+
+sudo make
+sudo make install
+hostapd -v
+
+________________________________________________
+
+3- Apache le serveur web
+
+Copiez le fichier 000-default.conf fourni avec l'archive de hostbase dans /etc/apache2/site-available.
+Copiez le fichier apache2.conf fourni avec l'archive de hostbase dans /etc/apache2
+Téléchargez les pages de phishing: https://github.com/Koala633/hostbase/blob/master/pagess.tar.gz
+Une fois l'archive ouverte, copiez toute les pages de phishing dans le répertoire /etc
+
+________________________________________________
+
+4- Ruby
+
+Hostbase est codé en ruby, pour utiliser l'interface graphique il faut installer les dépendances de ruby:
+
+
+apt-get install ruby
+apt-get install ruby-dev
+gem install highline
+gem install rake
+gem install bundler
+apt-get install libgtk2.0-dev
+apt install gobject-introspection
+apt install ruby-gtk2
+
+
+
+_________________________________________________
+mdk4
+apt-get install mdk4
+
+
+
+_________________________________________________
+
+5- Début de l'attaque
+
+Le dossier hostbase-1.3FR doit etre placé dans /tmp pour commencer
+Copiez le dossier hostbase-1.3FR dans le répertoire /tmp
+
+Dans /tmp/hostbase-1.3FR clique droit, ouvrir un terminal ici
+
+ Le lancer comem ceci:
+ruby hostbase.rb
+
+Pour la version destiné au débutant ou au utilisateur n'ayant pas de carte compatible hostapd c'est pareil, copiez le dossier airbase dans /tmp et ouvre un terminal dans /tmp/airbase
+ Le lancer comme ceci:
+ruby airbase.rb
+
+
+--> ATTENTION: ne pas oublier de commencer par le scan de réseau pour éteindre network-manager <-- 
+
+
+____________________________________________________
+
+6- Choisir son attaque
+
+Dans le champ page de phishing, vous devez entrer la page de phishing que vous souhaitez utiliser cette nouvelle version de hostbase ne concernant que le WPS, vous rentrerez la page de phishing comme ceci:
+
+liveboxwps
+ou
+sfrwps
+ou
+bboxwps
+
+
+La clé wifi est enregistré par défaut dans le répertoire /etc/wpa_supplicant.conf, après l'attaque pour voir si l'utilisateur a appuyé son bouton wps, ouvrez un nouveau terminal puis tapez:
+cat /etc/wpa_supplicant.conf
+
+(Il faut attendre un peu avant de vérifer si la clé a été capturée, le temps que la connexion via le wps-pbc se fasse.
+
+____________________________________________________
+
+
+7- Un peu de social engineering
+
+
+Hostbase dispose d'un tchat pour se faire passer pour le service client.Après avoir lancé l'attaque vous pouvez accéder a ce tchat en suivant ce lien: http://127.0.0.1
+De la un lien "aide en ligne apparait en bas de page, cliquez dessus pour accéder au tchat.
+
+Pour que le tchat fonctionne, vous devez envoyer un message en PREMIER, exemple:
+"Service techique bonjour, comment puis-je aider ? "
+
+Si l'utilisateur clique sur "aide en ligne" sur la page de phishing principale, il tombera directement sur le tchat et vous pourrez parler avec lui.
+
+
+
+_____________________________________________________
+
+
+8- Ce qu'il faut savoir pour bien utiliser le tool.
+
+Ce tool utilise 2 cartes wifi pour etre plus puissant.Et 3 avec le mode 5GHz (une pour le fake AP, une pour la DoS en 2.4GHz et une pour la DoS en 5GHz)
+
+A chaque test:
+--> Il faut commencer par le scan de réseau pour oobtenir des information et éteindre network-manager qui peut poser problème.
+--> Pour arréter le programme, on clique pas sur la croix on fait CTRL+C de manière a laisser tout bien propre après l'utilisation du tool...
+--> La DoS qui suit l'AP si son canal change marche avec wash, wash doit-etre installé pour que la DoS marche (ne vous inquiétez pas sous kali-linux wash est installé par défaut.)
+
+--> A la sortie du programme network-manager se remet en marche donc si vous voulez faire d'autres tests sans passer par le scan de réseau a chaque fois, vous devrez eteindre network-manager manuellement avec:
+
+systemctl stop NetworkManager.service
+systemctl disable NetworkManager.service
+
+--> Si network-manager n'est pas eteinds vous aurez des erreurs par la suite.
+
+--> Pour quitter le programme on sort toujours avec CTRL+C (que vous ayez des erreurs ou pas)
+____________________________________________________
+
+
+9- Infos complémentaires
+
+
+FR: http://www.crack-wifi.com/forum/topic-12236-hostbase-11-beta-test.html
+FR: https://github.com/Koala633/hostbase/blob/master/hostbase/UnehistoirederogueAP.pdf
+
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
