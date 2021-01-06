@@ -97,7 +97,7 @@ Install dependencies
 sudo apt install ruby ruby-dev libgtkhttps://www.facebook.com/Rogue-ap-hostbase-785509138309015/2.0-dev gobject-introspection ruby-gtk2 mdk4
 ```
 Then you need to install the following ruby gems:
-```bashhttps://www.facebook.com/Rogue-ap-hostbase-785509138309015/
+```bash
 gem install highline rake bundler
 ```
 
@@ -127,7 +127,7 @@ Copy/paste the folder of hostbase-1.3 into `/tmp`.
 Go to `/tmp/hostbase-1.3FR` and launch it: 
 ```bash
 ruby hostbase.rb
-```https://foro.seguridadwireless.net/wifislax/hostbase-atacando-2-redes-al-mismo-tiempo/msg365822/
+```
 WARNING: you have to start with the network scan --> discover the network
 
 Network-manager CAN CAUSE TROUBLE with hostapd so in the same time we are doing the network scan we stop it.
