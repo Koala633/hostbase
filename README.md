@@ -83,18 +83,16 @@ CONFIG_FULL_DYNAMIC_VLAN=y
 
 CONFIG_TLSV11=y
 
-CONFIG_TAXONOMY=yhttps://www.facebook.com/Rogue-ap-hostbase-785509138309015/
+CONFIG_TAXONOMY=y
 ```
-https://www.facebook.com/Rogue-ap-hostbase-785509138309015/
 Then finish with
 ```bash
 sudo make
-
 sudo make install
 ```
 ### Step 3_______________________________________________________
 
-Install dependencieshttps://www.facebook.com/Rogue-ap-hostbase-785509138309015/
+Install dependencies
 ```bash
 sudo apt install ruby ruby-dev libgtkhttps://www.facebook.com/Rogue-ap-hostbase-785509138309015/2.0-dev gobject-introspection ruby-gtk2 mdk4
 ```
