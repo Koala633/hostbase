@@ -109,7 +109,7 @@ Copy/paste the file `000-default.conf` into `/etc/apache2/site-available`
 
 Copy/paste the file `apache2.conf` into `/etc/apache2`
 
-Download the french fake pages and place all them into `hostbase/Pages/`
+Download the french fake pages and place all them into `/etc`
 
 WARNING: There is no england phishing page at the moment, to use the fake page of your country you will need to edit the filter in check.rb line 54.Actually you can enter on the phishing page field one of the following pages:
 livebox or bbox or free or sfr.
