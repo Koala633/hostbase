@@ -94,7 +94,7 @@ sudo make install
 
 Install dependencies
 ```bash
-sudo apt install ruby ruby-dev libgtkhttps://www.facebook.com/Rogue-ap-hostbase-785509138309015/2.0-dev gobject-introspection ruby-gtk2 mdk4
+sudo apt install ruby ruby-dev libgtk2.0-dev gobject-introspection ruby-gtk2 mdk4
 ```
 Then you need to install the following ruby gems:
 ```bash
