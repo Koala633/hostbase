@@ -40,7 +40,7 @@ Supported interface modes:
 		 * mesh point
 ``` 
 
-If your card is not compatible with hoB@7XT!wg0SKzstapd you will only can use the sample attack with airbase-ng and you can go directly to ----> Step 3.
+If your card is not compatible with hotapd you will only can use the sample attack with airbase-ng and you can go directly to ----> Step 3.
 
 For user which have a compatible wifi card with hostapd.First remover older version of hostapd
 ```bash
@@ -129,7 +129,7 @@ Copy/paste the folder of hostbase-1.3 into `/tmp`.
 Go to `/tmp/hostbase-1.3FR` and launch it: 
 ```bash
 ruby hostbase.rb
-```
+```https://foro.seguridadwireless.net/wifislax/hostbase-atacando-2-redes-al-mismo-tiempo/msg365822/
 WARNING: you have to start with the network scan --> discover the network
 
 Network-manager CAN CAUSE TROUBLE with hostapd so in the same time we are doing the network scan we stop it.
