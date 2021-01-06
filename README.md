@@ -1,48 +1,30 @@
-
-~~~~~~~~~~~~~~~~~~ #Hostbase project By Koala @ sécurité-wifi.com @ wifi-libre.com @ kali-linux.fr ~~~~~~~~~~~~~~~~~~
-
-##Welcome to the hostbase project// Bienvenido al proyecto hostbase// Bienvenu sur le projet hostbase.
-
-Official page on (Facebook)[https://www.facebook.com/Rogue-ap-hostbase-785509138309015/] if you like the project share it as possible as you can.
-
-Hostbase automate encrypted wps rogue AP and DoS tracking AP if channel change.
-
+# Hostbase project By Koala @ sécurité-wifi.com @ wifi-libre.com @ kali-linux.fr
+## Welcome to the hostbase project! - ¡Bienvenidos al proyecto hostbase! - Bienvenue sur le projet hostabse! 
+Official page in [https://www.facebook.com/Rogue-ap-hostbase-785509138309015/](Facebook)
+If you like the project share it as much as you can. 
+Hostbase automates encrypted WPS Rogue AP and DoS tacking AP if channel changes.
 ### For kali-linux users:
- Hostbase is avalaible in French, Spanish and English. Locate your shell in the directory of the language you choose. For example, to execute Hostabse in spanish do:
+ Hostbase is avalaible in French, Spanish and English. Locate your shell in the directory of the language of your choice. For example, to execute Hostbase in Spanish do:
  ```bash
  cd hostbase/hostbase-1.3ES/
  ```
-###Para los usarios de wifislax:
-
-https://github.com/Koala633/hostbase/blob/master/wifislaxairbase.tar.gz
-
-https://github.com/Koala633/hostbase/blob/master/wifislax.tar.gz
-
-Más informaciones sobre wifislax aqui: 
-
-https://foro.seguridadwireless.net/wifislax/hostbase-atacando-2-redes-al-mismo-tiempo/msg365822/
-
-
-
-
-
-
-## full guide install using kali-linux:
-
+ ### Para usuarios de wifislax
+ Usen [hostbase/Legacy/wifislax.tar.gz](wifislax.tar.gz) or [hostbase/Legacy/wifislaxairbase.tar.gz](wifislaxairbase.tar.gz) 
+ Más información en [https://foro.seguridadwireless.net/wifislax/hostbase-atacando-2-redes-al-mismo-tiempo/msg365822/](seguridadwireless) 
+## Full guide install using kali-linux:
 ### Step 1__________________________________________________________
 ```bash
 apt-get install -y build-essential upgrade-system subversion wget g++ iptables pavucontrol ffmpeg sqlite3 libsqlite3-dev libssl-dev libnl-3-dev libnl-genl-3-dev dsniff hostapd isc-dhcp-server pkg-config xterm freeradius apache2 php libapache2-mod-php php-cli tcpdump scapy vokoscreen wireshark bridge-utils devscripts gengetopt autoconf libtool make
 ```
 ### Step 2____________________________________________________________
-
 Hostbase use hostapd wich is a deamon to create access point.To show if your wifi card is compatible with hostapd:
 ```bash
 iw list | grep "Supported interface modes" -A 8
 ```
 If there is compatibility you will show that:
-
-Supported interface modes:B@7XT!wg0SKz
 ```bash
+Supported interface modes:
+
 		 * IBSS
 		 
 		 * managed
@@ -101,9 +83,9 @@ CONFIG_FULL_DYNAMIC_VLAN=y
 
 CONFIG_TLSV11=y
 
-CONFIG_TAXONOMY=y
+CONFIG_TAXONOMY=yhttps://www.facebook.com/Rogue-ap-hostbase-785509138309015/
 ```
-
+https://www.facebook.com/Rogue-ap-hostbase-785509138309015/
 Then finish with
 ```bash
 sudo make
@@ -112,12 +94,12 @@ sudo make install
 ```
 ### Step 3_______________________________________________________
 
-Install dependencies
+Install dependencieshttps://www.facebook.com/Rogue-ap-hostbase-785509138309015/
 ```bash
-sudo apt install ruby ruby-dev libgtk2.0-dev gobject-introspection ruby-gtk2 mdk4
+sudo apt install ruby ruby-dev libgtkhttps://www.facebook.com/Rogue-ap-hostbase-785509138309015/2.0-dev gobject-introspection ruby-gtk2 mdk4
 ```
 Then you need to install the following ruby gems:
-```bash
+```bashhttps://www.facebook.com/Rogue-ap-hostbase-785509138309015/
 gem install highline rake bundler
 ```
 
