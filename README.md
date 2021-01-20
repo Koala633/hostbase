@@ -1,15 +1,20 @@
 # Hostbase project By Koala @ sécurité-wifi.com @ wifi-libre.com @ kali-linux.fr
-## Welcome to the hostbase project! - ¡Bienvenidos al proyecto hostbase! - Bienvenue sur le projet hostabse! 
+## Welcome to the hostbase project! - ¡Bienvenidos al proyecto hostbase! - Bienvenue sur le projet hostbase! 
 Official page in [https://www.facebook.com/Rogue-ap-hostbase-785509138309015/](Facebook)
 If you like the project share it as much as you can. 
-Hostbase automates encrypted WPS Rogue AP and DoS tacking AP if channel changes.
+Hostbase automates encrypted WPS Rogue AP and DoS, even if  the AP switch to a different channel.
 ### For kali-linux users:
- Hostbase is avalaible in French, Spanish and English. Locate your shell in the directory of the language of your choice. For example, to execute Hostbase in Spanish do:
+ Hostbase is available in French, Spanish and English. 
+Locate your shell in the directory of the language of your choice. For example, to execute Hostbase in Spanish, do:
  ```bash
  cd hostbase/hostbase-1.3ES/
  ```
  ### Para usuarios de wifislax
- Usen [hostbase/Legacy/wifislax.tar.gz](wifislax.tar.gz) or [hostbase/Legacy/wifislaxairbase.tar.gz](wifislaxairbase.tar.gz) 
+ Usen la versión especial que se encuentra en la carpeta dedicada:
+ ```bash
+ cd hostbase/hostbase-1.1Wifislax
+ ```
+ 
  Más información en [https://foro.seguridadwireless.net/wifislax/hostbase-atacando-2-redes-al-mismo-tiempo/msg365822/](seguridadwireless) 
 ## Full guide install using kali-linux:
 ### Step 1__________________________________________________________
@@ -17,11 +22,11 @@ Hostbase automates encrypted WPS Rogue AP and DoS tacking AP if channel changes.
 apt-get install -y build-essential upgrade-system subversion wget g++ iptables pavucontrol ffmpeg sqlite3 libsqlite3-dev libssl-dev libnl-3-dev libnl-genl-3-dev dsniff hostapd isc-dhcp-server pkg-config xterm freeradius apache2 php libapache2-mod-php php-cli tcpdump scapy vokoscreen wireshark bridge-utils devscripts gengetopt autoconf libtool make
 ```
 ### Step 2____________________________________________________________
-Hostbase use hostapd wich is a deamon to create access point.To show if your wifi card is compatible with hostapd:
+Hostbase use hostapd, a deamon that creates access points.To check if your wifi card is compatible with hostapd:
 ```bash
 iw list | grep "Supported interface modes" -A 8
 ```
-If there is compatibility you will show that:
+If there is compatibility you will see something like that:
 ```bash
 Supported interface modes:
 
@@ -40,9 +45,9 @@ Supported interface modes:
 		 * mesh point
 ``` 
 
-If your card is not compatible with hotapd you will only can use the sample attack with airbase-ng and you can go directly to ----> Step 3.
+If your card is not compatible with hostapd you will only be able to use the simple attack with airbase-ng and you can jump directly to ----> Step 3.
 
-For user which have a compatible wifi card with hostapd.First remover older version of hostapd
+For those who have a wifi card compatible with hostapd, you must first remove any older version of hostapd
 ```bash
 apt-get remove hostapd
 ```
@@ -85,7 +90,7 @@ CONFIG_TLSV11=y
 
 CONFIG_TAXONOMY=y
 ```
-Then finish with
+Then finish installation with
 ```bash
 sudo make
 sudo make install
@@ -96,7 +101,7 @@ Install dependencies
 ```bash
 sudo apt install ruby ruby-dev libgtk2.0-dev gobject-introspection ruby-gtk2 mdk4
 ```
-Then you need to install the following ruby gems:
+You also need to install the following ruby gems:
 ```bash
 gem install highline rake bundler
 ```
@@ -111,10 +116,11 @@ Copy/paste the file `apache2.conf` into `/etc/apache2`
 
 Download the french fake pages and place all them into `/etc`
 
-WARNING: There is no england phishing page at the moment, to use the fake page of your country you will need to edit the filter in check.rb line 54.Actually you can enter on the phishing page field one of the following pages:
+WARNING: There is no phishing page in English for the moment.  To use a fake page for your country you will need to edit the filter in check.rb line 54.
+Actually you can enter on the phishing page field one of the following pages:
 livebox or bbox or free or sfr.
 
-REMEMBER you will have to adapt the file check.rb line 54 if you want to put your own phishing page.
+REMEMBER you will have to adapt the file check.rb line 54 if you want to use your own phishing page.
 
 
 
@@ -130,9 +136,9 @@ ruby hostbase.rb
 ```
 WARNING: you have to start with the network scan --> discover the network
 
-Network-manager CAN CAUSE TROUBLE with hostapd so in the same time we are doing the network scan we stop it.
+Network-manager CAN CAUSE TROUBLE with hostapd so you need to disable/stop it. 
 
-Don't forget to leave the programe by ctrl+c on the main hostbase terminal.
+Don't forget to leave thostbase with ctrl+c on the main hostbase terminal.
 
 Leaving the program by ctrl+c, files are cleaned and network manager is restarted so if you want to do some other test without make a network scan each time, just stop network-manager before relaunch hostbase:
 ```bash
