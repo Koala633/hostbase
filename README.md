@@ -180,6 +180,7 @@ systemctl start NetworkManager.service
 
 Mi consejo es de séguir pasando por el san de redes entre 2 ataque porqué el AP puede mover de canal (channel hopping).
 
+Preguntas y soporte en wifi-libre: http://www.wifi-libre.com/topic-1657-hostbase-14-esta-aqui.html
 
 Buenas :)
 
