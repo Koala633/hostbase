@@ -103,9 +103,9 @@ _________________________________________________
 EN/ES/FR start:
 
 El script se tiene que ejecutar en la carpeta /tmp
-Copia y pega la carpeta hostbase-1.3ES a dentro la carpeta /tmp
+Copia y pega la carpeta hostbase-1.4ES a dentro la carpeta /tmp
 
-A dentro /tmp/hostbase-1.3ES click derecho, abrir un terminal aqui
+A dentro /tmp/hostbase-1.4ES click derecho, abrir un terminal aqui
 
  Inicia lo asi //
 ruby hostbase.rb
