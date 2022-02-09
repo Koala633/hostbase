@@ -172,32 +172,11 @@ A CADA PRUEBAS:
 systemctl stop NetworkManager.service
 systemctl disable NetworkManager.service
 
+y para poner lo en marcha:
 
-____________________________________________________
-
-
-
-
-Date source //  Informaciones completo // Informations complètes:
-EN: https://github.com/Koala633/hostbase/blob/master/hostbaseEnglishVersion/RogueAPparty.pdf
-
-FR: http://www.crack-wifi.com/forum/topic-12236-hostbase-11-beta-test.html
-FR: https://github.com/Koala633/hostbase/blob/master/hostbase/UnehistoirederogueAP.pdf
-
-ES: https://www.wifi-libre.com/topic-756-una-historia-de-rogue-ap-el-pdf-de-koala-traducido-al-espanol.html
-
-	 
+systemctl enable NetworkManager.service
+systemctl start NetworkManager.service
 
 
-
-
-
-
-
-
-
-
-
-
-
+Buenas :)
 
