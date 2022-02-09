@@ -178,5 +178,8 @@ systemctl enable NetworkManager.service
 systemctl start NetworkManager.service
 
 
+Mi consejo es de séguir pasando por el san de redes entre 2 ataque porqué el AP puede mover de canal (channel hopping).
+
+
 Buenas :)
 
