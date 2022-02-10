@@ -7,7 +7,7 @@ Fichier ALIREIMPORTANT fait pour les utilisateurs de kali-linux, le script fonct
 
 CHANGELOG de cette nouvelle version hostbase-1.4FR(février 2022):
 
-- Ajout de berate-ap qui permet de gérer des réseaux, et dans notre cas des réseaux ouverts pour pouvoir laisser les smartphone ou iphone se connecter au fake AP.
+- Ajout de berate-ap qui permet de gérer des réseaux, et dans notre cas des réseaux ouverts pour pouvoir laisser les smartphones ou iphones se connecter au fake AP.
 - L'attaque deauth contre le routeur s'arrete maintenant UNIQUEMENT quand le bouton WPS a été appuyé et pas avant.
 
 --------------------------------------------
@@ -117,12 +117,8 @@ Dans /tmp/hostbase-1.4FR clique droit, ouvrir un terminal ici
  Le lancer comem ceci:
 ruby hostbase.rb
 
-Pour la version destiné au débutant ou au utilisateur n'ayant pas de carte compatible hostapd c'est pareil, copiez le dossier airbase dans /tmp et ouvre un terminal dans /tmp/airbase
- Le lancer comme ceci:
-ruby airbase.rb
 
-
---> ATTENTION: ne pas oublier de commencer par le scan de réseau pour éteindre network-manager <-- 
+--> ATTENTION: ne pas oublier de commencer par le scan de réseau pour éteindre network-manager qui peut poser problème par la suite <-- 
 
 
 ____________________________________________________
