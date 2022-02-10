@@ -11,7 +11,7 @@ A Ruby GUI based on advanced rogue AP attack
 Readme hecho ara los usarios de kali-linux.El script anda bien sobre kali-linux xfce presicamente
 
 PARA TODOS DEPENDENCIAS DEL SCRIPT
-```bash
+```
 apt-get install -y build-essential upgrade-system subversion wget g++ iptables pavucontrol ffmpeg sqlite3 libsqlite3-dev libssl-dev libnl-3-dev libnl-genl-3-dev dsniff hostapd isc-dhcp-server pkg-config xterm freeradius apache2 php libapache2-mod-php php-cli tcpdump scapy vokoscreen wireshark bridge-utils devscripts gengetopt autoconf libtool make
 ```
 
