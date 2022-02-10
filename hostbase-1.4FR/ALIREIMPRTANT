@@ -121,6 +121,12 @@ ruby hostbase.rb
 --> ATTENTION: ne pas oublier de commencer par le scan de réseau pour éteindre network-manager qui peut poser problème par la suite <-- 
 
 
+Pour le scan de réseau il faut renseigner l'interface avec laquel faire le scan et dans "5GHz" répondre "oui" ou "non".Si "oui" le scan
+se fera sur les fréquences 2.4GHz et 5GHz et si "non" le scan se fera uniquement sur la fréquence 2.4GHz.
+--> Ne pas rentrer oui si votre interface wifi n'est pas compatible avec la fréquence 5GHz...
+Si vous rentrez autre chose que oui OU non dans 5GHz vous aurez des erreurs.
+
+
 ____________________________________________________
 
 6- Choisir son attaque
