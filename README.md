@@ -6,9 +6,12 @@ A Ruby GUI based on advanced rogue AP attack
 
 ~~~~~~~~~~~~~~~~~~ Hostbase project By Koala @ crack-wifi.com @ wifi-libre.com @ kali-linux.fr ~~~~~~~~~~~~~~~~~~~~
 
- Bienvenido en hostbase
+ Bienvenido en hostbase // Bienvenue sur hostbase
+ 
+FR: Ce script marche sous kali-linux, pour l'installation et la mise en marche
+de la version française se référer au fichier ALIRIMPORTANT situé dans le dossier de hostbase-1.4FR.
 
-Readme hecho ara los usarios de kali-linux.El script anda bien sobre kali-linux xfce presicamente
+ES: Readme hecho ara los usarios de kali-linux.El script anda bien sobre kali-linux xfce presicamente
 
 PARA TODOS DEPENDENCIAS DEL SCRIPT
 
