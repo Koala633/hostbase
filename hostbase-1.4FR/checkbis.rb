@@ -104,10 +104,10 @@ error()
 end
 end
 
-File.open("cartebis.txt").readlines.each do |cartebis|
-   puts cartebis
-$cartebis = cartebis.chomp
-if cartebis.chomp.start_with?('wlan', 'wlx', 'wlp')
+File.open("cartedos.txt").readlines.each do |cartedos|
+   puts cartedos
+$cartedos = cartedos.chomp
+if cartedos.chomp.start_with?('wlan', 'wlx', 'wlp')
    puts "\e[1;32m[*] Wifi card is OK.\e[0m"
 else
 error()
@@ -115,4 +115,3 @@ end
 end
 end
 end
-
