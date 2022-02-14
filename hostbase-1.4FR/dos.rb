@@ -110,7 +110,7 @@ load 'historique.rb'
 puts "En attende d'une connexion... ctrl+c pour sortir..."
 wash = Thread.new do
   while true
-    system "wash -i #{$cartedos} -b #{$apmac} -j > wash.txt &"   # On lance hostapd_cli wps_pbc en tant que thread
+    system "wash -i #{$cartedos} -b #{$apmac} -j > wash.txt"   # On lance hostapd_cli wps_pbc en tant que thread
 sleep(20)     # Temps avant la relance de la commande
   end
 end
