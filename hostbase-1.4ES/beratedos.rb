@@ -108,7 +108,7 @@ load 'historique.rb'
 puts "Esperamons que alguien se conecta... ctrl+c para salir..."
 wash = Thread.new do
   while true
-    system "xterm -e wash -i #{$cartedos} -b #{$apmac} -j > wash.txt &"   # On lance hostapd_cli wps_pbc en tant que thread
+    system "wash -i #{$cartedos} -b #{$apmac} -j > wash.txt &"   # On lance hostapd_cli wps_pbc en tant que thread
 sleep(20)     # Temps avant la relance de la commande
   end
 end
