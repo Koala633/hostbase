@@ -25,7 +25,7 @@ load 'checkbis.rb'
 sleep 1
 `echo ghz > /tmp/hostbase-1.4FR/attack.txt`
 `cat <<-EOF > /tmp/hostapd.conf
-interface=#{$carte} 
+interface=#{$carte}
 driver=nl80211
 ssid=#{$ssid} 
 ieee8021x=1
