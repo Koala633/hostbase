@@ -16,11 +16,12 @@ Dir.chdir '/tmp'
 sleep 1
 `rm -rf hostapd.psk`
 `rm -rf *.pid`
-`killall hostapd`
-`rm -rf *.conf`
+`killall berate_ap`
 `killall dnsspoof`
 `killall xterm`
 `killall dhcpd`
+`killall wash`
+`killall bash`
 Dir.chdir '/tmp/hostbase-1.4FR'
 sleep 1
 `rm -rf *.pid`
@@ -47,6 +48,8 @@ sleep 2
 sleep 4
 `rm -rf /var/lib/dhcp/dhcpd.leases`
 `rm -rf *.txt`
+`killall wash`
+`killall bash`
 puts "Bye..."
 exit
 end
@@ -56,9 +59,10 @@ Dir.chdir '/tmp'
 sleep 1
 `rm -rf hostapd.psk`
 `rm -rf *.pid`
-`rm -rf *.conf`
 `killall dnsspoof`
 `killall xterm`
+`killall wash`
+`killall bash`
 Dir.chdir '/tmp/hostbase-1.4FR'
 sleep 1
 `rm -rf *.txt`
@@ -116,17 +120,9 @@ end
 
 
 def self.victimeAttente     
-Dir.chdir '/tmp/hostbase-1.4FR'
-sleep 2
-load 'historiquebis.rb'
-puts "En attende d'une connexion... ctrl+c pour sortir..."
-wash = Thread.new do
-  while true
-    system "wash -i #{$cartedos} -b #{$apmac} -j > wash.txt"   # On lance hostapd_cli wps_pbc en tant que thread
-sleep(20)     # Temps avant la relance de la commande
-  end
-end
-Setup.wpsPush # on appelle la fonction dont on a besoin
+puts "Lancement de wash..."
+wash = Thread.new { `bash wash.sh` }
+Start.wpsPush # on appelle la fonction dont on a besoin
 sleep(5000000)        
        # Lancement de hostapd_cli a rajouter ici
        # Appel du script rogueinit et/ou de la méthode correspondante
@@ -136,6 +132,7 @@ sleep(5000000)
    def self.wpsPush 
 Dir.chdir '/tmp/hostbase-1.4FR'
 sleep 2
+puts "En attente d'une connexion... ctrl+c pour sortir..."
 until File.read('wash.txt').include?('wps_selected_registrar')
 sleep 1
 end
@@ -149,6 +146,7 @@ Dir.chdir '/tmp/hostbase-1.4FR'
 sleep 2
 if File.exist?("terminalfrequence.pid")
 Process.kill 15, File.read('/tmp/hostbase-1.4FR/terminalfrequence.pid').to_i
+Process.kill 15, File.read('/tmp/hostbase-1.4FR/wash.pid').to_i
 `killall wash`
 else
 nil
@@ -183,7 +181,7 @@ wpacli = Thread.new do
     sleep(20) # Temps avant la relance de la commande
   end
 end
-Setup.wpsGrab  # on appelle la fonction dont on a besoin A COMPLETER APRÈS WPA_CLI mettre le trap ici ?
+Start.wpsGrab  # on appelle la fonction dont on a besoin A COMPLETER APRÈS WPA_CLI mettre le trap ici ?
  sleep(5000000)
 end
 
