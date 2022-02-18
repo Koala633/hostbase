@@ -152,7 +152,7 @@ else
 nil
 end
 puts "Iniciando wpa_cli..."
-Dir.chdir '/tmp/hostbase-1.4FR'
+Dir.chdir '/tmp/hostbase-1.4ES'
 sleep 1
 load 'historiquebis.rb'
 `killall wash`
