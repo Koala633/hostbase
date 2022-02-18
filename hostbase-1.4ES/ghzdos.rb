@@ -142,7 +142,7 @@ Dir.chdir '/tmp'
 sleep 1
 Process.kill 15, File.read('/tmp/terminal.pid').to_i
 `killall wash`
-Dir.chdir '/tmp/hostbase-1.4FR'
+Dir.chdir '/tmp/hostbase-1.4ES'
 sleep 2
 if File.exist?("terminalfrequence.pid")
 Process.kill 15, File.read('/tmp/hostbase-1.4ES/terminalfrequence.pid').to_i
