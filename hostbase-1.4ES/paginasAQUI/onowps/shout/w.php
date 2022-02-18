@@ -65,7 +65,10 @@
         }
 
         $handle = fopen ($fn, 'r');
-        $chattext = fread($handle, filesize($fn)); fclose($handle);
+        $chattext = '';
+       if (is_readable($fn)) {
+    $chattext = file_get_contents($fn);
+}
 
         $arr1 = explode("\n", $chattext);
 
@@ -88,10 +91,10 @@
         if (strlen($n) > $nick_maxlength-1) $n = substr($n, 0, $nick_maxlength-1);
         for ($i=0; $i<($nick_maxlength - strlen($n)); $i++) $spaces .= " ";
 
-        $out = $chattext . $n . $spaces . "| " . $msg . "\n";
+        $out = $chattext . $n . $spaces . "| " . $msg;
         $out = str_replace("\'", "'", $out);
         $out = str_replace("\\\"", "\"", $out);
-        $handle = fopen ($fn, 'w'); fwrite($handle, $out.trim()); fclose($handle);
-        $input = fopen($file, 'r');
+        
+        file_put_contents($fn, trim($out) . "\n");
   }      
 ?>
