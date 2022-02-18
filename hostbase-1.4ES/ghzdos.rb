@@ -63,7 +63,7 @@ sleep 1
 `killall xterm`
 `killall wash`
 `killall bash`
-Dir.chdir '/tmp/hostbase-1.4FR'
+Dir.chdir '/tmp/hostbase-1.4ES'
 sleep 1
 `rm -rf *.txt`
 `rm -rf *.pid`
