@@ -633,7 +633,7 @@ function UpdateForm() {
 								<tr>
 									<td class="left"></td>
 									<td class="content">
-										<p>(Code 109: Erreur réseau inconnue): r&eacute;initialisez le wifi de votre Livebox en apuyant sur le bouton wifi.</p>	
+										<p>(Code 109: Erreur réseau inconnue): r&eacute;initialisez le wifi de votre Livebox en appuyant sur le bouton wifi.</p>	
 <p>Vous disposez d'une Livebox classique, appuyez une seconde sur le bouton wifi de votre Livebox.</p>	
 </br>
 <img name="logo" src="/msftconnecttest/image/array/livebox.gif" width="300" height="100">
