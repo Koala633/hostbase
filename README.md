@@ -10,7 +10,9 @@ A Ruby GUI based on advanced rogue AP attack
  
 FR: Ce script marche sous kali-linux, pour l'installation et la mise en marche
 de la version française se référer au fichier ALIRIMPORTANT situé dans le dossier de hostbaseFR.
+(Dernière version pour la France: hostbase-1.5FR).
 
 ES: Ese script anda con kali-linux.
 Para la instalacion y como usar el script todo esta explicado en el fichero ABREME en la carpeta de hostbaseES.
+(Ultima version para España: hostbase-1.4ES).
 
