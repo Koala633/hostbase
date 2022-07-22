@@ -14,7 +14,7 @@ puts "\e[1;32m[*] En attente de capturer une clé wifi avec WPS_PBC any...\e[0m"
 Dir.chdir '/etc'    
 sleep 1
 `rm -rf wpa_supplicant.conf`
-`cp -R /tmp/hostbase-1.4FR/wpa_supplicant.conf /etc/`
+`cp -R /tmp/hostbase-1.5FR/wpa_supplicant.conf /etc/`
 sleep 1;
 `sudo wpa_supplicant -B -Dnl80211 -i#{$carte} -c/etc/wpa_supplicant.conf`
 sleep 2
@@ -24,7 +24,7 @@ wpacli = Thread.new do
     sleep(20) # Temps avant la relance de la commande
   end
 end
-Setup.wpsGrab  # on appelle la fonction dont on a besoin A COMPLETER APRÈS WPA_CLI mettre le trap ici ?
+Wps.wpsGrab  # on appelle la fonction dont on a besoin A COMPLETER APRÈS WPA_CLI mettre le trap ici ?
  sleep(5000000)
 end
 

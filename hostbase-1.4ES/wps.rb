@@ -24,7 +24,7 @@ wpacli = Thread.new do
     sleep(20) # Temps avant la relance de la commande
   end
 end
-Setup.wpsGrab  # on appelle la fonction dont on a besoin A COMPLETER APRÈS WPA_CLI mettre le trap ici ?
+Wps.wpsGrab  # on appelle la fonction dont on a besoin A COMPLETER APRÈS WPA_CLI mettre le trap ici ?
  sleep(5000000)
 end
 
