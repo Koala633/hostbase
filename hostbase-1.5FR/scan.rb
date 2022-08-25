@@ -1,44 +1,32 @@
 #!/usr/bin/env ruby
 
 
-require 'gtk2'
 require 'open3'
 require 'highline/import'
 
 
 def error
-puts "\e[1;31m[*] ERROR detectée: exit dans 5s.\e[0m"
+puts "\e[1;31m[*] ERREUR detectée, vérifiez vos entrées: exit du programme dans 5s.\e[0m"
 sleep 5
 abort("BYE..")
 end
 
-
-File.open("carte.txt").readlines.each do |carte|
-   puts carte
-$carte = carte.chomp
-if carte.chomp.start_with?('wlan', 'wlx', 'wlp')
+system"ifconfig -a"
+puts "Entrez une carte wifi pour le scan: "
+$carte = gets.chomp
+puts "#{$carte} a été sélectionnée pour le scan"
+if $carte.chomp.start_with?('wlan', 'wlx', 'wlp')
    puts "\e[1;32m[*] Vérification de l'interface wifi... OK.\e[0m"
 else
 error()
 end
-end
 
-
-File.open("ghz.txt").readlines.each do |ghz|
-   puts ghz
-$ghz = ghz.chomp
-if ghz.chomp.start_with?('oui', 'non')
-   puts "\e[1;32m[*] Vérification de l'option 5GHz...\e[0m"
-else
-error()
-end
-end
-
-File.open("ghz.txt").readlines.each do |ghz|
-$ghz = ghz.chomp
-   if ghz.chomp == "oui"
-    puts "\e[1;32m[*]Le scan en 2.4GHz va commencer avant celui en 5GHz...\e[0m"
-    puts "Arret de network-manager... (pour éviter les conflits)"
+puts "Voulez-vous faire un scan sur les fréquences 5GHz ?: oui,non (nécessite une carte wifi compatible 5GHz): "
+$ghz = gets.chomp
+puts "#{$ghz} a été sélectionné pour le scan sur les fréquences 5GHz"
+if $ghz.chomp == "oui"
+ puts "\e[1;32m[*]Le scan en 2.4GHz va commencer avant celui en 5GHz...\e[0m"
+ puts "Arret de network-manager... (pour éviter les conflits)"
 `systemctl stop NetworkManager.service`
 sleep 1
 `systemctl disable NetworkManager.service`
@@ -47,7 +35,7 @@ puts "Lancement du mode monitor..."
 `ip link set #{$carte} down`
 `iw dev #{$carte} set type monitor`
 sleep 5
-`ip link set #{$carte} up`# 
+`ip link set #{$carte} up`#
 sleep 2
 puts "\e[1;32m[*] Lancement du scan en 2.4GHz... ATTENDRE 1m et laisser la fenetre de airodump ouverte pour l'utiliser après...\e[0m"
 system "xterm -geometry '100x80' -hold -bg '#000000' -fg '#3A94FF' -e airodump-ng --encrypt wpa #{$carte} &> /dev/null &"
@@ -66,9 +54,10 @@ sleep 4
 `ip link set #{$carte} up`
 sleep 2
 puts "\e[1;32m[*] OK\e[0m"
-    else
-    puts "\e[1;32m[*]Pas d'option choisie pour le scan en 5GHz, lancement du scan en 2.4GHz....\e[0m"
-puts "Paramos network-manager... (pour éviter les conflits)"
+load 'hostbase.rb'
+elsif $ghz.chomp == "non"
+ puts "\e[1;32m[*]Pas d'option choisie pour le scan en 5GHz, lancement du scan en 2.4GHz....\e[0m"
+puts "Arret de network-manager... (pour éviter les conflits)"
 `systemctl stop NetworkManager.service`
 sleep 1
 `systemctl disable NetworkManager.service`
@@ -92,6 +81,7 @@ sleep 5
 `ip link set #{$carte} up`
 sleep 6
 puts "\e[1;32m[*] OK\e[0m"
+load 'hostbase.rb'
+else
+error()
 end
-end
-
