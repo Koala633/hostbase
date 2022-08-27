@@ -131,7 +131,8 @@ dubbleyou633@gmx.com
 Discord:
 Koala63#3474
 
-ATTENTION: si vous voulez de l'aide il me faut le copier/coller de l'historique de la console ou est lancé hostbase avec les erreurs ainsi que plusieurs captures d'écrans (screenshots) qui montreront les erreurs (notamment une capture d'écran de la console ou est lancé hostbase mais AUSSI les données que vous avez rentrer dans l'interface graphique de hostbase avant de lancer l'attaque.Il me faudra aussi les retours de:
+ATTENTION: si vous voulez de l'aide merci de lire le wiki de hostbase-1.5FR que j'ai fais sur: https://github.com/Koala633/hostbase/wiki/Hostbase-wiki-FR
+Par ailleurs si malgré la lecture du wiki les problèmes persistent, il me faut le copier/coller de l'historique de la console ou est lancé hostbase avec les erreurs ainsi que plusieurs captures d'écrans (screenshots) qui montreront les erreurs (notamment une capture d'écran de la console ou est lancé hostbase mais AUSSI les données que vous avez rentrer dans l'interface graphique de hostbase avant de lancer l'attaque.Il me faudra aussi les retours de:
 
 ps -ef
 ifconfig -a
