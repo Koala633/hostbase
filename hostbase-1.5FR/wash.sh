@@ -17,12 +17,25 @@ f_wash
 
 #####################################################
 
+f_relance(){
+intmoniteur="$(cat cartedos.txt)"
+BSSID="$(cat apmac.txt)"
+echo "$intmoniteur"
+while [ -z "${intmoniteur}" ]; do read -r ${intmoniteur}; done
+
+echo "$BSSID"
+while [ -z ${BSSID} ]; do read -r ${BSSID}; done
+killall wash
+f_wash
+}
+
+#####################################################
+
 f_wash(){
-while : ; do
-        wash -i ${intmoniteur} -b ${BSSID} -j > wash.txt ; sleep 20 ; done &
-       echo $! >/tmp/testwash.pid
-       while : ; do
-sleep 20 ; f_variables ; done
+        wash -i ${intmoniteur} -b ${BSSID} -j > wash.txt &
+        echo $! >/tmp/testwash.pid
+         sleep 20;
+f_relance
        }
 
 #####################################################
