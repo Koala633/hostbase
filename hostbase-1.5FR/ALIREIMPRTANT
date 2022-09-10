@@ -16,6 +16,8 @@ CHANGELOG de cette mise a jour de la version hostbase-1.5FR(aout 2022):
 _________________________________________________
 
 INSTALLATION:
+Ne jamais renommer le dossier hostbase-1.5FR avec un autre nom car pour que le programme fonctionne et pour des raisons techniques on a besoin que le dossier garde le meme nom d'origine.Pour bien commencer, entrez dans le dossier hostbase-hostbase ou hostbase-shell selon la version choisie puis copiez/collez le dossier hostbase-1.5FR qui s'y trouve quelque part sur votre disque.
+
 0- rentrer dans le dossier hostbase-1.5FR et lancer le script ainstaller.sh tel que:
 bash ainstaller.sh
 _________________________________________________
