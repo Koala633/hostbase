@@ -1,0 +1,12 @@
+SI LA PAGE sncf NE SE CHARGE CORRECTEMENT AVEC APACHE CAR ERREUR 403 FORBIDDEN UNE FOIS HOSTBASE-1.5FR LANCÉ 
+(erreur 403 visible depuis l'outil de développement dans le navigateur internet), 
+RENTREZ LES COMMANDES SUIVANTES DANS UNE AUTRE CONSOLE QUE HOSTBASE ET REDÉMARRER APACHE:
+
+
+cd /var/www/msftconnecttest
+chmod 777 *
+find . -type f -exec chmod 644 {} \;
+find . -type d -exec chmod 755 {} \;
+chown -R root:www-data /var/www/msftconnecttest/cle.txt
+chmod 764 /var/www/msftconnecttest/cle.txt
+service apache2 restart

