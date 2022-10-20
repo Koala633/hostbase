@@ -1,0 +1,134 @@
+
+~~~~~~~~~~~~~~~~~~ Hostbase project By Koala @ crack-wifi.com @ wifi-libre.com @ kali-linux.fr ~~~~~~~~~~~~~~~~~~~~
+
+ Bienvenido en hostbase
+
+Readme hecho ara los usarios de kali-linux.El script anda bien sobre kali-linux xfce presicamente.
+
+CHANGELOG de esa nueva version (octubre 2022):
+
+- anadido de un script de instalacion completo
+- se elige la red con un numero, asi menos cosas a entrar antes de iniciar el ataque
+--------------------------------------------
+
+-1 INSTALACION
+
+Ir en la carpeta hostbase-shell y copiar la carpeta de hostbase-1.6ES en otro situo dondé quieres en el ordenador.
+Entrar en la carpeta de hostbase-1.6ES y iniciar el script ainstalar.sh:
+bash ainstalar.sh
+
+--> conectar las interfaz wifi usb solamente una vez que el ordenador esta en marcha.
+
+____________________________________________
+
+
+
+-2 para inciar el script:
+--> OJO: la primera vez se iniciara solo hostbase despuès de la instalacion pero para usar un otra vez se tendra que ir en la carpeta hostbase-1.6ES para iniciar el script,
+se inicia asi:
+ruby hostbase.rb
+
+--> Se elige el opcion que quiere
+--> Despuès se elige la tarjeta wifi (wlan0 o wlan1 etc...) para hacer el scan y tomar las informacion de la red
+--> Se elige el numero de la red a atacar
+etc... etc...
+
+____________________________________________________
+
+
+-3 Cuando se entra el nombre de la pagina de phishing se elige al mismo tiempo el typo de ataque a usar, debes éligir las paginas con el boton wps si la red esta en wpa2:
+orangewps 
+o
+movistarwps
+o
+vodafonewps
+o
+onowps
+o
+jazztelwps
+o
+vodafonewps
+etc etc...
+
+La clave esta registrado por defecto en /etc/wpa_supplicant.conf, despuès del attaque para ver si la clave ha sido capturada con el WPS-PBC entra eso en un nuevo terminal:
+cat /etc/wpa_supplicant.conf
+Si el usario apoya su boton WPS lo veras tambien en la consola de hostbase
+
+(Una vez el boton wps apoyado, hay que esperar un poco para que se hace la conexion a travès el wps-pbc)
+
+
+---------> Si la red esta en wpa3, se tiene que usar las paginas de phishing que pide de entrar la clave wifi para crear un "codigo" qr que va a servir a la victima a conectarse en su red cuando ha entrado su clave wifi.Si entra su clave wifi en la pagina de phishing, se vera en rojo en la consola principal de hostbase.Para el wpa3 el nombre de las paginas de phishing a entrar el la interfaz grafica de hostbase tiene que estar asi:
+orangewpa3 
+o
+movistarwpa3
+o
+vodafonewpa3
+o
+onowpa3
+o
+jazztelwpa3
+o
+vodafonewpa3
+
+Para ver la clave wifi despuès del ataque si el usario lo ha entrao en la pagina de phishing: cat /var/www/msftconnecttest/cle.txt  y: cat /var/www/cle.txt
+----------> OJO: la clave wifi aparece en una linea en el fichero cle.txt por ejemplo asi: 1234567890Bc1234567890Bc  o sea aqui hay que tener en cuenta que hay 2 veces la misma clave porque hay 2 entradas en la pagina de phishing, una para la clave wifi y otra para confirmir y verificar que el usario entra dos claves iguales.Si la clave esta asi en el fichero cle.txt: 1234567890Bc1234567890Bc
+la clave sera en realidad: 1234567890Bc
+____________________________________________________
+
+-4 Hostbase tiene un tchat para hacer se pasar por el servicio technico.Una vez que has empezado el ataque, puedes ir en la pagina del tchat con tu navegador internet:
+
+http://127.0.0.1
+
+Desde esa pagina de phishing ir a bajo y busar "ayuda en linea" y dar le con el mando.
+
+---> Una ves que estas en la pagina del tchat, TIENES QUE ENVIAR EL MENSAJE EN PRIMERO para que anda el tchat con ese ejemplo:
+Nombre: Tecnico    mensaje:   Hola soy del servicio technico como puedo ayudar ?
+
+Despuès si el usario se va en "Ayuda en linea" en la pagina de phishing principal, se pondra en el tchat directamente y podras hablar con el.
+
+
+
+_____________________________________________________
+
+
+
+
+5- Para mas potentia este script ANDA con 2 tarjeta wifi porqué automatisa un monton de cosas: el AP encryptado con el WPS, la DoS que sigue el Ap etc... ( y anda con 3 tarjetas wifi si quieres el ataque en 5GHz tambien)
+
+A CADA PRUEBAS:
+--> Se tiene que conectar las interfaz wifi al ordenador una vez que se ha iniciado el ordenador
+--> Se sale del script cada vez con ctrl+c, eso es para dejar todo bien limpio despuès un ataque...
+--> La DoS que sigue el AP anda con wash, wash tiene que estar installado tambien (pero no tienes que installar lo si tienes kali-linux esta installado por defecto)
+
+--> A la salida del script con ctrl+c se réeiniciara network-manager.Si se tiene problemos con network-manager:
+
+Se para con:
+
+systemctl stop NetworkManager.service
+systemctl disable NetworkManager.service
+
+Y poner lo en marcha:
+
+systemctl enable NetworkManager.service
+systemctl start NetworkManager.service
+
+
+
+Preguntas y soporte en mi e-mail:  koala633@protonmail.com     o en:    wifi-libre.com    o en Discord: Koala63#3474
+
+____________________________________________________
+
+hostbase by Koala
+Under GPLv3 license
+
+
+
+
+
+
+
+
+
+
+
+
