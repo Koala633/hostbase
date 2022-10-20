@@ -57,7 +57,7 @@ Si el usario apoya su boton WPS lo veras tambien en la consola de hostbase
 (Una vez el boton wps apoyado, hay que esperar un poco para que se hace la conexion a travès el wps-pbc)
 
 
----------> Si la red esta en wpa3, se tiene que usar las paginas de phishing que pide de entrar la clave wifi para crear un "codigo" qr que va a servir a la victima a conectarse en su red cuando ha entrado su clave wifi.Si entra su clave wifi en la pagina de phishing, se vera en rojo en la consola principal de hostbase.Para el wpa3 el nombre de las paginas de phishing a entrar el la interfaz grafica de hostbase tiene que estar asi:
+---------> Si la red esta en wpa3, se tiene que usar las paginas de phishing que pide de entrar la clave wifi para crear un "codigo" qr que va a servir a la victima a conectarse en su red cuando ha entrado su clave wifi.Si entra su clave wifi en la pagina de phishing, se vera en rojo en la consola principal de hostbase.Para el wpa3 el nombre de las paginas de phishing a entrar tiene que estar asi:
 orangewpa3 
 o
 movistarwpa3
