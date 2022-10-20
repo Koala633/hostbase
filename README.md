@@ -1,5 +1,5 @@
 # hostbase
-A Ruby GUI based on advanced rogue AP attack
+A Ruby script based on advanced rogue AP attack
 
 
 
