@@ -78,7 +78,7 @@ ____________________________________________________
 
 Hostbase dispose d'un tchat pour se faire passer pour le service client.Après avoir lancé l'attaque vous pouvez accéder a ce tchat en suivant ce lien dans votre navigateur internet:
 
-http://127.0.0.1
+http://127.0.0.1/msftconnecttest/index.php
 
 De la un lien "aide en ligne" apparait en bas de page, cliquez dessus pour accéder au tchat.
 
