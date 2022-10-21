@@ -12,7 +12,7 @@ yellow='\e[1;33m'
 blue='\e[1;34m'
 
 
-deplist="build-essential upgrade-system subversion wget g++ iptables pavucontrol ffmpeg sqlite3 libsqlite3-dev libssl-dev libnl-3-dev libnl-genl-3-dev dsniff hostapd isc-dhcp-server pkg-config xterm freeradius apache2 php libapache2-mod-php php-cli tcpdump python3-scapy vokoscreen wireshark bridge-utils devscripts gengetopt autoconf libtool make libatk-adaptor libgail-common toilet ruby ruby-dev hostapd mdk3 mdk4 berate-ap wmctrl"
+deplist="build-essential subversion wget g++ iptables pavucontrol ffmpeg sqlite3 libsqlite3-dev libssl-dev libnl-3-dev libnl-genl-3-dev dsniff hostapd isc-dhcp-server pkg-config xterm freeradius apache2 php libapache2-mod-php php-cli tcpdump python3-scapy vokoscreen wireshark bridge-utils devscripts gengetopt autoconf libtool make libatk-adaptor libgail-common toilet ruby ruby-dev hostapd mdk3 mdk4 berate-ap wmctrl"
 
 
 # run as root
