@@ -6,7 +6,7 @@ require './berate'
 require './wps'
 
 
-
+`rm -rf *.txt`
 `cp -R $(pwd) /tmp/`
 
 puts"Arret de network-manager..."
