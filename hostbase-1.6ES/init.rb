@@ -72,13 +72,13 @@ puts"Vérificacion de la red..."
 load 'compare.rb'
 
 
-  `cp -R $(pwd) *.txt /tmp/hostbase-1.6ES`
-  puts "Berate"
+`cp -R $(pwd) *.txt /tmp/hostbase-1.6ES` # A VOIR
+  puts "Hostapd" # on balance hostapd (wifislax only)
   Berate.berateNormal
   when 'no'
     puts "Has eligido de atacar la red solamente en 2.4GHz"
-    `cp -R $(pwd) *.txt /tmp/hostbase-1.6ES`
-    puts"Berate"# on balance berate 
+    `cp -R $(pwd) *.txt /tmp/hostbase-1.6ES` # A VOIR
+    puts"Hostapd"# on balance hostapd (wifislax only)
     Berate.berateNormal
     else
     puts "\e[1;31m[*] ERROR: se elige (si/no) !\e[0m"

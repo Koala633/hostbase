@@ -1,9 +1,9 @@
 
-~~~~~~~~~~~~~~~~~~ Hostbase project By Koala @ crack-wifi.com @ wifi-libre.com @ kali-linux.fr ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~ Hostbase project By Koala @ crack-wifi.com @ kali-linux.fr @ seguridadwireless.com ~~~~~~~~~~~~~~~~~~~~
 
  Bienvenido en hostbase
 
-Readme hecho ara los usarios de kali-linux.El script anda bien sobre kali-linux xfce presicamente.
+Readme hecho ara los usarios de wifislax.El script anda bien sobre wifislax-3.1 presicamente.
 
 CHANGELOG de esa nueva version (octubre 2022):
 
@@ -13,7 +13,7 @@ CHANGELOG de esa nueva version (octubre 2022):
 
 -1 INSTALACION
 
-Ir en la carpeta hostbase-shell y copiar la carpeta de hostbase-1.6ES en otro situo dondé quieres en el ordenador.
+Ir en la carpeta hostbase-wifislax y copiar la carpeta de hostbase-1.6ES en otro situo dondé quieres en el ordenador.
 Entrar en la carpeta de hostbase-1.6ES y iniciar el script ainstalar.sh:
 bash ainstalar.sh
 
@@ -77,7 +77,7 @@ ____________________________________________________
 
 -4 Hostbase tiene un tchat para hacer se pasar por el servicio technico.Una vez que has empezado el ataque, puedes ir en la pagina del tchat con tu navegador internet:
 
-http://127.0.0.1
+http://127.0.0.1/msftconnecttest/index.php
 
 Desde esa pagina de phishing ir a bajo y busar "ayuda en linea" y dar le con el mando.
 
@@ -98,23 +98,19 @@ _____________________________________________________
 A CADA PRUEBAS:
 --> Se tiene que conectar las interfaz wifi al ordenador una vez que se ha iniciado el ordenador
 --> Se sale del script cada vez con ctrl+c, eso es para dejar todo bien limpio despuès un ataque...
---> La DoS que sigue el AP anda con wash, wash tiene que estar installado tambien (pero no tienes que installar lo si tienes kali-linux esta installado por defecto)
-
+--> La DoS que sigue el AP anda con wash, wash tiene que estar installado tambien.
 --> A la salida del script con ctrl+c se réeiniciara network-manager.Si se tiene problemos con network-manager:
 
 Se para con:
 
-systemctl stop NetworkManager.service
-systemctl disable NetworkManager.service
+service stop networkmanager
 
 Y poner lo en marcha:
 
-systemctl enable NetworkManager.service
-systemctl start NetworkManager.service
+service start networkmanager
 
 
-
-Preguntas y soporte en mi e-mail:  koala633@protonmail.com     o en:    wifi-libre.com    o en Discord: Koala63#3474
+Preguntas y soporte en mi e-mail:  koala633@protonmail.com     o en:    seguridadwireless    o en Discord: Koala63#3474
 
 ____________________________________________________
 

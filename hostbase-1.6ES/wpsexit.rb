@@ -7,9 +7,8 @@ require 'highline/import'
 
 if File.exist?("wps.txt")
 `killall wpa_supplicant`
-`systemctl enable NetworkManager.service`
+`service start networkmanager`
 sleep 3
-`systemctl start NetworkManager.service`
 puts "Bye..."
 `rm -rf /tmp/hostbase-1.6ES`
 exit
@@ -19,14 +18,12 @@ end
 if File.exist?("cartef.txt")
 Dir.chdir '/tmp'
 sleep 1
-`rm -rf hostapd.psk`
 `rm -rf *.pid`
-`killall berate_ap`
-`killall hostapd-mana`
-`killall dnsspoof`
-`killall xterm`
+#`killall hostapd`
+#`killall dnsspoof`
 `killall dhcpd`
 `killall wash`
+`rm -rf *.conf`
 Dir.chdir '/tmp/hostbase-1.6ES'
 sleep 1
 `rm -rf *.pid`
@@ -45,13 +42,10 @@ $cartedos = cartedos.chomp
 `ip link set #{$cartedos} up`        
 `rm -rf /var/lib/dhcp/dhcpd.leases`
 `rm -rf *.txt`
-`killall wash`
-`killall sleep`
 `killall bash`
 `killall wpa_supplicant`
-`systemctl enable NetworkManager.service`
+`service start networkmanager`
 sleep 3
-`systemctl start NetworkManager.service`
 puts "Bye..."
 `rm -rf /tmp/hostbase-1.6ES`
 sleep 5
@@ -61,13 +55,15 @@ end
 else
 Dir.chdir '/tmp'
 sleep 1
-`rm -rf hostapd.psk`
+`killall hostapd`
+#`rm -rf hostapd.psk`
 `rm -rf *.pid`
-`killall berate_ap`
-`killall hostapd-mana`
-`killall dnsspoof`
-`killall xterm`
-`killall wash`
+`rm -rf *.conf`
+#`killall berate_ap` # not for wifislax
+#`killall hostapd-mana`
+#`killall dnsspoof`
+#`killall xterm`
+#`killall wash`
 Dir.chdir '/tmp/hostbase-1.6ES'
 sleep 1
 `rm -rf *.pid`
@@ -80,14 +76,13 @@ $cartedos = cartedos.chomp
 `iw dev #{$cartedos} set type managed`
 `ip link set #{$cartedos} up`
 `rm -rf /var/lib/dhcp/dhcpd.leases`
-`killall wash`
-`killall sleep`
+#`killall wash`
+#`killall sleep`
 `killall bash`
 `rm -rf *.txt`
 `killall wpa_supplicant`
-`systemctl enable NetworkManager.service`
+`service start networkmanager`
 sleep 3
-`systemctl start NetworkManager.service`
 puts"Bye.."
 `rm -rf /tmp/hostbase-1.6ES`
 sleep 5

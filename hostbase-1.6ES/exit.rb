@@ -10,14 +10,13 @@ sleep 1
 if File.exist?("cartef.txt")
 Dir.chdir '/tmp'
 sleep 1
-`rm -rf hostapd.psk`
 `rm -rf *.pid`
-`killall berate_ap`
-`killall hostapd-mana`
+`killall hostapd`
 `killall dnsspoof`
-`killall xterm`
 `killall dhcpd`
 `killall wash`
+`service stop httpd`
+sleep 4
 Dir.chdir '/tmp/hostbase-1.6ES'
 sleep 1
 `rm -rf *.pid`
@@ -34,14 +33,11 @@ puts "Vuelta a la normal de las tarjetas wifi..."
 `ifconfig #{$cartedos} down`
 `iw dev #{$cartedos} set type managed`
 `ip link set #{$cartedos} up`        
-`systemctl enable NetworkManager.service`
-sleep 2
-`systemctl start NetworkManager.service`
-sleep 4
+`service start networkmanager`
+sleep 3
 `rm -rf /var/lib/dhcp/dhcpd.leases`
 `rm -rf *.txt`
 `rm -rf /tmp/hostbase-1.6ES`
-`killall wash`
 `killall bash`
 puts "Bye..."
 end
@@ -49,13 +45,13 @@ end
 else
 Dir.chdir '/tmp'
 sleep 1
-`rm -rf hostapd.psk`
 `rm -rf *.pid`
-`killall berate_ap`
-`killall hostapd-mana`
 `killall dnsspoof`
-`killall xterm`
+# `killall xterm`
+`killall dhcpd`
 `killall wash`
+`service stop httpd`
+sleep 4
 Dir.chdir '/tmp/hostbase-1.6ES'
 sleep 1
 `rm -rf *.pid`
@@ -67,12 +63,9 @@ $cartedos = cartedos.chomp
 `ifconfig #{$cartedos} down`
 `iw dev #{$cartedos} set type managed`
 `ip link set #{$cartedos} up`
-`systemctl enable NetworkManager.service`
+`service start networkmanager`
 sleep 3
-`systemctl start NetworkManager.service`
-sleep 5
 `rm -rf /var/lib/dhcp/dhcpd.leases`
-`killall wash`
 `killall bash`
 `rm -rf *.txt`
 `rm -rf /tmp/hostbase-1.6ES`
@@ -80,4 +73,3 @@ puts"Bye.."
 exit
 end
 end
-'

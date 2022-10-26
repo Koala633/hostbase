@@ -5,15 +5,17 @@ require 'monitor'
 require './berate'
 require './wps'
 
-
-
+install = "install.txt"
+if File.exist?("install.txt")
+nil
+else
+`rm -rf *.txt`
 `cp -R $(pwd) /tmp/`
+end
 
 puts"Paramos network-manager..."
-`systemctl stop NetworkManager.service`
-sleep 1
-`systemctl disable NetworkManager.service`
-sleep 4
+`service stop networkmanager`
+sleep 3
 
 
  puts"█                           █"
@@ -31,28 +33,23 @@ sleep 4
 
 
 
-puts 'Entra un numéro con lo se quiere hacer (1,2,3,4 ou 5)'
-puts "\e[1;32m[*] Opcion 1: berate_ap ataque clasica\e[0m"
+puts 'Entra un numéro con lo se quiere hacer (1,2, o 3)'
+puts "\e[1;32m[*] Opcion 1: crear fake AP con hostapd\e[0m"
 puts "\e[1;32m[*] Opcion 2: WPS PBC loop, esperamos que alguien apoya en boton WPS para recoger la clave wifi\e[0m"
-puts "\e[1;32m[*] Opcion 3: berate_ap y despuès: Metasploit / Netcat \e[0m"
-puts "\e[1;32m[*] Opcion 4: Scan pasivo: detectara si se inicia una red\e[0m"
-puts "\e[1;32m[*] Opcion 5: Salir del script\e[0m"
+puts "\e[1;32m[*] Opcion 3: Salir del script\e[0m"
 
 choice = gets.chomp
 case choice
 when '1'
-  puts 'berate_ap eligido'
+  puts 'hostapd eligido'
   system"ruby scan2g.rb"
 when '2'
   puts 'WPS PBC loop!'
   Wps.wpsSuck
 when '3'
-  puts 'Metasploit/Netcat eligido'
-system"ruby metcat.rb"
-when '4'
-puts 'Scan pasivo eligido'
-system"ruby scanpassif.rb"
-when '5'
+  puts 'reiniciando network-manager...'
+  `service start networkmanager`
+  `rm -rf /tmp/hostbase-1.6ES`
   puts 'BYE...'
   exit
 else

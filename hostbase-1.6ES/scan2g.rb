@@ -60,7 +60,7 @@ def run_wash(wlan_name)
   puts"#{wlan_name}".delete! ":"
 #  system("wash -i #{wlan_name} &")
   cmd = "wash -i #{wlan_name}"
-  puts "Iniciando wash: #{cmd} , espera #{WAIT_FOR_WASH} para que aparecen las redes..."
+  puts "Iniciando wash: #{cmd} , espera #{WAIT_FOR_WASH} s para que aparecen las redes..."
 # sleep 30
   p = IO.popen(cmd)
   process_line = false
