@@ -1,7 +1,7 @@
 # hostbase
 A Ruby GUI based on advanced rogue AP attack
 
-
+CETTE VERSION N'EST PLUS MAINTENUE VOIR LA DERNIÈRE VERSION ICI: https://github.com/Koala633/hostbase/tree/shell
 
 
 ~~~~~~~~~~~~~~~~~~ Hostbase project By Koala @ crack-wifi.com @ wifi-libre.com @ kali-linux.fr ~~~~~~~~~~~~~~~~~~~~
