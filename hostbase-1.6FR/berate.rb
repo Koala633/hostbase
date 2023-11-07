@@ -145,6 +145,8 @@ Dir.chdir '/tmp/hostbase-1.6FR'
 sleep 1
 Cle.cleWpa # Lancement de la DoS ici et du code qui attend la victime
 else
+Dir.chdir '/var/www'
+sleep 1
 `chmod 777 *`
 `service apache2 restart`
 sleep 4
