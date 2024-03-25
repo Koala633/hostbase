@@ -3,6 +3,6 @@
 
 
 # hostbase
-NOTES : une nouvelle version bientot disponible.
+NOTES : une nouvelle version en python bientot disponible.(1.7)
 
-CETTE VERSION N'EST PLUS MAINTENUE VOIR LA DERNIÈRE VERSION ICI: https://github.com/Koala633/hostbase/tree/shell
+Version en cours : https://github.com/Koala633/hostbase/tree/shell
