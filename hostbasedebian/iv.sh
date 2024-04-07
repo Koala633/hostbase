@@ -9,4 +9,4 @@ do
     cat "$f" >> "$out"
     echo >> "$out"
 done
-python iv16.py
+python3 iv16.py
