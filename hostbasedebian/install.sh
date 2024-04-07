@@ -101,13 +101,11 @@ sleep 5;
 mkdir /opt/backupwebserver
 mkdir /opt/backupwebserver/conf
 mkdir /opt/backupwebserver/homepage
-cd /etc/apache2/
-cp -R * /opt/backupwebserver/conf/
+cp -R /etc/apache2/* /opt/backupwebserver/conf/
 cp -R /var/www/* /opt/backupwebserver/homepage/
 sleep 3;
-rm -rf apache2.conf
-cd /etc/apache2/sites-available/
-rm -rf 000-default.conf
+rm -rf /etc/apache2/apache2.conf
+rm -rf /etc/apache2/sites-available/000-default.conf
 cd /home/$idu/Documents/hostbasebackup/
 cp -R WebPages/apache2.conf /etc/apache2/
 cp -R WebPages/000-default.conf /etc/apache2/sites-available/
