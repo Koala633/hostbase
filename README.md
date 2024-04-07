@@ -10,6 +10,10 @@ Download Hostbase then go to **/hostbase-master/hostbasedebian** or **/hostbase-
 
 `bash install.sh`
 
+then
+
+`python3 hostbase.py`
+
 This script work with Python >= 3.10
 
 Install script will also install python virtual environment from te repositories (Debian) for arch some install need AUR to be configured.
