@@ -94,16 +94,16 @@ echo -e "\t\e[1;32m[+] Configuration of the apache2 web server and the phishing 
 #######" Installation du virtuel env à faire ici
 # cp -R $(pwd) /tmp/
 sleep 8;
-cp -R /WebPages/* /etc/
+cp -R WebPages/* /etc/
 sleep 5;
 mkdir /opt/backupwebserver
 mkdir /opt/backupwebserver/conf
 mkdir /opt/backupwebserver/homepage
-cd /etc/httpd/conf/
-cp -R * /opt/backupwebserver/conf/
-cp -R * /srv/http/* /opt/backupwebserver/homepage/
+cp -R /etc/httpd/conf/* /opt/backupwebserver/conf/
+cp -R /srv/http/* /opt/backupwebserver/homepage/
+rm -rf /etc/httpd/conf/httpd.conf
 echo -e "\t\e[1;32m[+] A backup configuration of apache has been created on : /opt/backupserver... starting apache NOW...\e[0m"
-cp -R httpd.conf /etc/httpd/conf/
+cp -R WebPages/httpd.conf /etc/httpd/conf/
 apachectl start
 sleep 2;
 echo -e "$yellow mdk3 and dkms driver for rtl88xxau cards are not installed... AUR must be configured to install mdk3 and rtl88xxau.Please install them apart of this script.Reboot will be necessary."
