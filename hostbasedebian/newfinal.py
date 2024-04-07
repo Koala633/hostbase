@@ -50,7 +50,7 @@ if os.path.isfile('direct.txt'):
   os.system("rm -rf direct.txt")
   print(f"{GREEN}All data from this new target network has been save...")
   print(f"{RESET}Starting the attack...")
-  attack = subprocess.Popen("python attack2.py", shell=True)
+  attack = subprocess.Popen("python3 attack2.py", shell=True)
   sys.exit()
 else:
   print(f"{RESET}Saving new data...")
@@ -90,5 +90,5 @@ else:
 
       print(f"{GREEN}All data from this new target network has been save...")
       print(f"{RESET}Starting the attack...")
-      attack = subprocess.Popen("python attack2.py", shell=True)
+      attack = subprocess.Popen("python3 attack2.py", shell=True)
       sys.exit()
