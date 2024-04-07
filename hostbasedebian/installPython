@@ -1,0 +1,24 @@
+
+source hostbase/bin/activate  into the folder where is located hostbase virtual venv to activate it.
+
+
+sudo apt install python3
+sudo apt install python3-pip
+sudo apt install build-essential libffi-dev libssl-dev zlib1g-dev libsqlite3-dev libreadline-dev libbz2-dev libncursesw5-dev libgdbm-dev libncurses5-dev curl git
+# curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+# echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc && echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc && echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+source ~/.bashrc
+pyenv install <version>
+pyenv global <version>
+# eval "$(pyenv init -)"  # depend on your pyenv install 
+python3 -m venv hostbase
+source hostbase/bin/activate
+pip3 install numpy
+pip3 install pandas
+
+
+--> non obligatoires :
+pip3 install requests
+pip3 install pillow
+pip3 install pytesseract
+
