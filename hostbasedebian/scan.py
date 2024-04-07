@@ -36,5 +36,5 @@ os.system("iw dev" + " " + scan + " " + "set type managed")
 time.sleep(4)
 os.system("ip link set" + " " + scan + " " + "up")
 time.sleep(3)
-scanfiltre = subprocess.Popen("python scanfiltre5.py", shell=True)
+scanfiltre = subprocess.Popen("python3 scanfiltre5.py", shell=True)
 
