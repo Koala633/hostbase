@@ -303,7 +303,7 @@ elif htrois == 1:
 else:
     print(f"{RED}ERROR : if your wifi cards are NOT supported by hostapd you can not use this script ! aborting...")
     os.system("rm -rf *.txt")
-    os.system("killall python")
+    os.system("killall python3")
     sys.exit(0)
     # exit du script à placer
 
