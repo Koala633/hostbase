@@ -14,7 +14,7 @@ This script work with Python >= 3.10
 
 Install script will also install python virtual environment from te repositories (Debian) for arch some install need AUR to be configured.
 
-If troubleshooting the file installPython provide the full installation process.Also to use wpa3 QR code mode you will need to edit your **php.ini** go to the WebPages folder and see the file READTHAT_php_conf to change config.
+If troubleshooting the file **installPython** provide the full installation process.Also to use wpa3 QR code mode you will need to edit your **php.ini** go to the WebPages folder and see the file READTHAT_php_conf to change config.
 
 HOSTBASE is french and spanish project and will always stay a FREE project BUT this kind of project need time... lot of time... so Hostbase is open to donations :
 
