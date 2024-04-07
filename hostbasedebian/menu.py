@@ -220,7 +220,7 @@ elif line_num > 10:
 else:
     print(f"{RED}Please insert other wifi card ! this script need two at least")
     os.system("rm -rf *.txt")
-    os.system("killall python")
+    os.system("killall python3")
     sys.exit(0)
     # fonction retour menu
 
