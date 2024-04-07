@@ -68,8 +68,8 @@ if os.path.isfile('cinqgcarte'):
   os.system("ip link set" + " " + scan + " " + "up")
   time.sleep(3)
   os.system("wmctrl -r :ACTIVE: -b remove,fullscreen")
-  filtre = subprocess.Popen("python filtre.py", shell=True)
+  filtre = subprocess.Popen("python3 filtre.py", shell=True)
 else:
     os.system("wmctrl -r :ACTIVE: -b remove,fullscreen")
-    filtre = subprocess.Popen("python filtre.py", shell=True)
+    filtre = subprocess.Popen("python3 filtre.py", shell=True)
 
