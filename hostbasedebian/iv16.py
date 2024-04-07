@@ -105,7 +105,7 @@ with open("identfinal.csv", "r") as csv:
             f.write(line)
             f.close()
             found = True
-            prepfinale = subprocess.Popen("python iv15.py", shell=True)
+            prepfinale = subprocess.Popen("python3 iv15.py", shell=True)
             sys.exit()
 if not found: print(f"{YELLOW}First target has been removed from target list")
 
@@ -123,7 +123,7 @@ with open("identfinal.csv", "r") as csv:
             f.write(line)
             f.close()
             found = True
-            prepfinale = subprocess.Popen("python iv15.py", shell=True)
+            prepfinale = subprocess.Popen("python3 iv15.py", shell=True)
             sys.exit()
 if not found: print(f"{YELLOW}Second target has been removed from target list")
 
@@ -141,6 +141,6 @@ with open("identfinal.csv", "r") as csv:
             f.write(line)
             f.close()
             found = True
-            prepfinale = subprocess.Popen("python iv15.py", shell=True)
+            prepfinale = subprocess.Popen("python3 iv15.py", shell=True)
             sys.exit()
 if not found: print(f"{YELLOW}Third target has been removed from target list")
