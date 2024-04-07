@@ -104,7 +104,7 @@ if ivdeuxg >= ivcinqg:
                 f.close()
 
     print(f"{RESET}Starting the attack...")
-    attack = subprocess.Popen("python attack2.py", shell=True)
+    attack = subprocess.Popen("python3 attack2.py", shell=True)
     sys.exit()
 else:
     os.system("wmctrl -r :ACTIVE: -b add,fullscreen")
@@ -197,7 +197,7 @@ for i, name in enumerate(data):
                 f.write(line)
                 f.close()
                 found = True
-                finale = subprocess.Popen("python newfinal.py", shell=True)
+                finale = subprocess.Popen("python3 newfinal.py", shell=True)
                 break
 
     if not found:
