@@ -106,7 +106,6 @@ cp -R /var/www/* /opt/backupwebserver/homepage/
 sleep 3;
 rm -rf /etc/apache2/apache2.conf
 rm -rf /etc/apache2/sites-available/000-default.conf
-cd /home/$idu/Documents/hostbasebackup/
 cp -R WebPages/apache2.conf /etc/apache2/
 cp -R WebPages/000-default.conf /etc/apache2/sites-available/
 echo -e "\t\e[1;32m[+] A backup configuration of apache has been created on : /opt/backupserver... starting apache NOW...\e[0m"
