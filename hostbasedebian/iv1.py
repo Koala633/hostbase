@@ -33,42 +33,42 @@ def net3():
         with open('priority.txt', 'a') as f1:
             f1.write('1')
             f1.write('\n')
-            os.system("python iv9.py")
+            os.system("python3 iv9.py")
             sys.exit()
     elif 1 <= ivtrois <= 10:
         print(f"{CYAN}Very few traffic found on the network !")
         with open('priority.txt', 'a') as f2:
             f2.write('2')
             f2.write('\n')
-            os.system("python iv9.py")
+            os.system("python3 iv9.py")
             sys.exit()
     elif 10 <= ivtrois <= 20:
         print(f"{CYAN}Few traffic found on the network !")
         with open('priority.txt', 'a') as f3:
             f3.write('3')
             f3.write('\n')
-            os.system("python iv9.py")
+            os.system("python3 iv9.py")
             sys.exit()
     elif 20 <= ivtrois <= 40:
         print(f"{CYAN}Medium traffic found on the network !")
         with open('priority.txt', 'a') as f4:
             f4.write('4')
             f4.write('\n')
-            os.system("python iv9.py")
+            os.system("python3 iv9.py")
             sys.exit()
     elif 40 <= ivtrois <= 70:
         print(f"{CYAN}High fraffic found on the network !")
         with open('priority.txt', 'a') as f5:
             f5.write('5')
             f5.write('\n')
-            os.system("python iv9.py")
+            os.system("python3 iv9.py")
             sys.exit()
     elif 70 <= ivtrois <= 200:
         print(f"{CYAN}Heavy traffic found on the network!")
         with open('priority.txt', 'a') as f6:
             f6.write('6')
             f6.write('\n')
-            os.system("python iv9.py")
+            os.system("python3 iv9.py")
             sys.exit()
 
     else:
@@ -77,7 +77,7 @@ def net3():
         f = open(f'finalchoice.csv', 'w+')
         f.write(line)
         f.close()
-        directident = subprocess.Popen("python direct.py", shell=True)
+        directident = subprocess.Popen("python3 direct.py", shell=True)
         sys.exit()
 
 
@@ -133,7 +133,7 @@ def net2():
         f = open(f'finalchoice.csv', 'w+')
         f.write(line)
         f.close()
-        directident = subprocess.Popen("python direct.py", shell=True)
+        directident = subprocess.Popen("python3 direct.py", shell=True)
         sys.exit()
 def net1():
 
@@ -188,7 +188,7 @@ def net1():
             f = open(f'finalchoice.csv', 'w+')
             f.write(line)
             f.close()
-            directident = subprocess.Popen("python direct.py", shell=True)
+            directident = subprocess.Popen("python3 direct.py", shell=True)
             sys.exit()
 
 
