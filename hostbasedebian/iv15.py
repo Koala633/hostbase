@@ -80,7 +80,7 @@ if os.path.isfile('cinqgscanfait'):
           f = open("ivcinqg.txt", "w+")
           f.write(row[3])
           f.close()
-          suite = subprocess.Popen("python new.py", shell=True)
+          suite = subprocess.Popen("python3 new.py", shell=True)
   sys.exit()
 else:
   None
@@ -119,7 +119,7 @@ if os.path.isfile('cinqgcarte'):
   os.system("ip link set" + " " + scan + " " + "up")
   time.sleep(3)
   # os.system("touch direct.txt")
-  suitescan = subprocess.Popen("python scanfiltre5.py", shell=True)
+  suitescan = subprocess.Popen("python3 scanfiltre5.py", shell=True)
 else:
   print('Preparing the attack...')
-  attack = subprocess.Popen("python attack2.py", shell=True)
+  attack = subprocess.Popen("python3 attack2.py", shell=True)
