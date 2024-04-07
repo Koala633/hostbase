@@ -66,4 +66,4 @@ with open(infileivtemp) as fin, open(outfileivtrois, "w+") as fout:
     os.system("awk '1' iv1.txt iv2.txt iv3.txt > troisiv.txt")
     #os.system("head -c-1 troisiv.txt > tempp.txt; mv tempp.txt troisiv.txt")
 
-analysecinq = subprocess.Popen("python iv1.py", shell=True)
+analysecinq = subprocess.Popen("python3 iv1.py", shell=True)
