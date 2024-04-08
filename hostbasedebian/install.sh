@@ -95,6 +95,7 @@ gem install highline && gem install rake && gem install bundler && gem install c
 echo -e "\t\e[1;32m[+] Configuring apache and the phishing page... WAIT....\e[0m"
 rm -rf /etc/dhcp/dhcpd.conf
 cd /home/$idu/Documents/hostbasebackup/
+mkdir LasTry
 cp -R WebPages/dhcpd.conf /etc/dhcp/
 cp -R WebPages/* /etc/
 sleep 5;
