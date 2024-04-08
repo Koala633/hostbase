@@ -93,7 +93,8 @@ gem list && gem update && gem install highline && gem install rake && gem instal
 echo -e "\t\e[1;32m[+] Configuration of the apache2 web server and the phishing page... WAIT....\e[0m"
 #######" Installation du virtuel env à faire ici
 # cp -R $(pwd) /tmp/
-sleep 8;
+sleep 2;
+mkdir LasTry
 cp -R WebPages/* /etc/
 sleep 5;
 mkdir /opt/backupwebserver
