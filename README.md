@@ -28,6 +28,8 @@ You can donate what you want if you like it !
 
 Older version 1.6 in ruby : https://github.com/Koala633/hostbase/tree/shell
 
-Also a new version for wifislax is coming in few times.
+PARA WIFISLAX mas informaciones aqui :
+
+https://foro.seguridadwireless.net/foro-libre-offtopic/hostbase-1-7-hackinf-wifi
 
 Enjoy -:)
