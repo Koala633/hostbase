@@ -331,7 +331,8 @@ elif os.path.isfile('c3.txt'):
    os.system('mv c3.txt deuxgcarte')
 else:
     print(f"{RED}'ERROR : while finding the card to deauth 2.4GHz frequency")
-
+    os.system('mv cinqgcarte deuxgcarte')
+    print(f"{YELLOW}The 5GHz card will be used for the 2.4GHz frequency")
 
 print(f"{RESET}Welcome to...")
 print("\n")
