@@ -1,16 +1,32 @@
+# Just a Fork of Hostbase
 
+## Hostbase 1.7 is Here!
 
+### Getting Started
 
+**Installation**
 
-# hostbase
+```bash
+# Clone the repository
+git clone https://github.com/Koala633/hostbase.git
 
-Hostbase 1.7 is here !
+# Change the working directory to hostbase
+cd hostbase
 
-Download Hostbase then go to **/hostbase-master/hostbasedebian** or **/hostbase-master/hostbasearch** :
+# Change the working directory to hostbasearch or hostbasedebian depending on your distribution
 
-`bash install.sh`
+# For Arch-based distributions
+cd hostbasearch
 
-then
+# For Debian-based distributions
+cd hostbasedebian
+
+# Automated installation: You may need to install some software manually
+chmod +x install.sh
+sudo bash install.sh
+```
+
+then to use the script do : 
 
 `python3 hostbase.py`
 
