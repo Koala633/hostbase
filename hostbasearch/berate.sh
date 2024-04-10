@@ -98,6 +98,7 @@ cd /srv/http/
 mkdir redirect
 sleep 1;
 cd /srv/http/msftconnecttest/
+mkdir qrcode  # We need to create this folder because github doesn't like empty folder...
 cat <<-EOF > connecttest.txt
 Microsoft Connect Test
 EOF
