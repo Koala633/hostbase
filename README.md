@@ -64,7 +64,7 @@ then to use the script do :
 
 `python3 hostbase.py`
 
-This script work with Python >= 3.10
+
 
 ![1](https://github.com/Koala633/hostbase/assets/26505001/5acb9baa-a3e6-4086-8c71-b06fb5dc78d4)
 
