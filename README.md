@@ -10,9 +10,33 @@
 
 ```
 python>=3.10
-
+lib32-sqlite 
+glibc 
+openssl
+libpcap
+wget
+git
+iptables
+ffmpeg
+dsniff
+dhcp
+pkg-config
+xterm
+freeradius
+apache
+php
+php-apache
+tcpdump
+bridge-utils
+toilet
+ruby
+hostapd
+mdk4
+aircrack-ng
+wmctrl
+rfkill
+reaver
 ```
-
 
 ```bash
 # Clone the repository
