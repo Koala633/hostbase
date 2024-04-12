@@ -38,6 +38,8 @@ rfkill
 reaver
 ```
 
+*Installation*
+
 ```bash
 # Clone the repository
 git clone https://github.com/Koala633/hostbase.git
