@@ -6,6 +6,14 @@
 
 **Installation**
 
+*Requirements*
+
+```
+python>=3.10
+
+```
+
+
 ```bash
 # Clone the repository
 git clone https://github.com/Koala633/hostbase.git
@@ -33,7 +41,6 @@ then to use the script do :
 This script work with Python >= 3.10
 
 ![1](https://github.com/Koala633/hostbase/assets/26505001/5acb9baa-a3e6-4086-8c71-b06fb5dc78d4)
-
 
 
 Install script will also install python virtual environment from te repositories (Debian) for arch some install need AUR to be configured.
