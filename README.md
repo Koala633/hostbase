@@ -56,7 +56,7 @@ chmod +x install.sh
 sudo bash install.sh
 ```
 
-then to use the script do : 
+to use the script do : 
 
 `python3 hostbase.py`
 
