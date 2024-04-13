@@ -1,12 +1,12 @@
 # Just a Fork of Hostbase
 
-## Hostbase 1.7 is Here!
+# Hostbase 1.7 is Here!
 
-### Getting Started
+## Getting Started
 
-#Installation
+###Requirements
 
-##Requirements
+###Prerequisites
 
 ```
 python>=3.10
