@@ -4,9 +4,7 @@
 
 ## Getting Started
 
-###Requirements
-
-###Prerequisites
+### Prerequisites
 
 ```
 python>=3.10
@@ -38,7 +36,7 @@ rfkill
 reaver
 ```
 
-*Installation*
+### Installation
 
 ```bash
 # Clone the repository
