@@ -1,5 +1,5 @@
 # Hostbase 1.7
-
+A script based on advanced rogue AP attack
 ## Getting Started
 
 ### Prerequisites
