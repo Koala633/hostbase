@@ -1,4 +1,4 @@
-# Hostbase 1.7 is Here!
+# Hostbase 1.7
 
 ## Getting Started
 
