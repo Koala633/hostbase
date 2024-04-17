@@ -48,6 +48,7 @@ cat <<-EOF > index.php
 EOF
 sleep 1;
 cd /var/www/
+mkdir qrcode  # We need to create this folder because github doesn't like empty folder...
 mkdir msftconnecttest
 sleep 1;
 mkdir msftnci
