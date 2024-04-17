@@ -107,7 +107,7 @@ Verificación correcta, conexión activada, escanea el codigo qr para conectar a
         }
         ?>
 <?php 
-  header( "refresh:5; url=valid.php" );
+  header( "refresh:5; url=jazzvalid.php" );
 ?>
 </br>
 </br>
