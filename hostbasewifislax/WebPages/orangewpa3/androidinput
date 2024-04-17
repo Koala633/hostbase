@@ -1,0 +1,17 @@
+Android is dumbshit...some android browser app work with this code : (directly taking a picture).
+<input id="uploadImage" type="file" capture="user" accept="image/*" name="image" />
+
+And other need this code because they don't recognize the capture html attribute... :
+<input id="uploadImage" type="file" accept="image/*" name="image" />
+
+Also :
+
+<input id="uploadImage" type="file" name="image" />
+
+seems to work.
+
+To make a local test you need to chmod 777 * into the folder where the ajax and js code are.
+Then restart your apache or http server.
+NOTE : you can't use this code directly into your main folder of apache or httpd.
+
+
