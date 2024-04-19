@@ -65,7 +65,7 @@ to use the script do :
 ![1](https://github.com/Koala633/hostbase/assets/26505001/5acb9baa-a3e6-4086-8c71-b06fb5dc78d4)
 
 
-Install script will also install python virtual environment from te repositories (Debian) for arch some install need AUR to be configured.
+Install script will also install python virtual environment from the repositories (Debian) for arch some install need AUR to be configured.
 
 If troubleshooting the file **installPython** provide the full installation process.Also to use wpa3 QR code mode you will need to edit your **php.ini** go to the WebPages folder and see the file READTHAT_php_conf to change config.
 
