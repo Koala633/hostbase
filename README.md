@@ -65,6 +65,7 @@ here is the wiki in french, everything should be in it :
   Wiki de hostbase en français : https://github.com/Koala633/hostbase/wiki/WIKI-FR
 
 
+
 ![1](https://github.com/Koala633/hostbase/assets/26505001/5acb9baa-a3e6-4086-8c71-b06fb5dc78d4)
 
 
