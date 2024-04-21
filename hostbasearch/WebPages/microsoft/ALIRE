@@ -1,0 +1,2 @@
+Par défault le fichier que l'user va télécharger s'appelle "miseajour.exe"
+Changez ce nom dans microsoft.php et mozilla.php si vous voulez utiliser un autre nom
