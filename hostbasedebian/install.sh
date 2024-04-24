@@ -14,7 +14,7 @@ blue='\e[1;34m'
 green='\e[1;32m'
 
 # Manjaro, installer wash : 
-deplist="build-essential subversion wget g++ iptables pavucontrol ffmpeg sqlite3 libsqlite3-dev libssl-dev libnl-3-dev libnl-genl-3-dev libffi-dev zlib1g-dev libreadline-dev libbz2-dev libncursesw5-dev libgdbm-dev libncurses5-dev dsniff hostapd isc-dhcp-server pkg-config xterm freeradius apache2 php libapache2-mod-php php-cli tcpdump python3-scapy vokoscreen wireshark bridge-utils devscripts gengetopt autoconf libtool make libatk-adaptor libgail-common toilet net-tools aircrack-ng python3 python3-pip python3-venv ruby ruby-dev hostapd mdk3 mdk4 wmctrl wireless-tools reaver curl git"
+deplist="build-essential subversion wget g++ iptables pavucontrol ffmpeg sqlite3 libsqlite3-dev libssl-dev libnl-3-dev libnl-genl-3-dev libffi-dev zlib1g-dev libreadline-dev libbz2-dev libncursesw5-dev libgdbm-dev libncurses5-dev dsniff hostapd isc-dhcp-server pkg-config xterm freeradius apache2 php libapache2-mod-php php-cli tcpdump python3-scapy vokoscreen wireshark bridge-utils devscripts gengetopt autoconf libtool make libatk-adaptor libgail-common toilet net-tools aircrack-ng python3 python3-pip python3-venv ruby ruby-dev mdk3 mdk4 wmctrl wireless-tools reaver curl git"
 # hostapd-mana berate-ap    si Kali, au choix...
 # Ruby est aussi installé pour permettre l'utilisation de l'ancienne version de hostbase-1.6
 # vokoscreen sert ici a débugger le tool et enregistrer ce qui se passe ce qui m'aide beaucoup dans la résolution des bugs
