@@ -33,6 +33,7 @@ while [ -z "${page}" ]; do read -r ${page}; done
 echo "Configuring apache..."
 cd /var/www/
 rm -rf *
+mkdir qrcode  # We need to create this folder because github doesn't like empty folder...
 cat <<-EOF > ncsi.txt
 Microsoft NCSI
 EOF
