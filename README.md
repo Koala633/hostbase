@@ -7,6 +7,7 @@
 Hostbase 1.7 is here !
 
 Wiki de hostbase en français : https://github.com/Koala633/hostbase/wiki/WIKI-FR
+
 Wiki de hostbase para espana : https://github.com/Koala633/hostbase/wiki/WIKI-ES
 
 Download Hostbase then go to **/hostbase-master/hostbasedebian** or **/hostbase-master/hostbasearch** :
