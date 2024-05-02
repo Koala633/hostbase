@@ -67,7 +67,7 @@ def airodumpcheckcinqg():
         time.sleep(8)
         os.kill(adpcheck.pid, signal.SIGINT)
 
-        os.system("rm -rf channel.txt")
+
         df = pandas.read_csv("airodumpcheck2g-01.csv")  # Fichier qui .csv qui sert à l'analyse
         df.columns = ['BSSID', 'First time seen', 'Last time seen', 'channel', 'Speed', 'Privacy', 'Cypher',
                       'Atuthentication', 'Power', '# beacons', '# IV', 'LAN IP', 'ID-lenght', 'ESSID', 'Key']
@@ -94,12 +94,12 @@ def airodumpcheckcinqg():
                     for letter in i:
                         if (letter.isdigit()):
                             print(letter)
-                            f = open(f'channel.txt', 'w+')
+                            f = open(f'canalf.txt', 'w+')
                             f.write(line)
                             f.close()
         os.system("rm -rf *.csv")
         os.system("rm -rf airodumpencours.txt")
-        os.system("sed -i '/^$/d' channel.txt")
+        os.system("sed -i '/^$/d' canalf.txt")
         print("")
         mdk3()
 
