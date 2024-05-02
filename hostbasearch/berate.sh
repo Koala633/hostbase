@@ -143,10 +143,10 @@ chown -R root:http /srv/http/cle.txt
 chmod 764 /srv/http/cle.txt
 apachectl restart
 sleep 4;
-echo "\e[1;32m[*] Fake AP created...\e[0m"
+echo -e "\e[1;32m[*] Fake AP created...\e[0m"
 else
 chmod 777 *
 apachectl restart
 sleep 4;
-echo "\e[1;32m[*] Fake AP created...\e[0m"
+echo -e "\e[1;32m[*] Fake AP created...\e[0m"
 fi
