@@ -106,10 +106,10 @@ chown -R root:apache /var/www/cle.txt
 chmod 764 /var/www/cle.txt
 httpd -k start
 sleep 4;
-echo "\e[1;32m[*] El falso AP ha sido creado...\e[0m"
+echo -e "\e[1;32m[*] El falso AP ha sido creado...\e[0m"
 else
 chmod 777 *
 httpd -k start
 sleep 4;
-echo "\e[1;32m[*] El falso AP ha sido creado...\e[0m"
+echo -e "\e[1;32m[*] El falso AP ha sido creado...\e[0m"
 fi
