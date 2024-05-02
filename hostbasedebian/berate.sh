@@ -108,10 +108,10 @@ chown -R root:www-data /var/www/cle.txt
 chmod 764 /var/www/cle.txt
 service apache2 restart
 sleep 4;
-echo "\e[1;32m[*] Fake AP created...\e[0m"
+echo -e "\e[1;32m[*] Fake AP created...\e[0m"
 else
 chmod 777 *
 service apache2 restart
 sleep 4;
-echo "\e[1;32m[*] Fake AP created...\e[0m"
+echo -e "\e[1;32m[*] Fake AP created...\e[0m"
 fi
