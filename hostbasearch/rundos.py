@@ -62,7 +62,7 @@ def airodumpcheckdeuxg():
         time.sleep(8)
         os.kill(adpcheck.pid, signal.SIGINT)
 
-        os.system("rm -rf channel.txt")
+
         df = pandas.read_csv("airodumpcheck2g-01.csv")  # Fichier qui .csv qui sert à l'analyse
         df.columns = ['BSSID', 'First time seen', 'Last time seen', 'channel', 'Speed', 'Privacy', 'Cypher',
                       'Atuthentication', 'Power', '# beacons', '# IV', 'LAN IP', 'ID-lenght', 'ESSID', 'Key']
