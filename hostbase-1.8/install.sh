@@ -71,8 +71,6 @@ clear
 Banniere
 echo -e "\n\e[1;33m[*] Please wait...\e[0m\n"
 echo -n "Updating the system before the installation..."
-echo -n "Installation will make python and python venv on your computer..."
-echo -n "Also ruby and ruby gems will be installed if you want use the older version of hostbase..."
 echo -n "If you use Kali some things are already installed..."
 echo -n "This install is for a none config to a good config on a Debian fresh version..."
 apt update -y && apt upgrade -y
@@ -81,8 +79,6 @@ for app in $deplist
 do
   dpkg --get-selections "$app" | grep install >/dev/null || apt install -y "$app"
 done
-
-echo -e "$blue Installing ruby gems if you want to use the older version...$NC"
 
 # A voir pour Manjaro et Arch :
 
@@ -115,25 +111,13 @@ echo -e "\t\e[1;32m[+] A backup configuration of apache has been created on : /o
 service apache2 restart
 sleep 4;
 cd /home/$idu/Documents/
-echo -e "\t\e[1;32m[+] Installing python virtual environment (venv)... WAIT....\e[0m"
 # curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
 # echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc && echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc && echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-source ~/.bashrc
-pythonversion=$(python3 --version)
-echo $pythonversion
 # string=$pythonversion
 # install=$(echo "$string" | sed 's/[^0-9.]//g')
 # echo $install
 #pyenv install $install && pyenv global $install
 # eval "$(pyenv init -)"
-cd /home/$idu/Documents/
-python3 -m venv hostbase
-pip3 install numpy && pip3 install pandas
-cp -R hostbasebackup/* /home/$idu/Documents/hostbase/
-sed -i -e $'$a\\\nsource /home/'${idu}'/Documents/hostbase/bin/activate' ~/.bashrc
-exec "$SHELL"
-echo -e "$green Python venv install has be done.\e[0m"
-echo -e "$yellow --> if you had some errors during the installation of python venv then please follow procedure install in the installPython file step by step."
 echo -e "$blue You maybe need to install dkms driver for RT88XXAU cards... Please install it from aircrack-ng github version apart of this script.Reboot will be necessary."
 echo -e "Your .~/bashrc has been modified to keep hostbase venv activated every time."
 echo -e "If you don't want that you can remove the last line begining by : source hostbase..."
