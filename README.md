@@ -1,48 +1,18 @@
 
+Hostbase-1.8
+
+WPA2/3 downgrade
+
+Work on Kali. 
+Step 1 : download and exec : bash install.sh
+Step 2 : go to the folder and run : bash hostbase.sh
+
+--> please SEE the file READ_THAT_php_conf into the WebPages folder <---
+
+This file explain how to configure your php.ini on apache2 to be able to use the qrcode mode.
 
 
-
-# hostbase
-
-Hostbase 1.7 is here !
-
-Wiki de hostbase en français : https://github.com/Koala633/hostbase/wiki/WIKI-FR
-
-Wiki de hostbase para espana : https://github.com/Koala633/hostbase/wiki/WIKI-ES
-
-Download Hostbase then go to **/hostbase-master/hostbasedebian** or **/hostbase-master/hostbasearch** :
-
-`bash install.sh`
-
-then
-
-`python3 hostbase.py`
-
-This script work with Python >= 3.10
-
-![1](https://github.com/Koala633/hostbase/assets/26505001/5acb9baa-a3e6-4086-8c71-b06fb5dc78d4)
-
-
-
-Install script will also install python virtual environment from te repositories (Debian) for arch some install need AUR to be configured.
-
-If troubleshooting the file **installPython** provide the full installation process.Also to use wpa3 QR code mode you will need to edit your **php.ini** go to the WebPages folder and see the file READTHAT_php_conf to change config.
-
-HOSTBASE is french and spanish project and will always stay a FREE project BUT this kind of project need time... lot of time... so Hostbase is open to donations :
-
-https://www.lepotcommun.fr/pot/lcni7w5a    no registration is required on this website.
-
-You can donate what you want if you like it ! 
-
-Older version 1.6 in ruby : https://github.com/Koala633/hostbase/tree/shell
-
-PARA WIFISLAX mas informaciones aqui :
-
-https://foro.seguridadwireless.net/foro-libre-offtopic/hostbase-1-7-hackinf-wifi
-
-Enjoy -:)
-
-![4](https://github.com/Koala633/hostbase/assets/26505001/777b0e35-cb06-4199-a044-561966ada3f1)
+----> this scipt is in still beta test, please leave a comment on undercode.org in the seguridad wireless forum <----
 
 
 
