@@ -1,0 +1,13 @@
+/* On travaille sur la balise body, donc sur TOUTE la page */
+body
+{
+    background-color: white; /* Le fond de la page sera noir */
+    color: #FF8C00; /* Le texte de la page sera blanc */
+}
+button
+{
+ background-color:#FF8C00;
+ 
+color:#CCC;
+ 
+}

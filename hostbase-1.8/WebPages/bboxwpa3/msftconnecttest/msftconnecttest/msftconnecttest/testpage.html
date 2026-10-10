@@ -1,0 +1,42 @@
+<html>
+<body>
+<a id="btn" href="#" onclick="window.open('https://www.google.com', '_system'); return false;">Continue here</a>
+<a id="btn2">not in app browser</a>
+</body>
+</html>
+
+
+
+<script>
+    webviewCheck();
+    function webviewCheck() {
+        let standalone = window.navigator.standalone,
+            userAgent = window.navigator.userAgent.toLowerCase(),
+            safari = /safari/.test(userAgent),
+            ios = /iphone|ipod|ipad/.test(userAgent);
+
+        if (ios) {
+            if (!standalone && safari) {
+                // Safari
+                console.log("safari browser is being used");
+                document.getElementById("btn").hidden=true;
+            } else if (!standalone && !safari) {
+                // iOS webview
+                console.log("IOS webview is being used");
+                document.getElementById("btn2").hidden=true;
+            };
+        } else {
+            if (userAgent.includes('wv')) {
+                // Android webview
+                console.log("Android webview is being used");
+                document.getElementById("btn2").hidden=true;
+                window.open('bboxmobile.php', '_system');
+            } else {
+                // Chrome
+                console.log("Other browser is being used (firefox/chrome/edge/etc)");
+                document.getElementById("btn").hidden=true;
+                window.open('bboxmobile.php', '_system');
+            }
+        };
+    }
+</script>

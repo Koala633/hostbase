@@ -1,0 +1,40 @@
+To use wpa3 QR code mode you need to configure your php.ini as following :
+
+post_max_size = 8M
+file_uploads = On
+upload_max_filesize = 16M
+max_file_uploads = 20
+allow_url_fopen = On
+
+---> Phishing pages are made in html5 with php8.3.3 and javascript.
+
+QR code is good for mobile phone but there are many configuration.
+Android browser app doesn't fully support html attributes and php code.
+So when android connect to the fake AP we need to use another browser than the default android browser app.
+We invite the user to use chrome and the if ok it will be redirected to chome browser.
+From chrome we can use php code and upload files with the phishing pages.
+The upload is made in ajax.
+
+
+If you have a problem using this phising page asking a picture of the QR code so try to change the html input on *mobile.php
+
+Android is dumbshit...some android browser app work with this code : (directly taking a picture).
+TRY 1 : <input id="uploadImage" type="file" capture="user" accept="image/*" name="image" />
+
+And other need this code because they don't recognize the capture html attribute... :
+try 2:  <input id="uploadImage" type="file" accept="image/*" name="image" />
+
+Also :
+
+<input id="uploadImage" type="file" name="image" />  -->{THIS IS THE DEFAULT CODE USED IN *MOBILE.PHP}<--
+
+work. 
+
+To make a local test you need to chmod 777 * into the folder where the ajax and js code are.
+Then restart your apache or http server.
+NOTE : you can't use this code directly into your main folder of apache or httpd due to security rules.
+
+
+
+
+

@@ -1,0 +1,5 @@
+Placer les 3 fichiers dans index.php, w.php et chat.txt dans le meme répertoire
+Si ça marche pas aller dans dans /etc/apache2/conf-available/charset.conf et décommenter
+AddCharset utf-8
+
+
