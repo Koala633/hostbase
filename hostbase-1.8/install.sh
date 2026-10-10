@@ -35,7 +35,6 @@ idu="$(logname)"
 echo $idu
 cp -R $(pwd) /home/$idu/Documents/
 cd /home/$idu/Documents/
-mv hostbasedebian hostbasebackup
 echo -e "$yellow 	           Hostbase version $Version By Koala alias Flow $NC"
 echo -e "                        |\          )           (                        "
 echo -e "                    ____| \__        )         (                         "
@@ -90,7 +89,7 @@ done
 
 echo -e "\t\e[1;32m[+] Configuring apache and the phishing page... WAIT....\e[0m"
 rm -rf /etc/dhcp/dhcpd.conf
-cd /home/$idu/Documents/hostbasebackup/
+cd /home/$idu/Documents/hostbase-1.8/
 mkdir LasTry
 cp -R WebPages/dhcpd.conf /etc/dhcp/
 cp -R WebPages/* /etc/
