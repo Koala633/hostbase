@@ -14,5 +14,7 @@ This file explain how to configure your php.ini on apache2 to be able to use the
 
 ----> this scipt is in still beta test, please leave a comment on undercode.org in the seguridad wireless forum <----
 
+you can try to use the older versions of hostbase but there is no update since 2 years, better going to the last hostbase-1.8
+
 
 
