@@ -2,7 +2,7 @@
 # Under licence GPLv3 http://www.gnu.org/licenses/gpl.txt
 # Hostbase By Koala alias Flow
 
-Version=1.7
+Version=1.8
 
 
 # set color variable
@@ -87,8 +87,6 @@ done
 # user~]$ gem list
 # [user~]$ gem update
 
-gem install highline && gem install rake && gem install bundler && gem install colorize
-
 
 echo -e "\t\e[1;32m[+] Configuring apache and the phishing page... WAIT....\e[0m"
 rm -rf /etc/dhcp/dhcpd.conf
@@ -110,7 +108,6 @@ cp -R WebPages/000-default.conf /etc/apache2/sites-available/
 echo -e "\t\e[1;32m[+] A backup configuration of apache has been created on : /opt/backupserver... starting apache NOW...\e[0m"
 service apache2 restart
 sleep 4;
-cd /home/$idu/Documents/
 # curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
 # echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc && echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc && echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 # string=$pythonversion
