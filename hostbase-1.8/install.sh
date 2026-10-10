@@ -115,8 +115,6 @@ sleep 4;
 #pyenv install $install && pyenv global $install
 # eval "$(pyenv init -)"
 echo -e "$blue You maybe need to install dkms driver for RT88XXAU cards... Please install it from aircrack-ng github version apart of this script.Reboot will be necessary."
-echo -e "Your .~/bashrc has been modified to keep hostbase venv activated every time."
-echo -e "If you don't want that you can remove the last line begining by : source hostbase..."
 echo -e "$yellow To use the wpa3 QR code mode correctly you need to edit your php.ini file and check those parameters :"
 echo -e "$yellow post_max_size = 8M"
 echo -e "$yellow file_uploads = On"
@@ -124,7 +122,7 @@ echo -e "$yellow upload_max_filesize = 16M"
 echo -e "$yellow max_file_uploads = 20"
 echo -e "$yellow allow_url_fopen = On"
 echo -e "$yellow You can close this windows and go to /Documents/hostbase folder to launch it like :"
-echo -e "$green python3 hostbase.py"
+echo -e "$green bash hostbase.sh"
 echo -e "$red don't forget to plug your Wi-Fi cards before start it"
 }
 
