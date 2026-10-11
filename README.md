@@ -17,11 +17,11 @@ Step 2 : go to the folder and run : bash hostbase.sh
 This file explain how to configure your php.ini on apache2 to be able to use the qrcode mode.
 
 
-----> this scipt is in still beta test, please leave a comment on undercode.org in the seguridad wireless forum <----
+----> this scipt is in still beta test, please leave a comment on undercode.org in the seguridad wireless forum (SPANISH) <----
 
 https://underc0de.org/foro/wireless/hostbase-1-8-evil-twin-script/
 
-And hackforums.net
+And hackforums.net (ENGLISH)
 
 https://hackforums.net/showthread.php?tid=6333336
 
