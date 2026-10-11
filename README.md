@@ -17,7 +17,9 @@ Step 2 : go to the folder and run : bash hostbase.sh
 This file explain how to configure your php.ini on apache2 to be able to use the qrcode mode.
 
 
-------> FULL README BELOW
+
+
+------> FULL README BELOW <------
 
 
 Nobody know me there but im also on other forums, especially on french and spanish forums.
